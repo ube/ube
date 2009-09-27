@@ -1,6 +1,13 @@
 require 'net/smtp'
 require 'enumerator'
 
+desc 'Rebuild acts_as_ferret indices'
+task :rebuild_index => :environment do
+  Barcode.rebuild_index
+  Book.rebuild_index
+  Seller.rebuild_index
+end
+
 namespace :git do
   desc 'Run before every git commit'
   task :precommit => :environment do

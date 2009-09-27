@@ -34,7 +34,7 @@ class ExchangesController < ApplicationController
       Order.delete_all
       Book.delete_all
       Seller.delete_all [ '(contract_printed_at IS NULL OR contract_printed_at < ?) AND (updated_at IS NULL OR updated_at < ?)', 1.year.ago, 1.year.ago ]
-      Seller.update_all :welcome_email_sent_at => nil, :paid_service_fee_at => nil, :welcome_back_sent_on => nil
+      Seller.update_all :welcome_email_sent_at => nil, :paid_service_fee_at => nil, :welcome_back_sent_on => nil, :reclaim_reminder_sent_on => nil
       Book.rebuild_index
       Seller.rebuild_index
       flash[:notice] = 'Exchange Reset!'
