@@ -1,6 +1,6 @@
 class SellersController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid do |exception|
-    render (exception.record.new_record? ? :new : :edit)
+    render exception.record.new_record? ? :new : :edit
   end
 
   def index
@@ -42,7 +42,7 @@ class SellersController < ApplicationController
       return
     end
 
-    render (@seller.new_record? ? :new : :edit)
+    render @seller.new_record? ? :new : :edit
   end
 
   def update

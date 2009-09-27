@@ -57,7 +57,7 @@ class BooksController < ApplicationController
       end
     end
 
-    render (@book.new_record? ? :new : :edit)
+    render @book.new_record? ? :new : :edit
   end
 
   def update

@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   rescue_from ActiveRecord::RecordInvalid do |exception|
-    render (exception.record.new_record? ? :new : :edit)
+    render exception.record.new_record? ? :new : :edit
   end
 
   filter_parameter_logging :password, :password_confirmation
@@ -40,7 +40,7 @@ class PeopleController < ApplicationController
       return
     end
 
-    render (@person.new_record? ? :new : :edit)
+    render @person.new_record? ? :new : :edit
   end
 
   def update
