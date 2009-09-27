@@ -1,0 +1,10 @@
+
+<%=h @seller.name %> -
+The last day to pick up your money and/or leftover books is <%=h Exchange.current.ends_at.strftime('%B %e') %>. To pick up your money and/or leftover books, simply bring picture ID to the address below, from <%=h Exchange.current.hours %>:
+
+<%=h Exchange.current.address.address %>
+<%=h Exchange.current.address.city %>, <%=h Exchange.current.address.region %>
+
+*If you cannot make it*, find a friend or relative who can make it, and give them any of your picture ID (like Driver's License, Student ID, Medicare, etc.). They won't be able to make reclamations without it.
+
+<%= render :partial => 'signature' %>

@@ -1,0 +1,13 @@
+<% @page_title = 'Edit ' + h(@seller.name) -%>
+
+<%= render :partial => 'existing' %>
+
+<%= error_messages_on 'seller' %>
+
+<% my_form_for :seller, @seller, :url => seller_path(@seller), :html => { :method => :put, :class => 'block' } do |f| %>
+<%= render :partial => 'form', :locals => { :f => f } %>
+
+<%= render :partial => 'shared/buttonblock', :locals => { :name => 'Save Changes', :redirect => session[:last_seller_search] } %>
+
+<%= render :partial => 'privacy' %>
+<% end %>

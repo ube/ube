@@ -1,0 +1,12 @@
+dawson:
+  name: Dawson Book Exchange
+  email_address: dawson@example.com
+  handling_fee: 10
+  sale_starts_on: <%= 1.week.ago.to_date.to_s :db %>
+  sale_ends_on: <%= 1.week.from_now.to_date.to_s :db %>
+  reclaim_starts_on: <%= 1.weeks.from_now.to_date.to_s :db %>
+  reclaim_ends_on: <%= 3.weeks.from_now.to_date.to_s :db %>
+  ends_at: <%= 3.weeks.from_now.to_s :db %>
+  service_fee: 1
+  early_reclaim_penalty: 5
+  hours: 10am to 6pm

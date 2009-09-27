@@ -1,0 +1,49 @@
+<%= render :partial => 'partials/search', :locals => { :url => sellers_path, :group => 'sellers', :examples => [ 'John Doe', '3981234', 'bob@example.com' ] } %>
+
+<% unless params[:q].blank? -%>
+<% if @sellers.empty? -%>
+<%= render :partial => 'partials/empty' %>
+<% else -%>
+<table class="list">
+  <caption><%= render :partial => 'partials/caption', :locals => { :pages => @sellers } %></caption>
+
+  <thead>
+  <tr>
+    <th style="width: 3.5em"></th>
+    <th style="width: 7em"></th>
+    <th style="width: 4.5em"></th>
+    <%= sort_header_tag 'name' %>
+    <%= sort_header_tag 'telephone' %>
+    <%= sort_header_tag 'email_address' %>
+  </tr>
+  </thead>
+
+  <tfoot class="pages">
+  <tr>
+    <td colspan="6">
+      <%= will_paginate @sellers %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for seller in @sellers -%>
+  <tr>
+    <td class="edit"><%= link_to 'Edit', edit_seller_path(seller) %></td>
+    <td class="book"><%= link_to 'Add a book', new_seller_book_path(:seller_id => seller) %></td>
+
+    <td class="delete"><%= link_to 'Delete', seller_path(seller), :confirm => 'Are you sure you want to delete this seller?', :method => :delete %></td>
+    <td>
+      <%= link_to h(seller.name), seller_path(seller) %>
+<% unless seller.notes.blank? -%>
+      <%=h seller.notes %>
+<% end -%>
+    </td>
+    <td><%=h number_to_phone(seller.telephone, :area_code => true) %></td>
+    <td><%=h seller.email_address %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>
+<% end -%>

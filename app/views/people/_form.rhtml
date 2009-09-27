@@ -1,0 +1,18 @@
+<%= render :partial => 'shared/required_fields' %>
+
+<% fieldset 'Account' do %>
+<%= f.text_field :name, :required => true, :maxlength => 15, :size => 20, :label => 'Username', :after_text => 'Letters and numbers only. Must be 3 to 15 characters long.' %>
+<% inline_fieldset do %>
+<%= f.password_field :password, :after_text => 'Must be at least 6 characters long.' %>
+<%= f.password_field :password_confirmation, :label => 'Retype Password' %>
+<% end %>
+<%= f.text_field :email_address, :size => 40, :label => 'Email Address', :after_text => 'People will not be able to retrieve lost passwords without an email address.' %>
+<% end %>
+
+<% fieldset 'Roles <strong>(Optional)</strong>' do %>
+<% check_boxes do %>
+<% for role in @roles do -%>
+<label><%= check_box_tag "role_#{role.name}", 1, @person.can?(role.name) %> <%=h role.description %></label>
+<% end -%>
+<% end %>
+<% end %>

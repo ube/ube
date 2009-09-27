@@ -1,0 +1,182 @@
+<% @page_title = 'Frequenty Asked Questions' -%>
+<% sale_price = Book.calculate_sale_price(50, Exchange.current.handling_fee) %>
+<h2>Frequently Asked Questions (FAQ)</h2>
+
+<p>If your question isn't answered here, please email <%= mail_to 'dawson@ube.ca' %>.</p>
+
+<p>You can usually expect a reply within 24 hours.</p>
+
+<hr />
+
+<h3>The Basics</h3>
+
+<ol class="numbered">
+  <li><a href="#how">How does this work?</a></li>
+  <li><a href="#buy">How do I buy or sell books?</a></li>
+  <li><a href="#handling">How does the handling fee work?</a></li>
+</ol>
+
+<h3>Sellers</h3>
+
+<ol class="numbered">
+  <li><a href="#change">Can I change the price of one of my books?</a></li>
+  <li><a href="#correct">Can you correct my personal or book information?</a></li>
+  <li><a href="#manuals">Do you take course packs or lab manuals?</a></li>
+  <li><a href="#contract">I lost my contract! What do I do?</a></li>
+  <li><a href="#prices">Why can't I find books with my prices on the web site?</a></li>
+</ol>
+
+<h3>Reclaims</h3>
+
+<ol class="numbered">
+  <li><a href="#cant">I can't make it before the reclaim deadline! What can I do?</a></li>
+  <li><a href="#miss">What happens if I miss the reclaim deadline?</a></li>
+  <li><a href="#pickup">When can I pick up my books and money?</a></li>
+  <li><a href="#before">Can I pick up my books and money earlier?</a></li>
+</ol>
+
+<h3>Buyers</h3>
+
+<ol class="numbered">
+  <li><a href="#payment">Can I pay with Interac/Visa/MasterCard?</a></li>
+  <li><a href="#aside">Can you put a book aside for me?</a></li>
+</ol>
+
+<hr />
+
+<h3 id="basics">The Basics</h3>
+
+<h4 id="how">
+1. How does this work?
+</h4>
+
+<p>Sellers bring their books to the book exchange. They choose the price 
+of each of their books, which are then put up for sale. A small handling 
+fee is added to the price of each book to cover the costs of running the 
+exchange. Buyers then come to the book exchange to buy books. When the 
+enchange is over, sellers come to the book exchange to pick up their money 
+and leftover books.</p>
+
+<h4 id="buy">
+2. How do I buy or sell books?
+</h4>
+
+<p>You can buy or sell books from <strong><%=h Exchange.current.sale_starts_on.strftime('%B %e') %></strong>
+to <strong><%=h Exchange.current.sale_ends_on.strftime('%B %e') %></strong> at:</p>
+
+<p class="address"><%= textilize_without_paragraph(h(Exchange.current.address)) %></p>
+
+<h4 id="handling">
+3. How does the handling fee work?
+</h4>
+
+<p>Let's say you choose to sell a book for 50 dollars. An 
+<%=h number_to_percentage(Exchange.current.handling_fee, {:precision => 2}) %> 
+handling fee is added to the price of the book, to make it <%=h sale_price %> dollars. 
+The book is then sold for <%=h sale_price %> dollars. The book exchange will keep 
+<%=h sale_price - 50 %> dollars, and give you 50 dollars. So, the price you choose 
+is how much money you get if your book is sold.</p>
+
+<hr />
+
+<h3 id="sellers">Sellers</h3>
+
+<h4 id="change">
+1. Can I change the price of one of my books?
+</h4>
+
+<p>Yes! Simply email <%= mail_to 'dawson@ube.ca' %> with the new price.</p>
+
+<h4 id="correct">
+2. Can you correct my personal or book information?
+</h4>
+
+<p>Yes! Email <%= mail_to 'dawson@ube.ca' %> with the correct information.</p>
+
+<h4 id="manuals">
+3. Do you take course packs or lab manuals?
+</h4>
+
+<p>We accept all <strong>study guides</strong>, but because course packs or lab 
+manuals change every year they are unlikely to sell and we cannot accept them.</p>
+
+<h4 id="contract">
+4. I lost my contract! What do I do?
+</h4>
+
+<p>If you gave us your email address, you can just <%= link_to 'print another contract', contract_path %>.
+If not, don't worry &ndash; if you want another copy, just drop by the book exchange. 
+The contract only exists so that the book exchange can collect its fees, but 
+it's also handy for you because it contains everything you need to know.</p>
+
+<h4 id="prices">
+5. Why can't I find books with my prices on the web site?
+</h4>
+
+<p>The prices on the web site include an 
+<%=h number_to_percentage(Exchange.current.handling_fee, {:precision => 2}) %> 
+handling fee. So, if you are selling a book for 50 dollars, the price on the web 
+site will be <%=h sale_price %> dollars.</p>
+
+<hr />
+
+<h3 id="reclaims">Reclaims</h3>
+
+<h4 id="cant">
+1. I can't make it before the reclaim deadline! What can I do?
+</h4>
+
+<p>Find a friend or relative who can make it before the reclaim deadline, and give them 
+any of your picture ID (like Medicare, Driver's License, Dawson ID, etc.). They won't 
+be able to make reclamations without it.</p>
+
+<h4 id="miss">
+2. What happens if I miss the reclaim deadline?
+</h4>
+
+<p>The book exchange doesn't have the resources to stay open past 
+<%=h Exchange.current.reclaim_ends_on.strftime('%B %e') %>, so please 
+pick up your books and money before then. If you can't, please email 
+<%= mail_to 'dawson@ube.ca' %> explaining your situation.</p>
+
+<h4 id="pickup">
+3. When can I pick up my books and money?
+</h4>
+
+<p>You can reclaim books and money from <strong><%=h Exchange.current.reclaim_starts_on.strftime('%B %e') %></strong>
+to <strong><%=h Exchange.current.reclaim_ends_on.strftime('%B %e') %></strong> at:</p>
+
+<p class="address"><%= textilize_without_paragraph(h(Exchange.current.address)) %></p>
+
+<p>You must present picture ID<% unless Exchange.current.service_fee.blank? %> and 
+pay a <%=h number_to_currency(Exchange.current.service_fee) %> service fee<% end %> 
+to make reclamations. Any picture ID will do: Medicare, Driver's License, Dawson ID, etc.</p>
+
+<h4 id="before">
+4. Can I pick up my books and money earlier?
+</h4>
+
+<p>Yes, but you must pay a <%=h number_to_currency(Exchange.current.early_reclaim_penalty) %> 
+penalty for each reclamation made before <%=h Exchange.current.reclaim_starts_on.strftime('%B %e') %>.</p>
+
+<hr />
+
+<h3 id="buyers">Buyers</h3>
+
+<h4 id="payment">
+1. Can I pay with Interac/Visa/MasterCard?
+</h4>
+
+<p>We accept cash only.</p>
+
+<h4 id="aside">
+2. Can you put a book aside for me?
+</h4>
+
+<p>Unfortunately, we can't. Our goal is to sell books for other people, so we 
+will always sell a book to the first buyer. We encourage you to check that the 
+book you want is in-stock from a computer near the book exchange before lining up.</p>
+
+<hr />
+
+<p>Still have questions? Email <%= mail_to 'dawson@ube.ca' %>.</p>

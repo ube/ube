@@ -1,0 +1,9 @@
+<%= render :partial => 'shared/required_fields' %>
+
+<% fieldset "Barcode #{@barcode.tag}" do %>
+<%= f.text_field :title, :required => true, :size => 80 %>
+<%= f.text_field :author, :required => true %>
+<%= f.text_field :edition %>
+<%= f.text_field :retail_price %>
+<%= f.text_area :notes, :rows => 5 %>
+<% end %>

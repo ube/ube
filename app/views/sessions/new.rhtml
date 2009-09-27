@@ -1,0 +1,19 @@
+<% @page_title = 'Login' -%>
+<noscript>
+<div class="errors">
+  <h2>Javascript is disabled. Please enable Javascript and reload the page.</h2>
+</div>
+</noscript>
+
+<% my_form_for :person, nil, :url => sessions_path, :html => { :class => 'table' } do |f| %>
+
+<% fieldset 'Login <strong>(for Employees only)</strong>' do %>
+<%= f.text_field :name, :label => 'Username', :maxlength => 15, :size => 30, :value => @name %>
+<%= f.password_field :password %>
+<% end %>
+
+<p>
+  <%= submit_tag 'Login', :disable_with => 'Please wait...', :class => 'editor_only' %>
+  or <%= link_to 'I forgot my username or password', { :controller => 'people', :action => 'forgot' } %>
+</p>
+<% end %>

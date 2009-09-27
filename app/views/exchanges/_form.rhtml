@@ -1,0 +1,40 @@
+<%= render :partial => 'shared/required_fields' %>
+
+<% fieldset 'Exchange' do %>
+<%= f.text_field :name, :required => true %>
+<%= f.text_field :email_address, :label => 'Email Address', :size => 40, :required => true %>
+<% end %>
+
+<% fieldset 'Dates' do %>
+<%= f.text_field :hours, :required => true, :after_text => 'e.g. <span>10am to 6pm</span>.' %>
+<% inline_fieldset do %>
+<%= f.date_select :sale_starts_on, :label => 'Sales from', :class => 'first', :required => true %>
+<%= f.date_select :sale_ends_on, :label => 'to' %>
+<% end %>
+<% inline_fieldset do %>
+<%= f.date_select :reclaim_starts_on, :label => 'Reclaims from', :class => 'first', :required => true %>
+<%= f.date_select :reclaim_ends_on, :label => 'to' %>
+<% end %>
+<%= f.datetime_select :ends_at, :label => 'Reclaim deadline', :after_text => 'Last chance to reclaim books during the regular reclaim period.', :required => true %>
+<% end %>
+
+<% fieldset 'Fees' do %>
+<%= f.text_field :handling_fee, :required => true, :size => 2, :maxlength => 5, :after_text => "A percent tax on top of the price of the book." %>
+<%= f.text_field :service_fee, :size => 2, :maxlength => 5, :before_text => '$', :after_text => "One-time charge for using the book exchange." %>
+<%= f.text_field :early_reclaim_penalty, :size => 2, :maxlength => 5, :before_text => '$', :after_text => "Penalty for each book reclaimed before the reclaim period." %>
+<% end %>
+
+<% my_fields_for :address, @address do |a| %>
+<% fieldset 'Address' do %>
+<%= a.text_area :address, :required => true, :rows => 3, :cols => 28 %>
+<%= a.text_field :city, :required => true %>
+<%= a.select :region, [ 'Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland', 'Northwest Territories', 'Nova Scotia', 'Nunavut', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan', 'Yukon' ], :label => 'Province', :required => true %>
+<%= a.select :country, [ 'Canada', 'United States' ], :required => true %>
+<%= a.text_field :postal_code, :size => 8 %>
+<% end %>
+
+<% fieldset 'Schedule' do %>
+<%= f.file_field :schedule %>
+<% end %>
+
+<% end %>

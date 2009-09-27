@@ -1,0 +1,35 @@
+<% @page_title = h(@exchange.name) -%>
+
+<div class="list">
+<h2>
+  <%=h @exchange.name %>
+<% if Person.current.can? 'edit_exchange' -%>
+  <small><%= link_to 'edit', edit_exchange_path, :title => 'Press Alt+E to edit', :accesskey => 'e' %></small>
+<% end -%>
+<% if Person.current.can? 'reset_exchange' -%>
+  <small><%= link_to 'reset', reset_exchange_path %></small>
+<% end -%>
+</h2>
+
+  <ul>
+<% unless @exchange.address.blank? -%>
+    <li class="caps"><%= textilize_without_paragraph(h(@exchange.address)) %></li>
+<% end -%>
+    <li>
+      <p><%=h number_to_percentage(@exchange.handling_fee, {:precision => 2}) %> handling fee</p>
+<% unless @exchange.service_fee.blank? -%>
+        <p><%=h number_to_currency(@exchange.service_fee) %> service fee</p>
+<% end -%>
+<% unless @exchange.early_reclaim_penalty.blank? -%>
+        <p><%=h number_to_currency(@exchange.early_reclaim_penalty) %> early reclaim penalty</p>
+<% end -%>
+    </li>
+    <li>
+      <p>Open <%=h @exchange.hours %></p>
+      <p>Sales from <%=h @exchange.sale_starts_on.to_formatted_s(:short) %> to <%=h @exchange.sale_ends_on.to_formatted_s(:short) %></p>
+      <p>Reclaims from <%=h @exchange.reclaim_starts_on.to_formatted_s(:short) %> to <%=h @exchange.reclaim_ends_on.to_formatted_s(:short) %></p>
+      <p>Last chance to reclaim on <%=h @exchange.ends_at.strftime('%B %e at %I:%M %p') %></p>
+    </li>
+    <li><%= mail_to h(@exchange.email_address) %></li>
+  </ul>
+</div>

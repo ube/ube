@@ -1,0 +1,31 @@
+<% form_tag person_path('dummy'), :method => :delete do -%>
+<p class="nav">
+  <%= check_box_tag 'checkall' %> <%= label_tag :checkall, 'Select all' %>
+  and <%= submit_tag 'Delete Selected', :disable_with => 'Please wait...' %> 
+  <%= link_to 'Add an account', new_person_path, :class => 'new' %>
+</p>
+
+<table class="list">
+  <thead>
+  <tr>
+    <th style="width: 20px"></th>
+    <th style="width: 4em"></th>
+    <th>Name</th>
+    <th>Email Address</th>
+    <th>Roles</th>
+  </tr>
+  </thead>
+
+  <tbody>
+<% for person in @people %>
+  <tr>
+    <td><%= check_box_tag 'ids[]', person.id, false, :class => 'checkbox' %></td>
+    <td class="delete"><%= link_to 'Delete', person_path(person), :confirm => 'Are you sure you want to delete this account?', :method => :delete %></td>
+    <td><%= link_to h(person.name), edit_person_path(person) %></td>
+    <td><%= mail_to h(person.email_address) unless person.email_address.blank? %></td>
+    <td><small><%=h person.roles.collect{ |role| role.description }.sort.to_sentence %></small></td>
+  </tr>
+<% end %>
+  </tbody>
+</table>
+<% end -%>

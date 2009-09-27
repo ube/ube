@@ -1,0 +1,12 @@
+
+<%=h @seller.name %> -
+The <%=h Exchange.current.name %> is back for another semester! If you'd like to sell your books through us again, please go to the address below between <%=h Exchange.current.sale_starts_on.strftime('%B %e') %> and <%=h Exchange.current.sale_ends_on.strftime('%B %e') %>, from <%=h Exchange.current.hours %>:
+
+<%=h Exchange.current.address.address %>
+<%=h Exchange.current.address.city %>, <%=h Exchange.current.address.region %>
+
+If you don't plan on using the book exchange again, no worries - this will be the last email you receive from us.
+
+Thanks for using the <%=h Exchange.current.name %>, and we hope to see you again soon!
+
+<%= render :partial => 'signature' %>

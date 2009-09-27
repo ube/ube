@@ -1,0 +1,1 @@
+<h3 class="reminder">Remember to <%= link_to 'pick up', { :controller => 'about', :action => 'help', :anchor => 'reclaims' } %> your money and/or books between <%=h Exchange.current.reclaim_starts_on.strftime('%b %e') %> and <%=h Exchange.current.reclaim_ends_on.strftime('%b %e') %>.</h3>

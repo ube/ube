@@ -1,0 +1,9 @@
+<% @page_title = 'Edit ' + h(@barcode.tag) -%>
+
+<%= error_messages_on 'barcode' %>
+
+<% my_form_for :barcode, @barcode, :url => barcode_path(@barcode), :html => { :method => :put, :class => 'block' } do |f| %>
+<%= render :partial => 'form', :locals => { :f => f } %>
+
+<%= render :partial => 'shared/buttonblock', :locals => { :name => 'Save Changes', :redirect => session[:last_barcode_search] } %>
+<% end %>

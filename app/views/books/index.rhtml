@@ -1,0 +1,56 @@
+<%= render :partial => 'search', :layout => 'partials/search', :locals => { :url => books_path, :group => 'books' } %>
+
+<% unless params[:q].blank? -%>
+<% if @books.empty? -%>
+<%= render :partial => 'partials/empty' %>
+<% else -%>
+<table class="list">
+  <caption><%= render :partial => 'partials/caption', :locals => { :pages => @books } %></caption>
+
+  <thead>
+  <tr>
+    <th style="width: 11em"></th>
+    <th style="width: 85px">Extras</th>
+    <%= sort_header_tag 'label' %>
+    <%= sort_header_tag 'price' %>
+    <%= sort_header_tag 'edition' %>
+    <%= sort_header_tag 'title' %>
+    <%= sort_header_tag 'author' %>
+    <%= sort_header_tag 'retail_price', :caption => 'Retail' %>
+    <th style="width: 25px"></th>
+  </tr>
+  </thead>
+
+  <tfoot class="pages">
+  <tr>
+    <td colspan="9">
+      <%= will_paginate @books %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for book in @books -%>
+  <tr>
+<% if @cart.has_book?(book) -%>
+    <td>In cart</td>
+<% else -%>
+    <td id="<%= dom_id(book) %>">
+      <%= link_to_remote 'Add to cart', { :url => cart_cart_item_path(book), :method => :put }, :class => 'loading add' %>
+      or <%= link_to_remote 'Lost', { :url => lost_book_path(book), :method => :put }, :class => 'spinner secondary' %>
+    </td>
+<% end -%>
+    <td><%= extras(book) %></td>
+    <td><%=h book.label %></td>
+    <td><strong><%=h number_to_price(book.sale_price) %></strong></td>
+    <td><%=h book.barcode.edition %></td>
+    <td><%=h book.barcode.title %></td>
+    <td><%=h book.barcode.author %></td>
+    <td><%=h number_to_price(book.barcode.retail_price) %></td>
+    <td><%= link_to image_tag('barcode.png', :alt => 'Edit barcode', :title => 'Edit barcode'), edit_barcode_path(book.barcode), :class => 'image' %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>
+<% end -%>

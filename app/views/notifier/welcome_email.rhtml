@@ -1,0 +1,19 @@
+
+<%=h @seller.name %> -
+Welcome to the <%=h Exchange.current.name %>!
+
+Remember to pick up your money and/or leftover books between <%=h Exchange.current.reclaim_starts_on.strftime('%B %e') %> and <%=h Exchange.current.reclaim_ends_on.strftime('%B %e') %>, from <%=h Exchange.current.hours %>.
+
+-----------------------
+
+Check if a book is in-stock at http://ube.ca/
+
+Check if your books were sold at <%= status_url(:host => 'ube.ca', :email => @seller.email_address) %>
+
+Lost your contract? Go to <%= contract_url(:host => 'ube.ca', :email => @seller.email_address) %>
+
+-----------------------
+
+BUY and SELL used books from <%=h Exchange.current.sale_starts_on.strftime('%B %e') %> to <%=h Exchange.current.sale_ends_on.strftime('%B %e') %>.
+
+<%= render :partial => 'signature' %>

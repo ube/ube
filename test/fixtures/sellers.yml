@@ -1,0 +1,15 @@
+jack:
+  name: Jack
+  email_address: jack@example.com
+jill:
+  name: Jill
+  email_address: jill@example.com
+  welcome_email_sent_at: <%= 1.day.ago.to_s :db %>
+  paid_service_fee_at: <%= 1.day.ago.to_s :db %>
+  welcome_back_sent_on: <%= Date.yesterday.to_s :db %>
+  reclaim_reminder_sent_on: <%= Date.yesterday.to_s :db %>
+joe:
+  name: Joe
+  email_address: joe@example.com
+bob:
+  name: Bob

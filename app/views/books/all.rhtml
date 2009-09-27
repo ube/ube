@@ -1,0 +1,48 @@
+<% @page_title = 'Find book by seller' -%>
+<%= render :partial => 'statuses', :layout => 'partials/search', :locals => { :url => all_books_path } %>
+
+<% unless params[:q].blank? -%>
+<% if @books.empty? -%>
+<%= render :partial => 'partials/empty' %>
+<% else -%>
+<table class="list">
+  <caption><%= render :partial => 'partials/caption', :locals => { :pages => @books } %></caption>
+
+  <thead>
+  <tr>
+    <th style="width: 20px"></th>
+    <%= sort_header_tag 'state', :caption => 'Status', :style => 'width: 7.5em' %>
+    <%= sort_header_tag 'label' %>
+    <th>Seller</th>
+    <%= sort_header_tag 'title' %>
+    <%= sort_header_tag 'edition' %>
+    <%= sort_header_tag 'author' %>
+    <th style="width: 25px"></th>
+  </tr>
+  </thead>
+
+  <tfoot class="pages">
+  <tr>
+    <td colspan="8">
+      <%= will_paginate @books %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for book in @books -%>
+  <tr>
+    <td><%= action(book) %></td>
+    <td><%= status(book) %></td>
+    <td><%=h book.label %></td>
+    <td><%= link_to h(book.seller.name), seller_path(book.seller) %></td>
+    <td><%=h book.barcode.title %></td>
+    <td><%=h book.barcode.edition %></td>
+    <td><%=h book.barcode.author %></td>
+    <td><%= link_to image_tag('barcode.png', :alt => 'Edit barcode', :title => 'Edit barcode'), edit_barcode_path(book.barcode), :class => 'image' %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>
+<% end -%>

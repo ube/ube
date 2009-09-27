@@ -1,0 +1,8 @@
+dawson:
+  address: 1 Main Street
+  city: Beverly Hills
+  region: California
+  country: United States of America
+  postal_code: 90210
+  addressable_type: Exchange
+  addressable: dawson

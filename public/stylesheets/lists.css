@@ -1,0 +1,118 @@
+.list {
+  margin: 1em 0;
+  font-size: 110%;
+}
+.list li {
+  z-index: 0;
+  margin-bottom: .75em;
+}
+.tight {
+  margin: 0 0 1em;
+}
+.tight li {
+  margin-bottom: 0;
+}
+
+/* actions */
+
+.list span.container {
+  z-index: 2;
+  position: relative;
+}
+.list span.container h2 {
+  font-size: 160%;
+}
+.list span.container a {
+  color: #00e;
+  font-weight: bold;
+}
+.list span.container a:hover {
+  background-color: transparent;
+  color: #00e;
+}
+.list span.container a.secondary,
+.list span.container a.secondary:hover {
+  font-weight: normal;
+}
+
+.list span.actions {
+  position: absolute;
+  top: -7px;
+  left: -66px;
+  width: 55px;
+  padding: 7px 0 5px 7px;
+  border: 2px solid #ddd;
+  border-right: none;
+  background-color: #fff;
+  z-index: 1;
+}
+.list span.actions a {
+  padding: 5px;
+}
+
+/* notes */
+
+ol.list .notes {
+  color: #666;
+  font-size: 90%;
+}
+
+/* sub-lists */
+
+div.list ul {
+  margin-left: 2em;
+}
+div.list ul li {
+  margin: .8em 0;
+  padding-left: 25px;
+  font-family: arial, sans-serif;
+  font-size: 100%;
+}
+div.list ul li p {
+  margin-bottom: .2em;
+}
+.tight ul li {
+  margin: .15em 0;
+}
+
+/* drag-drop */
+
+#draggable img.handle {
+  cursor: move;
+}
+
+/* paginator */
+
+#pages {
+  font-weight: bold;
+}
+#pages td {
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+}
+#pages a,
+#pages a:visited,
+#pages a:hover,
+#pages span {
+  margin: 1px;
+  font-weight: normal; 
+}
+#pages a,
+#pages a:visited {
+  padding: 3px 8px;
+  border: solid 1px #aae;
+  text-decoration: none;
+}
+#pages a:hover {
+  border-color: #00c;
+  background-color: #03c;
+  color: #fff;
+}
+#pages a.nextprev {
+  font-weight: bold;
+}
+#pages span.nextprev {
+  padding: 3px 8px;
+  border: 1px solid #ddd;
+  color: #999;
+}

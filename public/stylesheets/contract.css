@@ -1,0 +1,85 @@
+body {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 100%;
+}
+
+/*--- tags -----------------------------------------------------------------*/
+
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+p {
+  margin-bottom: .5em;
+}
+
+span.url {
+  text-decoration: underline;
+}
+
+/*--- header ---------------------------------------------------------------*/
+
+#hd {
+  text-align: center;
+}
+#hd h1,
+#hd h2 {
+  font-size: 140%;
+}
+#hd h2 {
+  text-transform: uppercase;
+}
+#hd p strong {
+  font-size: 140%;
+}
+
+/*--- body -----------------------------------------------------------------*/
+
+#bd p {
+  margin: 0;
+}
+
+#bd ul {
+  list-style-type: square;
+  margin-bottom: .5em;
+  padding-left: 2em;
+}
+
+#bd table caption {
+  text-align: center;
+  white-space: nowrap;
+}
+#bd table td {
+  padding-right: 1em;
+}
+
+p.attention {
+  margin: .2em 0;
+  border: 5px solid #000;
+  font-weight: bold;
+  font-size: 140%;
+  text-align: center;
+}
+
+#signature {
+  text-align: center;
+}
+#box {
+  padding: 3px;
+  border: 1px solid #000;
+  line-height: 30px;
+}
+
+/*--- footer ---------------------------------------------------------------*/
+
+#ft {
+  margin-top: .5em;
+  padding-top: .5em;
+  border-top: 1px solid #000;
+}
+#ft p {
+  margin: 0;
+  text-align: center;
+}

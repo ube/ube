@@ -1,0 +1,61 @@
+<% @page_title = 'Checkout' %>
+<% if @orders.empty? -%>
+<h3>No carts ready for checkout, yet.</h3>
+<% else -%>
+<table class="list" id="carts">
+  <thead>
+  <tr>
+    <th style="width: 10em"></th>
+    <th>Total</th>
+    <th style="width: 7em"></th>
+    <th style="width: 85px">Extras</th>
+    <th>Label</th>
+    <th>Price</th>
+    <th>Edition</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Retail Price</th>
+    <th style="width: 25px"></th>
+  </tr>
+  </thead>
+
+  <tfoot>
+  <tr>
+    <td colspan="11">
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for order in @orders -%>
+<% for book in order.books -%>
+  <tr <% if book == order.books.last -%>class="order"<% end %> id="<%= dom_id(book) %>">
+<% if book == order.books.first -%>
+    <td rowspan="<%= order.books.size %>" class="links">
+      <ul>
+        <li class="checkout primary"><%= link_to 'Checkout', completed_order_path(order), :method => :put %></li>
+        <li class="receipt"><%= link_to 'With receipt', completed_order_path(order, :print_receipt => 'yes'), :method => :put %></li>
+        <li class="secondary"><%=h distance_of_time_in_fewer_words(order.created_at) %> ago</li>
+        <li class="secondary">by <%=h order.creator.nil? ? "unknown" : order.creator.name %></li>
+        <li class="delete"><%= link_to 'Delete order', order_path(order), :confirm => 'Are you sure you want to delete this cart?', :method => :delete %></li>
+      </ul>
+    </td>
+    <td rowspan="<%= order.books.size %>" class="total">
+      <%=h number_to_price(order.total) %>
+    </td>
+<% end -%>
+    <td class="delete" id="<%= dom_id(book) %>_link"><%= link_to 'Remove book', order_order_item_path(:order_id => order, :id => book), :method => :delete %></td>
+    <td><%= extras(book) %></td>
+    <td><%=h book.label %></td>
+    <td><strong><%=h number_to_price(book.sale_price) %></strong></td>
+    <td><%=h book.barcode.edition %></td>
+    <td><%=h book.barcode.title %></td>
+    <td><%=h book.barcode.author %></td>
+    <td><%=h number_to_price(book.barcode.retail_price) %></td>
+    <td><%= link_to image_tag('barcode.png', :alt => 'Edit barcode', :title => 'Edit barcode'), edit_barcode_path(book.barcode), :class => 'image' %></td>
+  </tr>
+<% end -%>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>

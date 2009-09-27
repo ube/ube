@@ -1,0 +1,6 @@
+<p class="filters">
+  Must have:
+  <%= check_box_tag :cdrom, 'true', params[:cdrom] %> <%= label_tag :cdrom, 'CD-ROM' %>
+  <%= check_box_tag :study_guide, 'true', params[:study_guide] %> <%= label_tag :study_guide %>
+  <%= check_box_tag :package, 'true', params[:package] %> <%= label_tag :package %>
+</p>

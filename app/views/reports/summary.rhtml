@@ -1,0 +1,63 @@
+<% @page_title = (@from_date == @to_date) ? "Summary for #{@from_date.strftime('%B %e')}" : "Summary for #{@from_date.strftime('%B %e')} to #{@to_date.strftime('%B %e')}" %>
+<% form_tag({ :action => 'summary' }, :method => 'get') do %>
+From 
+<%= text_field_tag :from_date, params[:from_date] || (Date.current - 1.year), :size => 12 %>
+to 
+<%= text_field_tag :to_date, params[:to_date] || (Date.current + 1.year), :size => 12 %>
+<%= submit_tag 'Show', :class => 'editor_primary' %>
+<% end %>
+
+<% if @years.blank? -%>
+<h3 class="empty" style="margin-top: .5em">No activity today, yet.</h3>
+<% else -%>
+<table class="daily">
+  <thead>
+  <tr>
+    <th></th>
+<% for year in @years -%>
+    <th><%=h year[:year] %></th>
+<% if year[:colspan] - 1 -%>
+    <th colspan="<%=h year[:colspan] - 1 %>"></th>
+<% end -%>
+<% end -%>
+    <th></th>
+  </tr>
+  <tr>
+    <th></th>
+<% for month in @months -%>
+    <th><%=h month[:month] %></th>
+<% if month[:colspan] - 1 -%>
+    <th colspan="<%=h month[:colspan] - 1 %>"></th>
+<% end -%>
+<% end -%>
+    <th></th>
+  </tr>
+  <tr class="day">
+    <th></th>
+<% for day in @days -%>
+    <th><%= day %></th>
+<% end -%>
+    <th>Total</th>
+  </tr>
+  </thead>
+
+  <tbody>
+<%= row 'Sales', @sales %>
+<%= row 'Handling fees', @fees, :before_text => '+' %>
+<%= row 'Total sales', @total_sales, :class => 'subtotal' %>
+<%= row 'Claims paid out', @claims %>
+<%= row 'Early reclaims', @early_reclaims, :before_text => '+' %>
+<%= row 'Service fees', @service_fees, :before_text => '+' %>
+<%= row 'Net deposit', @deposits, :class => 'total' %>
+<%= row 'New books', @books_counts %>
+<%= row 'Sold books', @sales_counts %>
+<%= row 'Book reclaims', @books_reclaimed_counts %>
+<%= row 'Money claims', @sales_reclaimed_counts %>
+  <tr>
+    <td class="title">Sellers</td>
+    <td colspan="<%=h @days.size %>"></td>
+    <td><%=h @sellers_count %></td>
+  </tr>
+  </tbody>
+</table>
+<% end -%>

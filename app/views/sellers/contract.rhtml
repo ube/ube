@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title><%=h @seller.name %>'s Contract</title>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/reset/reset-min.css"> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/fonts/fonts-min.css"> 
+<%= stylesheet_link_tag 'contract', :media => 'all' %>
+<%= stylesheet_link_tag 'print', :media => 'print' %>
+</head>
+<body onload="window.print()">
+
+<div id="hd">
+<% if logged_in? and private? -%>
+  <p class="hide">
+    <%= link_to 'Go to Seller search', sellers_path %> | <%= link_to 'Go to Book search', books_path %>
+  </p>
+<% end -%>
+  <h1><%=h Exchange.current.name %></h1>
+  <h2>Consignment Contract</h2>
+  <p><%=h Exchange.current.address.to_s(:comma) %></p>
+  <p>Sales from <%=h Exchange.current.sale_starts_on.strftime('%B %e') %> to <%=h Exchange.current.sale_ends_on.strftime('%B %e, %Y') %></p>
+  <p class="attention">Reclaims from <%=h Exchange.current.reclaim_starts_on.strftime('%B %e') %> to <%=h Exchange.current.reclaim_ends_on.strftime('%B %e, %Y') %></p>
+</div>
+
+<div id="bd">
+  <p>I, <strong><%=h @seller.name %></strong>, the Seller, agree to the following terms:</p>
+  <ul>
+    <li>No sale is guaranteed.</li>
+    <li>The Exchange is not liable for damages to the books.</li>
+    <li>A <%=h number_to_percentage(Exchange.current.handling_fee, {:precision => 0}) %> handling fee, rounded up to the nearest dollar, will be added to each book's Seller-set price.</li>
+<% if Exchange.current.early_reclaim_penalty -%>
+    <li>The Seller must pay a <%=h number_to_currency(Exchange.current.early_reclaim_penalty) %> penalty for each reclamation initiated before <%=h Exchange.current.reclaim_starts_on.strftime('%B %e, %Y') %>.</li>
+<% end -%>
+<% if Exchange.current.service_fee -%>
+    <li><strong>The Seller, or a friend or relative of the Seller, must present the Seller's picture ID and pay a <%=h number_to_currency(Exchange.current.service_fee) %> service fee to make reclamations.</strong></li>
+<% end -%>
+    <li><strong>Any books and/or money not reclaimed by <%=h Exchange.current.ends_at.strftime('%B %e, %Y at %I:%M %p') %> become the property of the Exchange.</strong></li>
+  </ul>
+
+  <p>The Exchange acknowledges that each book is the property of its Seller and agrees to the following:</p>
+  <ul>
+    <li>To alert the Seller once, by email, for each book sold. <strong>Please add <span class="url">dawson@ube.ca</span> to your address book so that the alerts are not marked as spam.</strong></li>
+    <li>Upon presentation of picture ID and payment of the service fee, to issue to the Seller cash payments equal to the Seller-set price of each book sold and to return to the Seller each book not sold.</li>
+  </ul>
+
+  <table align="center">
+    <caption>This contract applies to the books listed below and to all books added until <%=h Exchange.current.sale_ends_on.strftime('%B %e, %Y') %>:</caption>
+<% @books.in_groups_of(2, false) do |group| -%>
+    <tr>
+<% group.each do |book| -%>
+      <td><%=h number_to_price(book.price) %></td>
+      <td><strong>#<%=h book.label %></strong></td>
+      <td><%=h truncate(book.barcode.title, :length => 34) %></td>
+<% end -%>
+    </tr>
+<% end -%>
+  </table>
+
+  <p class="attention">Any books and/or money not reclaimed by<br /> <%=h Exchange.current.ends_at.strftime('%B %e, %Y at %I:%M %p') %> become the property of the Exchange.</p>
+
+  <p id="signature">
+    <span id="box">X<%= '&nbsp;' * 45 %></span> signed <%=h Time.current.strftime('%B %e, %Y at %I:%M %p') %><br />
+    <strong><%=h @seller.name %></strong>
+<% unless @seller.email_address.blank? -%>
+    <%=h @seller.email_address %>
+<% end -%>
+<% unless @seller.telephone.blank? -%>
+    <%=h number_to_phone(@seller.telephone, {:area_code => true}) %>
+<% end -%>
+  </p>
+</div>
+
+<div id="ft">
+  <p>To <strong>correct a book's price or details</strong>, contact <span class="url">dawson@ube.ca</span>.</p>
+  <p>We will <strong>email</strong> you whenever a book of yours is sold, so remember to check your junk email folder.</p>
+  <p><strong>Check the status of your books</strong> and <strong>search for books for sale</strong> at <span class="url">www.ube.ca</span>.</p>
+  <p>If you have any <strong>questions</strong>, please visit <span class="url"><%= url_for :host => 'ube.ca', :controller => 'about', :action => 'help' %></span> or contact <span class="url">dawson@ube.ca</span>.</p>
+</div>
+
+</body>
+</html>

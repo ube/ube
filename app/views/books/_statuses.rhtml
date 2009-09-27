@@ -1,0 +1,9 @@
+<p class="filters">
+  Status:
+  <%= radio_button_tag :state, :any, params[:state].blank?, :value => '' %> <%= label_tag :state_any, 'Any' %>
+  <%= radio_button_tag :state, :instock, params[:state] == 'instock' %> <%= label_tag :state_instock, 'In-stock' %>
+  <%= radio_button_tag :state, :lost, params[:state] == 'lost' %> <%= label_tag :state_lost, 'Lost' %>
+  <%= radio_button_tag :state, :ordered, params[:state] == 'ordered' %> <%= label_tag :state_ordered, 'Ordered' %>
+  <%= radio_button_tag :state, :sold, params[:state] == 'sold' %> <%= label_tag :state_sold, 'Sold' %>
+  <%= radio_button_tag :state, :reclaimed, params[:state] == 'reclaimed' %> <%= label_tag :state_reclaimed, 'Reclaimed' %>
+</p>

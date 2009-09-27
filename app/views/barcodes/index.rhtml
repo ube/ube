@@ -1,0 +1,41 @@
+<%= render :partial => 'partials/search', :locals => { :url => barcodes_path, :group => 'barcodes' } %>
+
+<% if @barcodes.empty? -%>
+<%= render :partial => 'partials/empty' %>
+<% else -%>
+<table class="list">
+<% unless params[:q].blank? -%>
+  <caption><%= render :partial => 'partials/caption', :locals => { :pages => @barcodes } %></caption>
+<% end -%>
+
+  <thead>
+  <tr>
+    <%= sort_header_tag 'tag', :caption => 'Barcode' %>
+    <%= sort_header_tag 'title' %>
+    <%= sort_header_tag 'edition' %>
+    <%= sort_header_tag 'author' %>
+    <%= sort_header_tag 'retail_price', :caption => 'Retail' %>
+  </tr>
+  </thead>
+
+  <tfoot class="pages">
+  <tr>
+    <td colspan="5">
+      <%= will_paginate @barcodes %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for barcode in @barcodes -%>
+  <tr>
+    <td><%= link_to h(barcode.tag), edit_barcode_path(barcode) %></td>
+    <td><%=h barcode.title %></td>
+    <td><%=h barcode.edition %></td>
+    <td><%=h barcode.author %></td>
+    <td><%=h number_to_price(barcode.retail_price) %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>

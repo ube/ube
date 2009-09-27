@@ -1,0 +1,12 @@
+To pick up your money and/or leftover books, simply bring picture ID to the address below, between <%=h Exchange.current.reclaim_starts_on.strftime('%B %e') %> and <%=h Exchange.current.reclaim_ends_on.strftime('%B %e') %>, from <%=h Exchange.current.hours %>:
+
+<%=h Exchange.current.address.address %>
+<%=h Exchange.current.address.city %>, <%=h Exchange.current.address.region %>
+
+You can't pick up your money or books after <%=h Exchange.current.ends_at.strftime('%B %e') %>, so don't forget!
+
+-----------------------
+
+So far you've sold <%=h pluralize(@books_sold_count, 'book') %>. You have <%=h pluralize(@books_instock_count, 'book') %> left for sale.
+
+Check the status of your books at <%= status_url(:host => 'ube.ca', :email => @seller.email_address) %>

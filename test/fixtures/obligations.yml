@@ -1,0 +1,12 @@
+jack_undo:
+  role: undo
+  person: jack
+jack_edit_accounts:
+  role: edit_accounts
+  person: jack
+jack_edit_exchange:
+  role: edit_exchange
+  person: jack
+jack_discover_seller:
+  role: discover_seller
+  person: jack

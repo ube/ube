@@ -1,0 +1,6 @@
+Price: <%=h number_to_currency(@book.price, :precision => 0) %>
+Title: <%=h @barcode.title %>
+Author: <%=h @barcode.author %>
+<% unless @barcode.edition.blank? -%>
+Edition: <%=h @barcode.edition %>
+<% end -%>

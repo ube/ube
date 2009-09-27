@@ -1,0 +1,55 @@
+<% @page_title = 'My Cart' -%>
+
+<h3 id="cart_empty"<% unless @cart.books.empty? -%> style="display: none;"<% end -%>>Your cart is empty. Why not search for books?</h3>
+
+<%= render :partial => 'books/search', :layout => 'partials/search', :locals => { :url => books_path, :group => 'books' } %>
+
+<% unless @cart.books.empty? -%>
+<table class="list" id="cart_items">
+  <thead>
+  <tr>
+    <th style="width: 8em"></th>
+    <th style="width: 85px">Extras</th>
+    <th>Label</th>
+    <th>Price</th>
+    <th>Edition</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Publisher</th>
+    <th style="width: 25px"></th>
+  </tr>
+  </thead>
+
+  <tfoot class="total">
+  <tr>
+    <td colspan="2"></td>
+    <td colspan="7">
+      Total:
+      <span id="cart_total">
+        <%= render :partial => 'carts/total' %>
+      </span>
+      <% form_tag orders_path do -%>
+        <%= submit_tag 'Send to Checkout', :disable_with => 'Please wait...' %>
+        or <%= link_to_remote 'Empty cart', { :url => cart_path, :method => :delete }, :class => 'delete' -%>
+      <% end -%>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for book in @books -%>
+  <tr id="<%= dom_id(book) %>">
+    <td class="delete" id="<%= dom_id(book) %>_link"><%= link_to_remote 'Remove', { :url => cart_cart_item_path(book), :method => :delete }, :class => 'loading' %></td>
+    <td><%= extras(book) %></td>
+    <td><%=h book.label %></td>
+    <td><strong><%=h number_to_price(book.sale_price) %></strong></td>
+    <td><%=h book.barcode.edition %></td>
+    <td><%=h book.barcode.title %></td>
+    <td><%=h book.barcode.author %></td>
+    <td><%=h number_to_price(book.barcode.retail_price) %></td>
+    <td><%= link_to image_tag('barcode.png', :alt => 'Edit barcode', :title => 'Edit barcode'), edit_barcode_path(book.barcode), :class => 'image' %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>

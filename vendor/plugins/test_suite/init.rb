@@ -1,0 +1,1 @@
+require 'test_suite' if ENV['RAILS_ENV'] == 'test'

@@ -1,0 +1,24 @@
+<% my_fields_for :barcode, @barcode do |b| %>
+<% legend = @book.new_record? ? "Book" : "Book ##{@book.label}" -%>
+<% fieldset legend do %>
+<%= b.text_field :tag, :label => 'Barcode', :required => true, :size => 14, :maxlength => 14, :autocomplete => 'off' %>
+<li id="status"></li>
+<%= f.text_field :price, :required => true, :size => 3 %>
+<%= b.text_field :title, :required => true, :size => 80, :after_text => 'For volumes, write <strong class="do">Vol 2</strong>, not <strong class="dont">Vol II</strong>.' %>
+<%= b.text_field :author, :required => true, :after_text => '<strong>Last names only</strong>, separated by commas, e.g. <strong class="do">NA</strong> or <strong class="do">Abrams, Bell, Udris</strong> or <strong class="do">Fahey et al</strong>.' %>
+<%= b.text_field :edition %>
+<%= b.text_field :retail_price %>
+
+<% check_boxes do %>
+<%= f.check_box :cdrom, :label => 'Includes a <strong>CD-ROM</strong>' %>
+<%= f.check_box :study_guide, :label => 'Includes a <strong>study guide</strong>' %>
+<%= f.check_box :package, :label => 'Comes as a <strong>packaged set</strong>' %>
+<% end %>
+<% end %>
+<% end %>
+
+<%= observe_field 'barcode_tag',
+  :url => barcode_path(1),
+  :frequency => 1,
+  :with => 'value',
+  :method => :get %>

@@ -1,0 +1,44 @@
+body {
+  width: 400px;
+  font-family: Courier New;
+  font-size: 95%;
+  text-align: center;
+}
+
+#hd {
+  margin-bottom: 1em;
+}
+#hd p {
+  margin: 0;
+}
+#hd small {
+  font-size: 80%;
+}
+
+table {
+  width: 400px;
+  margin-bottom: 1em;
+}
+th,
+td {
+  text-align: right;
+  vertical-align: top;
+}
+th.first,
+td.first {
+  text-align: left;
+}
+tfoot {
+  font-weight: bold;
+}
+
+p {
+  margin-bottom: 1em;
+}
+strong {
+  font-weight: bold;
+}
+
+span.url {
+  text-decoration: underline;
+}

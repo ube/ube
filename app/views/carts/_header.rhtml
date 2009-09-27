@@ -1,0 +1,8 @@
+<%=h pluralize(@cart.books.size, 'book').capitalize %>
+<% if @cart.books.size.nonzero? -%> 
+worth <strong class="cart_total"><%= render :partial => 'carts/total' %></strong>
+<% end -%> 
+in <%= link_to 'your cart', cart_cart_items_path, :title => 'Press Alt+M to go to Your Cart', :accesskey => 'm' %>. 
+<% if @cart.books.size.nonzero? -%>
+(<%= link_to_remote 'Empty cart', { :url => cart_path, :method => :delete }, :class => 'delete' -%>)
+<% end -%>

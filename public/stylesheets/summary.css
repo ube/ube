@@ -1,0 +1,36 @@
+table.daily {
+  margin-top: 1em;
+}
+
+table.daily thead th {
+  font-weight: bold; 
+  text-align: right;
+}
+table.daily thead tr.day th {
+  width: 3.5em;
+  border-bottom: 3px solid #000;
+
+} 
+
+table.daily td {
+  padding-top: 5px;
+  text-align: right;
+}
+table.daily td.title {
+  width: 7.5em;
+  text-align: left;
+}
+table.daily tr.subtotal td {
+  border-top: 1px solid #000;
+}
+table.daily tr.total td {
+  border-top: 1px solid #000;
+  border-bottom: medium double #000;
+  font-weight: bold;
+}
+
+table.daily tfoot td {
+  padding-top: 10px;
+  font-size: 150%;
+  font-weight: bold;
+}

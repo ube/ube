@@ -1,0 +1,222 @@
+body {
+  background-color: #e5e5e5;
+}
+#doc {
+  width: 550px;
+  min-width: 0;
+}
+#bd {
+  padding: 1em;
+  border: 10px solid #ccc;
+  background-color: #fff;
+}
+
+/*--- wide -----------------------------------------------------------------*/
+
+body.wide {
+  background-color: #fff;
+}
+body.wide #doc {
+  width: 90%;
+  min-width: 750px;
+}
+body.thin #doc {
+  width: 750px;
+  min-width: 750px;
+}
+body.wide #bd {
+  padding: 0;
+  border: none;
+  background-color: #fff;
+}
+
+/*--- anchors --------------------------------------------------------------*/
+
+#hd a:link {
+  color: #00e;
+}
+#hd a:visited {
+  color: #60e;
+}
+#hd a:hover {
+  background-color: #00e;
+  color: #fff;
+}
+
+/*--- header ---------------------------------------------------------------*/
+
+#hd h1 {
+  float: none;
+  display: block;
+  margin: 0 0 .2em;
+  font-size: 225%;
+  text-align: center;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+#hd h1 a {
+  font-weight: normal;
+  text-decoration: underline;
+}
+
+h3.congrats {
+  margin-top: .5em;
+  padding: 5px;
+  background-color: #cfc;
+  color: #090;
+}
+
+h3.reminder {
+  margin-top: .5em;
+  padding: 5px;
+  background-color: #ccf;
+  color: #009;
+}
+
+/*--- navigation -----------------------------------------------------------*/
+
+#doc ul.nav {
+  padding: 5px;
+  text-align: center;
+}
+#doc ul.nav li {
+  display: inline;
+  margin-right: 2em;
+  font-size: 125%;
+  font-weight: bold;
+}
+#doc ul.nav li a {
+  margin: -5px -10px;
+  padding: 5px 10px;
+  font-weight: normal;
+}
+#doc ul.nav li.last {
+  margin-right: 0;
+}
+#doc ul.nav li.last a:link,
+#doc ul.nav li.last a:visited {
+  color: #999;
+}
+#doc ul.nav li.last a:hover {
+  color: #fff;
+  background-color: #999;
+}
+
+/*--- body -----------------------------------------------------------------*/
+
+#bd p,
+#bd ul,
+#bd ol,
+#bd table {
+  font-size: 110%;
+}
+
+#bd .base p,
+#bd .base ul,
+#bd .base ol {
+  font-size: 100%;
+}
+#bd p.examples {
+  font-size: 99%;
+  color: #fff;
+}
+#bd p.address {
+  margin-left: 2em;
+  text-transform: uppercase;
+}
+
+/*--- lists ----------------------------------------------------------------*/
+
+ol.numbered {
+  margin-bottom: 1em;
+}
+ol.numbered li {
+  list-style-type: decimal;
+  margin-left: 1.5em;
+  margin-bottom: .2em;
+}
+
+ul.bulleted li {
+  list-style-type: square;
+  margin-left: 1em;
+  margin-bottom: .5em;
+}
+
+/*--- footer ---------------------------------------------------------------*/
+
+#ft {
+  color: #333;
+  font-family: arial, helvetica, sans-serif;
+  font-size: 100%;
+  text-align: center;
+}
+#ft p {
+  margin-bottom: .5em;
+  font-size: 90%;
+}
+#ft #logo {
+  margin-top: 1em;
+}
+
+/*--- dialogs --------------------------------------------------------------*/
+
+.dialog {
+  width: 370px;
+  color: #fff;
+}
+
+.dialog h2 {
+  margin-bottom: 7px;
+}
+.dialog h3 {
+  margin: 0;
+}
+
+.dialog .hd,
+.dialog .hd .c,
+.dialog .ft,
+.dialog .ft .c {
+  background-repeat: no-repeat;
+}
+.dialog .bd,
+.dialog .bd .c {
+  background-repeat: repeat-y;
+}
+.dialog .c {
+  background-position: right 0;
+}
+.dialog .hd .c {
+  height: 13px;
+  font-size: 1px;
+}
+.dialog .ft .c {
+  height: 14px;
+  font-size: 1px;
+}
+.dialog .bd .c .s {
+  margin: 0 8px 0 4px;
+  padding-left: 7px;
+  background-repeat: repeat-x;
+}
+
+div#buyers { float: left; }
+div#buyers h2 { color: #e5f571; }
+div#buyers input.submit { background-color: #030; }
+div#buyers .hd    { background-image: url(/images/dialog/green/tl.gif); }
+div#buyers .hd .c { background-image: url(/images/dialog/green/tr.gif); }
+div#buyers .bd    { background-image: url(/images/dialog/green/ml.gif); }
+div#buyers .bd .c { background-image: url(/images/dialog/green/mr.gif); }
+div#buyers .ft    { background-image: url(/images/dialog/green/bl.gif); }
+div#buyers .ft .c { background-image: url(/images/dialog/green/br.gif); }
+div#buyers .bd .c .s { background-color: #699854; background-image: url(/images/dialog/green/ms.gif); }
+
+div#sellers { float: right; }
+div#sellers h2 { color: #b9eeff; }
+div#sellers input.submit { background-color: #009; }
+div#sellers .hd    { background-image: url(/images/dialog/blue/tl.gif); }
+div#sellers .hd .c { background-image: url(/images/dialog/blue/tr.gif); }
+div#sellers .bd    { background-image: url(/images/dialog/blue/ml.gif); }
+div#sellers .bd .c { background-image: url(/images/dialog/blue/mr.gif); }
+div#sellers .ft    { background-image: url(/images/dialog/blue/bl.gif); }
+div#sellers .ft .c { background-image: url(/images/dialog/blue/br.gif); }
+div#sellers .bd .c .s { background-color: #627db5; background-image: url(/images/dialog/blue/ms.gif); }

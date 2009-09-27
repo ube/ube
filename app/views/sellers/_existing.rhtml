@@ -1,0 +1,6 @@
+<% if_email_address_is_taken do %>
+<div class="errors">
+  <h2>The email address <tt><%=h @seller.email_address %></tt> is already registered under <%=h @existing.name %>.</h2>
+  <h3><%= link_to "Go to #{h(@existing.name)}'s page &#187;", seller_path(@existing) %></h3>
+</div>
+<% end -%>

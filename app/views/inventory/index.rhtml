@@ -1,0 +1,18 @@
+<% @page_title = 'Inventory' %>
+<ul class="list">
+  <li><%= link_to 'Show all in-stock books', :action => 'all' %></li>
+  <li>
+    <% form_tag({ :action => 'sold_on' }, :method => 'get') do %>
+    Show books sold on 
+    <%= text_field_tag :sold_on, Date.current, :size => 12 %>
+    <%= submit_tag 'Go', :class => 'editor_primary' %>
+    <% end %>
+  </li>
+  <li>
+    <% form_tag({ :action => 'lost_on' }, :method => 'get') do %>
+    Show books lost on 
+    <%= text_field_tag :lost_on, Date.current, :size => 12 %>
+    <%= submit_tag 'Go', :class => 'editor_primary' %>
+    <% end %>
+  </li>
+</ul>

@@ -1,0 +1,22 @@
+<% @page_title = @email.blank? ? "Contract" : "#{@email} - Contract" -%>
+<% @body_class = 'wide' -%>
+<% form_tag contract_path, :method => 'get', :class => 'search' do -%>
+<h3 class="tight">Get a copy of your contract</h3>
+<%= label_tag :email, 'Your Email Address:' %> 
+<%= text_field_tag :email, @email, :size => 40, :title => 'Press Alt+S to jump to this box', :accesskey => 's', :class => 'select' %>
+<%= submit_tag 'get contract', :class => 'submit' %>
+<p>e.g. <em>example@hotmail.com</em></p>
+<% end -%>
+
+<% if @email.blank? -%>
+<%= render :partial => 'partials/reclaim_reminder' %>
+<% else %>
+<% if @books.blank? -%>
+<h3 class="empty">Couldn't find anyone with email address &ndash; <strong><%=h @email %></strong></h3>
+
+<ul class="bulleted">
+  <li>Make sure the email address is spelled correctly and try again.</li>
+</ul>
+<%= render :partial => 'partials/reclaim_reminder' %>
+<% end -%>
+<% end -%>

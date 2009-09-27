@@ -1,0 +1,16 @@
+<% @page_title = "#{@seller.name} / Edit book ##{@book.label}" %>
+
+<%= error_messages_on 'book' %>
+
+<p class="back"><%= link_to "&#171; Back to #{@seller.name}'s page", seller_path(@seller) %></p>
+
+<%= render :partial => 'shared/required_fields' %>
+
+<% my_form_for :book, @book, :url => seller_book_path(:seller_id => @seller, :id => @book), :html => { :method => :put, :class => 'table' } do |f| %>
+<%= render :partial => 'form', :locals => { :f => f } %>
+
+<p class="buttonblock">
+  <%= submit_tag 'Save Changes', :disable_with => 'Please wait...', :class => 'editor_primary' %>
+  or <%= link_to 'Cancel', seller_path(@seller), { :class => 'editor_cancel' } %>
+</p>
+<% end %>

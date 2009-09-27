@@ -1,0 +1,8 @@
+<% @page_title = 'Edit ' + h(@person.name) -%>
+<%= error_messages_on 'person' %>
+
+<% my_form_for :person, @person, :url => person_path(@person), :html => { :method => :put, :class => 'block' } do |f| %>
+<%= render :partial => 'form', :locals => { :f => f } %>
+
+<%= render :partial => 'shared/buttonblock', :locals => { :name => 'Save Changes' } %>
+<% end %>

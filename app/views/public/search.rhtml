@@ -1,0 +1,56 @@
+<% @page_title = params[:q].blank? ? "Book Search" : "#{params[:q]} - Book Search" -%>
+<% @body_class = 'wide' -%>
+<% form_tag search_path, :method => 'get', :class => 'search' do -%>
+<h3 class="tight">Check if a book is in-stock</h3>
+<%= text_field_tag :q, params[:q], :size => 40, :title => 'Press Alt+B to jump to this box', :accesskey => 'b', :class => 'select' %>
+<%= submit_tag 'search books', :class => 'submit' %>
+<p>e.g. <em>the merchant of venice</em> or <em>merchant of</em> or <em>shakespeare</em></p>
+<% end -%>
+
+<% unless params[:q].blank? -%>
+<% if @books.empty? -%>
+<%= render :partial => 'partials/empty' %>
+
+<ul class="bulleted">
+  <li><strong>Try fewer words.</strong></li>
+  <li>Make sure all words are spelled correctly.</li>
+</ul>
+<% else -%>
+<table class="list">
+  <caption><%= render :partial => 'partials/caption', :locals => { :pages => @books } %></caption>
+
+  <thead>
+  <tr>
+    <th style="width: 85px">Extras</th>
+    <%= sort_header_tag 'price' %>
+    <%= sort_header_tag 'title' %>
+    <%= sort_header_tag 'edition' %>
+    <%= sort_header_tag 'author' %>
+  </tr>
+  </thead>
+
+  <tfoot class="pages">
+  <tr>
+    <td colspan="5">
+      <%= will_paginate @books %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for book in @books -%>
+  <tr>
+    <td><%= extras(book) %></td>
+    <td><strong><%=h number_to_price(book.sale_price) %></strong></td>
+    <td><%=h book.barcode.title %></td>
+    <td><%=h book.barcode.edition %></td>
+    <td><%=h book.barcode.author %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+
+<%= render :partial => 'partials/icons' %>
+<p class="help"><strong class="important">Note:</strong> Prices include an <%= number_to_percentage(Exchange.current.handling_fee, {:precision => 2}) %> <%= link_to 'handling fee', { :controller => 'about', :action => 'help', :anchor => 'basics' } %>.</p>
+<% end -%>
+<% end -%>

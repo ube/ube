@@ -1,0 +1,44 @@
+<% @page_title = 'Dashboard' %>
+<h3 class="tight seller"><%= link_to 'Add a seller', new_seller_path %> or find a seller</h3>
+<%= render :layout => 'partials/search', :locals => { :url => sellers_path, :examples => [ 'John Doe', '3981234', 'bob@example.com' ], :accesskey => 's' } %>
+
+<h3 class="tight book">Book search</h3>
+<%= render :partial => 'books/search', :layout => 'partials/search', :locals => { :url => books_path, :accesskey => 'b' } %>
+
+<% if Person.current.can? 'undo' -%>
+<h3 class="tight">Sold book search</h3>
+<%= render :layout => 'partials/search', :locals => { :url => sold_books_path, :accesskey => 'd' } %>
+<% end -%>
+
+<% if Person.current.can? 'discover_seller' -%>
+<h3 class="tight">Find seller by book label</h3>
+<%= render :partial => 'books/statuses', :layout => 'partials/search', :locals => { :url => all_books_path, :accesskey => 'l' } %>
+<% end -%>
+
+<div class="blocks">
+  <div class="block">
+    <h3>Reports</h3>
+    <ul>
+      <li><%= link_to 'Summary of Operations', :controller => 'reports', :action => 'summary' %>
+      <li><%= link_to 'Outstanding Claims', :controller => 'reports', :action => 'outstanding' %>
+    </ul>
+  </div>
+
+<% if Exchange.current.schedule? -%>
+  <div class="block">
+    <h3>Schedule</h3>
+    <p class="schedule">
+      <%= link_to 'Download', Exchange.current.schedule.url, :class => 'excel' %>
+      <%=h number_to_human_size(Exchange.current.schedule.size) %>,
+      <%=h Exchange.current.schedule_updated_at.strftime('%b %e') %>
+    </p>
+  </div>
+<% end -%>
+
+  <div class="block">
+    <h3>Help</h3>
+    <ul>
+      <li><%= link_to 'Read the FAQ', :controller => 'about', :action => 'help' %></li>
+    </ul>
+  </div>
+</div>

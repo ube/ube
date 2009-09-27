@@ -1,0 +1,26 @@
+<% @page_title = Exchange.current.name -%>
+<% @body_class = 'wide thin' -%>
+<% dialog 'buyers' do %>
+<h2>Buyers</h2>
+<h3>Check if a book is in-stock</h3>
+<% form_tag search_path, :method => 'get', :class => 'search' do -%>
+<%= text_field_tag :q, nil, :style => 'width: 70%', :title => 'Press Alt+B to jump to this box', :accesskey => 'b', :class => 'select' %>
+<%= submit_tag 'search', :class => 'submit' %>
+<p class="examples">e.g. <em>the merchant of venice</em>, <em>merchant of</em>, <em>shakespeare</em></p>
+<% end -%>
+<% end %>
+
+<% dialog 'sellers' do %>
+<h2>Sellers</h2>
+<h3>Check if your books were sold</h3>
+<% form_tag status_path, :method => 'get', :class => 'search' do -%>
+<%= label_tag :email, 'Your Email Address' %>
+<%= text_field_tag :email, nil, :style => 'width: 40%', :title => 'Press Alt+S to jump to this box', :accesskey => 's', :class => 'select' %>
+<%= submit_tag 'go', :class => 'submit' %>
+<p class="examples">e.g. <em>example@hotmail.com</em></p>
+<% end -%>
+<% end %>
+
+<p class="center"><strong class="important">Important!</strong> <span class="highlight">Add <strong>dawson@ube.ca</strong> to your address book</span> so that the messages we send are not marked as spam.</p>
+
+<h3 class="reminder" style="text-align: center;">Remember to <%= link_to 'pick up', { :controller => 'about', :action => 'help', :anchor => 'reclaims' } %> your money and/or books between <%=h Exchange.current.reclaim_starts_on.strftime('%b %e') %> and <%=h Exchange.current.reclaim_ends_on.strftime('%b %e') %>.</h3>

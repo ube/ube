@@ -1,0 +1,61 @@
+<% @page_title = 'Receipts' %>
+<% if @orders.empty? -%>
+<h3>No receipts, yet.</h3>
+<% else -%>
+<table class="list">
+  <thead>
+  <tr>
+    <th style="width: 10em"></th>
+    <th colspan="7"></th>
+    <th style="width: 25px"></th>
+  </tr>
+  </thead>
+
+  <tfoot class="pages">
+  <tr>
+    <td colspan="9">
+      <%= will_paginate @orders %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% dates = @orders.group_by{ |order| order.completed_at.strftime('%B %e') }.sort{ |x,y| y[0] <=> x[0] } -%>
+<% dates.each do |date, orders| -%>
+   <tr>
+     <td colspan="9" class="date"><%= date %></td>
+   </tr>
+<% hours =  orders.group_by{ |order| order.completed_at.hour }.sort{ |x,y| y[0] <=> x[0] } -%>
+<% hours.each do |hour, orders| -%>
+   <tr>
+     <td colspan="9" class="hour"><%= hour %>:00</td>
+   </tr>
+<% for order in orders -%>
+<% for book in order.books -%>
+  <tr <% if book == order.books.last -%>class="order"<% end %>>
+<% if book == order.books.first -%>
+    <td rowspan="<%= order.books.size %>" class="links">
+      <ul>
+        <li class="receipt primary"><%= link_to 'Print receipt', receipt_completed_order_path(order) %></li>
+        <li class="secondary">Sold on <%=h order.completed_at.strftime('%b %e at %I:%M %p') %> by <%=h order.updater.nil? ? "unknown" : order.updater.name %></li>
+      </ul>
+    </td>
+    <td rowspan="<%= order.books.size %>" class="total">
+      <%=h number_to_price(order.total) %>
+    </td>
+<% end -%>
+    <td><%=h book.label %></td>
+    <td><strong><%=h number_to_price(book.sale_price) %></strong></td>
+    <td><%=h book.barcode.edition %></td>
+    <td><%=h book.barcode.title %></td>
+    <td><%=h book.barcode.author %></td>
+    <td><%=h number_to_price(book.barcode.retail_price) %></td>
+    <td><%= link_to image_tag('barcode.png', :alt => 'Edit barcode', :title => 'Edit barcode'), edit_barcode_path(book.barcode), :class => 'image' %></td>
+  </tr>
+<% end -%>
+<% end -%>
+<% end -%>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>

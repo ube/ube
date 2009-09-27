@@ -1,0 +1,8 @@
+<% @page_title = 'Edit ' + h(@exchange.name) -%>
+<%= error_messages_on 'exchange', 'address', 'contact' %>
+
+<% my_form_for :exchange, @exchange, :url => exchange_path, :html => { :method => :put, :class => 'table', :multipart => true } do |f| %>
+<%= render :partial => 'form', :locals => { :f => f } %>
+
+<%= render :partial => 'shared/buttonblock', :locals => { :name => 'Save Changes', :redirect => exchange_path } %>
+<% end %>

@@ -1,0 +1,66 @@
+<% @page_title = @email.blank? ? "Book Status" : "#{@email} - Book Status" -%>
+<% @body_class = 'wide' -%>
+<% form_tag status_path, :method => 'get', :class => 'search' do -%>
+<h3 class="tight">Check if your books were sold</h3>
+<%= label_tag :email, 'Your Email Address:' %> 
+<%= text_field_tag :email, @email, :size => 40, :title => 'Press Alt+S to jump to this box', :accesskey => 's', :class => 'select' %>
+<%= submit_tag 'check status', :class => 'submit' %>
+<p>e.g. <em>example@hotmail.com</em></p>
+<% end -%>
+
+<% if @email.blank? -%>
+<%= render :partial => 'partials/reclaim_reminder' %>
+<% else %>
+<% if @books.blank? -%>
+<h3 class="empty">Couldn't find anyone with email address &ndash; <strong><%=h @email %></strong></h3>
+
+<ul class="bulleted">
+  <li>Make sure the email address is spelled correctly and try again.</li>
+</ul>
+<%= render :partial => 'partials/reclaim_reminder' %>
+<% else -%>
+<table class="list">
+  <caption>Listing all books belonging to <strong><%=h @email %></strong></caption>
+
+  <thead>
+  <tr>
+    <%= sort_header_tag 'state', :caption => 'Status', :style => 'width: 7.5em' %>
+    <%= sort_header_tag 'label' %>
+    <%= sort_header_tag 'price' %>
+    <%= sort_header_tag 'barcodes.title', :caption => 'Title' %>
+    <%= sort_header_tag 'barcodes.edition', :caption => 'Edition' %>
+    <%= sort_header_tag 'barcodes.author', :caption => 'Author' %>
+    <th style="width: 85px">Extras</th>
+  </tr>
+  </thead>
+
+  <tfoot>
+  <tr>
+    <td colspan="7">
+<% if @total.nonzero? -%>
+<h3 class="congrats">Congrats! You made <%= number_to_price(@total) %> so far.</h3>
+<% end -%>
+<h3 class="reminder"><%= link_to 'Need another copy of your contract?', contract_path(:email => @email) %></h3>
+<%= render :partial => 'partials/reclaim_reminder' %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for book in @books -%>
+  <tr>
+    <td><%= status(book) %></td>
+    <td><%=h book.label %></td>
+    <td><strong><%=h number_to_price(book.price) %></strong></td>
+    <td><%=h book.barcode.title %></td>
+    <td><%=h book.barcode.edition %></td>
+    <td><%=h book.barcode.author %></td>
+    <td><%= extras(book) %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+
+<%= render :partial => 'partials/icons' %>
+<% end -%>
+<% end -%>

@@ -1,0 +1,111 @@
+table.list {
+  clear: both;
+  width: 100%;
+  margin-top: .5em;
+  font-family: arial, sans-serif;
+  font-size: 110%;
+}
+table.list caption {
+  padding: 3px;
+  border-top: 1px solid #36c;
+  background-color: #eef;
+}
+table.list tbody tr:hover {
+  background-color: #eee;
+}
+table.list th,
+table.list td {
+  padding: 0 4px;
+}
+table.list th {
+  color: #666;
+  font-size: 90%;
+}
+table.list td {
+  border-top: 1px solid #ddd;
+}
+
+table.list th.asc,
+table.list th.desc {
+  padding-left: 10px;
+  font-weight: bold;
+}
+table.list th.asc {
+  background: url(/images/icons/asc.png) no-repeat center left;
+}
+table.list th.desc {
+  background: url(/images/icons/desc.png) no-repeat center left;
+}
+
+table.list th.focus {
+  background-color: #ffd;
+}
+table.list td.focus {
+  background-color: #ffd;
+  font-size: 110%;
+}
+table.list td.edit,
+table.list td.delete,
+table.list td.book {
+  padding: 3px 0 0 18px;
+  font-size: 90%;
+}
+table.list td.edit {
+  background: url(/images/icons/edit.png) no-repeat center left;
+}
+table.list td.book {
+  background: url(/images/icons/book.png) no-repeat center left;
+}
+table.list td.delete {
+  background: url(/images/icons/trash.png) no-repeat center left;
+}
+table.list td.delete a {
+  color: #f00;
+}
+table.list td.delete a:hover {
+  background-color: #f00;
+  color: #fff;
+}
+table.list .secondary {
+  font-size: 90%;
+}
+
+table.list tfoot.pages td {
+  padding-top: 1em;
+  border-top: 1px solid #ccc;
+  font-size: 90%; 
+  font-weight: normal; 
+}
+table.list tfoot.pages a,
+table.list tfoot.pages a:visited,
+table.list tfoot.pages a:hover,
+table.list tfoot.pages span.disabled {
+  padding: 3px 8px;
+  margin: 3px;
+}
+table.list tfoot.pages a,
+table.list tfoot.pages a:visited {
+  border: 1px solid #aae;
+  text-decoration: none;
+}
+table.list tfoot.pages a:hover {
+  border-color: #00c;
+  background-color: #03c;
+  color: #fff;
+}
+table.list tfoot.pages span.disabled {
+  border: 1px solid #ddd;
+  color: #999;
+}
+table.list tfoot.pages span.current{
+  font-weight: bold;
+}
+
+table.list tfoot.total td {
+  padding-top: .5em;
+  font-size: 150%;
+}
+table.list tfoot.total form {
+  display: inline;
+  margin-left: .5em;
+}

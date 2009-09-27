@@ -1,0 +1,12 @@
+<% @page_title = 'Retrieve Username and Password' -%>
+<% my_form_for :person, nil, :html => { :class => 'block' } do |f| %>
+
+<% fieldset 'Forgot Your Username or Password?' do %>
+<%= f.text_field :email_address, :label => 'Enter Your Email Address', :value => @email_address, :after_text => "We'll email you a link to a page where you can choose a new password." %>
+<% end %>
+
+<p class="buttonblock">
+  <%= submit_tag 'Continue', :disable_with => 'Please wait...', :class => 'editor_primary' %>
+  or <%= link_to 'Cancel', new_session_path, :class => 'editor_cancel' %>
+</p>
+<% end %>

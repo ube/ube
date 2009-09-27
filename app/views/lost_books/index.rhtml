@@ -1,0 +1,53 @@
+<%= render :partial => 'partials/search', :locals => { :url => lost_books_path, :group => 'lost books' } %>
+
+<% if params[:q].blank? and @books.empty? -%>
+<h3 class="empty">No lost books, hooray!</h3>
+<% elsif @books.empty? -%>
+<%= render :partial => 'partials/empty' %>
+<% else -%>
+<table class="list">
+<% unless params[:q].blank? -%>
+  <caption><%= render :partial => 'partials/caption', :locals => { :pages => @books } %></caption>
+<% end -%>
+
+  <thead>
+  <tr>
+    <th style="width: 7em"></th>
+    <%= sort_header_tag 'label' %>
+    <%= sort_header_tag 'barcodes.title', :caption => 'Title' %>
+    <%= sort_header_tag 'barcodes.edition', :caption => 'Edition' %>
+    <%= sort_header_tag 'barcodes.author', :caption => 'Author' %>
+    <%= sort_header_tag 'price' %>
+    <%= sort_header_tag 'barcodes.retail_price', :caption => 'Retail' %>
+    <th style="width: 85px">Extras</th>
+    <th style="width: 25px"></th>
+  </tr>
+  </thead>
+
+  <tfoot class="pages">
+  <tr>
+    <td colspan="9">
+      <%= will_paginate @books %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for book in @books -%>
+  <tr>
+    <td id="<%= dom_id(book) %>">
+      <%= link_to_remote 'Found', { :url => lost_book_path(book), :method => :delete }, :class => 'loading secondary' %>
+    </td>
+    <td><%=h book.label %></td>
+    <td><%=h book.barcode.title %></td>
+    <td><%=h book.barcode.edition %></td>
+    <td><%=h book.barcode.author %></td>
+    <td><%=h number_to_price(book.price) %></td>
+    <td><%=h number_to_price(book.barcode.retail_price) %></td>
+    <td><%= extras(book) %></td>
+    <td><%= link_to image_tag('barcode.png', :alt => 'Edit barcode', :title => 'Edit barcode'), edit_barcode_path(book.barcode), :class => 'image' %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>

@@ -1,0 +1,14 @@
+--- 
+javascripts: 
+- base: 
+  - jquery
+  - jquery-ui
+  - jrails
+  - application
+stylesheets: 
+- base: 
+  - base
+  - forms
+  - lists
+  - tables
+  - summary

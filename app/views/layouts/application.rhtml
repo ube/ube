@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title><%=h page_title %></title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<%= stylesheet_link_tag 'http://yui.yahooapis.com/2.3.1/build/reset-fonts-grids/reset-fonts-grids.css' %>
+<%= stylesheet_link_merged :base %>
+<%= javascript_include_merged :base %>
+<%= stylesheet_link_tag 'out' unless logged_in? and private? %>
+</head>
+<body<% if @body_class %> class="<%= @body_class %>"<% end %>>
+
+<div id="doc" class="yui-t7">
+  <div id="hd">
+    <h1>
+<% if logged_in? and private? -%>
+      <%= link_to_unless_current(Exchange.current.name, home_path, :rel => 'home', :title => 'Press Alt+H to go to the homepage', :accesskey => 'h') %>
+<% else -%>
+      <%= link_to_unless_current(Exchange.current.name, { :controller => 'about', :action => 'home' }, :rel => 'home', :title => 'Press Alt+H to go to the homepage', :accesskey => 'h') %>
+<% end -%>    
+    </h1>
+
+<% if logged_in? and private? -%>
+<% if Person.current.can? 'edit_exchange' -%>
+    <span class="edit"><%= link_to 'Edit', exchange_path, :title => 'Edit exchange' %></span>
+<% end -%>    
+
+    <p class="session">
+      Logged in as <strong><%= Person.current.name %></strong> <%= link_to 'change password', change_password_person_path(Person.current) %> | 
+      <%= link_to 'sign out', session_path(Person.current), :method => :delete %>
+    </p>
+
+    <ul id="actions">
+      <%= tab 'Sellers', sellers_path, :controllers => [ 'sellers' ], :class => 'search', :html => { :rel => '#sellers_search' } %>
+      <%= tab 'add', new_seller_path, :controllers => [ 'sellers' ], :actions => [ 'new', 'create' ], :class => 'new', :html => { :title => 'Press Alt+A to Add a seller', :accesskey => 'a' } %>
+      <%= tab 'Books', books_path, :controllers => [ 'books' ], :except => [ 'new', 'create', 'edit', 'update' ], :class => 'search', :html => { :rel => '#books_search' } %>
+<% if Person.current.can? 'undo' -%>
+      <%= tab 'Sold', sold_books_path, :controllers => [ 'sold_books' ], :class => 'search', :html => { :rel => '#sold_books_search' } %>
+<% end -%>
+      <%= tab 'Checkout', orders_path, :controllers => [ 'orders' ], :html => { :title => 'Press Alt+C to go to Checkout', :accesskey => 'c' } %>
+      <%= tab 'Receipts', completed_orders_path, :controllers => [ 'completed_orders' ] %>
+<% if Person.current.can? 'edit_accounts' -%>
+      <%= tab 'Accounts', people_path, :controllers => [ 'people' ], :except => [ 'change_password' ] %>
+      <%= tab 'add', new_person_path, :controllers => [ 'people' ], :actions => [ 'new', 'create' ], :class => 'new', :html => { :title => 'Add an account' } %>
+<% end -%>
+
+      <%= tab 'Inventory', { :controller => 'inventory' }, :controllers => [ 'inventory' ], :class => 'right' %>
+      <%= tab 'Lost', lost_books_path, :controllers => [ 'lost_books' ], :class => 'right' %>
+      <%= tab 'Barcodes', barcodes_path, :controllers => [ 'barcodes' ], :class => 'right' %>
+    </ul>
+
+    <div class="window last">
+      <div class="toggle search" id="books_search" style="display: none;">
+        <%= render :layout => 'partials/search', :locals => { :url => books_path, :group => 'books' } %>
+      </div>
+      <div class="toggle search" id="sellers_search" style="display: none;">
+        <%= render :layout => 'partials/search', :locals => { :url => sellers_path, :group => 'sellers' } %>
+      </div>
+    <% if Person.current.can? 'undo' -%>
+      <div class="toggle search" id="sold_books_search" style="display: none;">
+        <%= render :layout => 'partials/search', :locals => { :url => sold_books_path, :group => 'sold books' } %>
+      </div>
+    <% end %>
+      <p id="cart_header">
+<%= render :partial => 'carts/header' %>
+      </p>
+    </div>
+
+<% else -%>
+    <ul class="nav">
+      <li><%= link_to_unless_current 'Help / FAQ', :controller => 'about', :action => 'help' %></li>
+      <li><%= link_to_unless_current 'Contact', :controller => 'about', :action => 'contact' %></li>
+      <li><%= link_to_unless_current 'Privacy Policy', :controller => 'about', :action => 'privacy' %></li>
+      <li class="last"><%= link_to_unless_current 'Staff Login', new_session_path, :title => 'Press Alt+L to Login', :accesskey => 'l' %></li>
+    </ul>
+<% end -%>
+  </div>
+
+  <div id="bd">
+    <div id="yui-main">
+      <div class="yui-b">
+        <div class="yui-u" id="content">
+<% flash.each do |key, msg| -%>
+<%= render :partial => "shared/#{key.to_s.pluralize}" %>
+<% end -%>
+<%= yield %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ft">
+<% unless logged_in? and private? -%>
+    <p style="font-size: 120%; margin-bottom: 1.5em;">
+      <%= link_to_unless_current 'Have Questions? Read the FAQ', :controller => 'about', :action => 'help' %>
+    </p>
+
+    <p>
+      <%=h Exchange.current.hours %> 
+      &ndash; Sales from <%=h Exchange.current.sale_starts_on.strftime('%b %e') %> to <%=h Exchange.current.sale_ends_on.strftime('%b %e') %> 
+      &ndash; Reclaims from <%=h Exchange.current.reclaim_starts_on.strftime('%b %e') %> to <%=h Exchange.current.reclaim_ends_on.strftime('%b %e') %>
+    </p>
+
+    <p><%= Exchange.current.address.to_s(:comma) %></p>
+
+    <p id="logo"><%= image_tag('ube.gif', :size => '54x62')%></p>
+<% end -%>
+  </div>
+</div>
+
+</body>
+</html>

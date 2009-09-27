@@ -1,0 +1,5 @@
+<% unless flash[:alert].empty? -%>
+<div class="alerts">
+  <h2><%= simple_format(flash[:alert].chomp) %></h2>
+</div>
+<% end -%>

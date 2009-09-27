@@ -1,0 +1,16 @@
+<%= render :partial => 'existing' %>
+
+<%= error_messages_on 'seller' %>
+
+<% my_form_for :seller, nil, :url => sellers_path, :html => { :class => 'block' } do |f| %>
+<%= render :partial => 'form', :locals => { :f => f } %>
+
+<p class="buttonblock">
+  <%= hidden_field_tag 'add_a_book' %>
+  <%= button_tag 'Create and Add a book', :class => 'editor_primary', :name => '#add_a_book', :alt => 'yes' %>
+  or <%= button_tag 'Create and Finish', :class => 'editor_secondary', :name => '#add_a_book', :alt => 'no' %>
+  or <%= link_to 'Cancel', sellers_path, { :class => 'editor_cancel' } %>
+</p>
+
+<%= render :partial => 'privacy' %>
+<% end %>

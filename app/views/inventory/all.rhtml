@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title><%= @page_title %></title>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/reset/reset-min.css"> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/fonts/fonts-min.css"> 
+<%= stylesheet_link_tag 'inventory', :media => 'all' %>
+</head>
+<body>
+
+<table cellspacing="0">
+<% @books.in_groups_of(2, false) do |group| -%>
+<tr>
+<% group.each do |book| -%>
+<td><%=h book.label %></td>
+<td width="85px"><%= extras(book) %></td>
+<td><%=h book.barcode.title %></td>
+<% end -%>
+</tr>
+<% end -%>
+</table>
+
+</body>
+</html>

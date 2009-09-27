@@ -1,0 +1,41 @@
+<% @page_title = 'Outstanding claims' %>
+<% if @claims.empty? -%>
+<h3 class="empty">No outstanding claims.</h3>
+<% else %>
+<table class="list">
+  <caption>
+    <strong><%=h number_to_currency(@total_claims, {:precision => 0, :separator => ''}) %></strong>
+    owed to <%= @claims_count%> out of <%= @sellers_count %> sellers
+  </caption>
+
+  <thead>
+  <tr>
+    <th style="width: 6em">Books Sold</th>
+    <th style="width: 6em">Claims</th>
+    <th>Name</th>
+    <th>Telephone</th>
+    <th>Email address</th>
+  </tr>
+  </thead>
+
+  <tfoot class="pages">
+  <tr>
+    <td colspan="5">
+      <%= will_paginate @claims %>
+    </td>
+  </tr>
+  </tfoot>
+
+  <tbody>
+<% for claim in @claims -%>
+  <tr>
+    <td><%=h claim[:books] %></td>
+    <td><%=h number_to_price(claim[:claims]) %></td>
+    <td><%= link_to h(claim[:name]), seller_path(claim[:id]) %></td>
+    <td><%=h number_to_phone(claim[:telephone], :area_code => true) %></td>
+    <td><%=h claim[:email_address] %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
+<% end -%>

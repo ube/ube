@@ -1,0 +1,15 @@
+<% for i in 1..2 do %>
+pending<%= i %>:
+  created_at: <%= 1.minute.ago.to_s :db %>
+  updated_at: <%= 1.minute.ago.to_s :db %>
+  created_by: jack
+  updated_by: jack
+<% end %>
+<% for i in 1..2 do %>
+completed<%= i %>:
+  completed_at: <%= i.days.ago.to_s :db %>
+  created_at: <%= 1.hour.ago.to_s :db %>
+  updated_at: <%= 1.hour.ago.to_s :db %>
+  created_by: jack
+  updated_by: jack
+<% end %>

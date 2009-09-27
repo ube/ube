@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Receipt for Transaction Number <%= @order.id %></title>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/reset/reset-min.css"> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/fonts/fonts-min.css"> 
+<%= stylesheet_link_tag 'receipt', :media => 'all' %>
+<%= stylesheet_link_tag 'print', :media => 'print' %>
+</head>
+<body onload="window.print()">
+
+<div id="hd">
+  <p class="hide">
+    <%= link_to 'Back to checkout', orders_path %><br />
+    <%= link_to 'Go to Seller search', sellers_path %> | <%= link_to 'Go to Book search', books_path %>
+  </p>
+  <p><strong><%=h Exchange.current.name.upcase %></strong></p>
+  <p class="caps"><small><%= textilize_without_paragraph(h(Exchange.current.address)) %></small></p>
+  <p><small>DAWSON@UBE.CA</small></p>
+</div>
+
+<div id="bd">
+  <p><%= @order.completed_at.strftime('%I:%M%p %d/%m/%y') %></p>
+
+  <table>
+    <thead>
+    <tr>
+      <th class="first">Transaction number</th>
+      <th><%=h @order.id %></th>
+    </tr>
+    </thead>
+
+    <tfoot>
+    <tr>
+      <td class="first">Total</td>
+      <td><%=h number_to_currency(@order.total) %></td>
+    </tr>
+    </tfoot>
+
+    <tbody>
+<% for book in @order.books -%>
+    <tr>
+      <td class="first"><%=h book.label %> <%=h book.barcode.title %></td>
+      <td><%=h number_to_currency(book.sale_price) %></td>
+    </tr>
+<% end -%>
+    </tbody>
+  </table>
+</div>
+
+<div id="ft">      
+  <p><strong>No refund or exchange.<br />All sales are final.</strong></p>
+  <p>Sales until <%=h Exchange.current.sale_ends_on.strftime('%B %e, %Y') %></p>
+  <p><strong>Search for books at <span class="url">www.ube.ca</span></strong></p>
+  <p>Thanks!</p>
+</div>
+
+</body>
+</html>

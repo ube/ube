@@ -1,0 +1,12 @@
+<% accesskey ||= 'f' -%>
+<% form_tag url, :method => 'get', :class => 'search' do -%>
+<%= text_field_tag :q, params[:q], :size => 40, :title => "Press Alt+#{accesskey.upcase} to jump to this box", :accesskey => accesskey, :class => 'select' %>
+<%= submit_tag local_assigns[:group] ? "search #{group}" : "search", :class => 'submit' %>
+<% unless params[:q].blank? -%>
+<%= link_to 'Clear search', url, :class => 'clear' %>
+<% end -%>
+<% if local_assigns[:examples] -%>
+<p><%= examples.collect{ |example| content_tag('em', example) }.join(' or ') %></p>
+<% end -%>
+<%= yield %>
+<% end -%>

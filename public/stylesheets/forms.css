@@ -1,0 +1,296 @@
+/* http://www.alistapart.com/d/prettyaccessibles/ */
+
+form.base {
+  clear: both;
+}
+
+/* fonts */
+
+.base fieldset,
+.base fieldset input,
+.base fieldset select,
+.base fieldset textarea {
+  font-family: arial, sans-serif;
+  font-size: 100%;
+}
+
+.block fieldset,
+.block fieldset input,
+.block fieldset select,
+.block fieldset textarea {
+  font-size: 110%;
+}
+
+/* messages */
+
+p#required {
+  padding: 0 15px;
+}
+
+p.reminder {
+  margin-bottom: 0;
+  padding: 5px;
+  border-top: 1px solid #36c;
+  border-bottom: 1px solid #36c;
+  background-color: #eef;
+  font-weight: bold;
+}
+
+/* fieldsets */
+
+.base fieldset {
+  position: relative;
+  margin-bottom: 1em;
+  padding: 0 .25em;
+  border: 1px solid #ddd;
+}
+.base fieldset fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-size: 100%;
+}
+
+/* legends */
+
+.base legend {
+  margin-left: 1em;
+  padding: 0 .25em 0 0;
+  color: #390;
+  font-size: 125%;
+}
+.table legend {
+  font-weight: bold;
+}
+.base fieldset fieldset legend {
+  padding: 0 0 5px 0;
+}
+.block fieldset fieldset legend {
+  color: #666;
+  font-size: 105%;
+  font-weight: bold;
+}
+
+/* legend notes */
+
+.base legend strong {
+  color: #999;
+  font-size: 90%;
+  font-weight: normal;
+}
+
+/* fields */
+
+.base fieldset li {
+  clear: left;
+  padding: 7px 10px;
+}
+.base fieldset.inline li {
+  float: left;
+  clear: none;
+  padding: 0 5px 0 0;
+}
+.table fieldset li {
+  padding-top: 5px;
+}
+
+/* labels */
+
+.base label {
+  vertical-align: top;
+}
+.block label {
+  display: block;
+  color: #666;
+  font-size: 105%;
+  font-weight: bold;
+}
+.table label,
+.table fieldset.inline li.first label {
+  display: inline-block;
+  margin-top: 5px;
+  width: 135px;
+}
+
+/* check boxes and radio buttons */
+.block fieldset.options label {
+  margin-left: 20px;
+  font-weight: normal;
+}
+.table fieldset.options label {
+  display: block;
+  width: auto;
+  margin-left: 138px;
+}
+
+/* inline fields */
+.table fieldset.inline label {
+  display: inline;
+  width: auto;
+  margin-left: 0;
+}
+
+/* required */
+
+.base abbr {
+  color: #f00;
+  font-style: normal;
+  line-height: 40%;
+}
+
+/* hints, e.g. "http://" */
+
+.base span {
+  padding-right: 2px;
+}
+
+/* inputs */
+
+.base fieldset input,
+.base fieldset textarea {
+  padding: 2px;
+  _padding: 0;
+  border: 1px solid #999;
+  background-color: #fff !important;
+}
+.base fieldset input:focus,
+.base fieldset textarea:focus {
+  border: 1px solid #666;
+  background-color: #ffc !important;
+}
+.base fieldset label input,
+.base fieldset label input:focus {
+  border: none;
+}
+
+/* validations */
+
+.base em {
+  display: block;
+  margin-top: 1px;
+  color: #777;
+  font-size: 85%;
+  font-style: normal;
+}
+/* examples */
+.base em span {
+  font-style: italic;
+}
+.base em strong.do {
+  color: #390;
+}
+.base em strong.dont {
+  color: #f00;
+  font-weight: normal;
+  text-decoration: line-through;
+}
+
+.table em {
+  display: block;
+  margin-left: 138px;
+  font-size: 95%;
+}
+.inlinetext em {
+  display: inline;
+  margin-left: 5px;
+}
+.table em a {
+  margin: 0;
+  padding: 3px 2px;
+}
+
+/* notes */
+
+.base fieldset.notes {
+  font-size: 105%;
+}
+.base fieldset.notes legend {
+  font-weight: bold;
+}
+.base fieldset.notes ul {
+  padding: 5px 0 5px  1.5em;
+}
+.base fieldset.notes li {
+  list-style-type: square;
+  padding: 5px 0;
+}
+.base fieldset.notes p {
+  padding: 1em;
+  font-size: 110%;
+}
+
+/* errors */
+
+.base .fielderror input,
+.base .fielderror textarea,
+.base .fielderror input:focus,
+.base .fielderror textarea:focus {
+  border: 3px solid #f00;
+}
+
+.base .fielderror strong {
+  display: block;
+  margin: 5px 0 3px;
+  padding-left: 19px;
+  background: url(/images/icons/error.png) no-repeat center left;
+  color: #c00;
+  font-weight: bold;
+}
+.table .fielderror strong {
+  margin: 5px 0 1em 138px;
+}
+
+/* actions block */
+
+p.buttonblock {
+  clear: both;
+  margin: .5em 0;
+  padding: 7px;
+  background-color: #efefef;
+  color: #666;
+}
+
+/* Submit button */
+
+input.editor_primary,
+input.editor_secondary,
+input.editor_only,
+input.editor_ok_button {
+  padding: 2px;
+  _padding: 0;
+  font-size: 125%;
+  font-weight: bold;
+}
+
+input.editor_secondary {
+  font-weight: normal;
+}
+input.editor_only {
+  margin-left: 15px;
+}
+input.editor_ok_button {
+  margin: 3px 10px 0 0;
+}
+.table input.editor_only {
+  margin-left: 145px;
+}
+
+h2 input.editor_ok_button { font-size: 71%; }
+h3 input.editor_ok_button { font-size: 100%; }
+
+/* Cancel link */
+
+a.editor_cancel {
+  font-size: 110%;
+}
+h2 a.editor_cancel { font-size: 63%; }
+h3 a.editor_cancel { font-size: 88%; }
+
+a.editor_cancel,
+a.editor_cancel:visited {
+  color: #f00;
+}
+a.editor_cancel:hover {
+  background-color: #f00;
+  color: #fff;
+}

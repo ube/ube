@@ -1,0 +1,4 @@
+<p class="buttonblock">
+  <%= submit_tag name, :disable_with => 'Please wait...', :class => 'editor_primary' %>
+  or <%= link_to 'Cancel', local_assigns[:redirect] || { :action => 'index' }, { :class => 'editor_cancel' } %>
+</p>
