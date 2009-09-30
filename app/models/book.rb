@@ -20,7 +20,6 @@ class Book < ActiveRecord::Base
 
   before_create :set_label
   before_save   :set_sale_price
-  before_save   :touch_barcode
 
   named_scope :instock, :conditions => { :state => 'instock' }
   named_scope :lost, :conditions => { :state => 'lost' }
@@ -176,6 +175,8 @@ class Book < ActiveRecord::Base
     if ordered? # don't run on unreclaim!
       update_attribute :sold_at, Time.current
 
+      barcode.touch
+
       unless seller.email_address.blank?
         Notifier.deliver_book_sold id
       end
@@ -210,10 +211,6 @@ class Book < ActiveRecord::Base
 
   def set_sale_price
     write_attribute :sale_price, self.class.calculate_sale_price(self.price, Exchange.current.handling_fee)
-  end
-
-  def touch_barcode
-    self.barcode.touch
   end
 
   def validate_on_update
