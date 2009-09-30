@@ -1,2 +1,7 @@
-<p class="complete"><strong><%= tag %> found!</strong></p>
-<p><%= link_to 'Edit barcode', url, :tabindex => 50 %></p>
+<p class="complete">
+  <strong><%= barcode.tag %> found!</strong>
+  <span<% if barcode.updated_at < 1.year.ago %> class="warning"<% end %>>
+    last used <%=h barcode.updated_at.strftime('%b %Y') %>
+  </span>
+</p>
+<p><%= link_to 'Edit barcode', edit_barcode_path(barcode), :tabindex => 50 %></p>

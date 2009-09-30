@@ -28,7 +28,7 @@ class BarcodesController < ApplicationController
         page << "$('#barcode_edition').attr('value', '#{barcode.edition}')"
         page << "$('#barcode_retail_price').attr('value', '#{barcode.retail_price}')"
         page << "$('#book_price').focus()"
-        page.replace_html 'status', :partial => 'complete', :locals => { :tag => tag, :url => edit_barcode_path(barcode) }
+        page.replace_html 'status', :partial => 'complete', :locals => { :barcode => barcode }
       else
         page.replace_html 'status', :partial => 'failure', :locals => { :tag => tag }
       end

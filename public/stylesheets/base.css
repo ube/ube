@@ -302,7 +302,7 @@ form.search p.filters label {
   position: absolute;
   top: 1.5em;
   left: 30em;
-  width: 20em;
+  width: 25em;
   color: #999;
 }
 #status p {
@@ -314,11 +314,13 @@ form.search p.filters label {
   color: #090;
 }
 #status p.failure strong {
-  padding: 2px;
   background-color: #f00;
   color: #fff;
 }
-
+#status .warning {
+  color: #f00;
+  font-weight: bold;
+}
 /*--- statuses -------------------------------------------------------------*/
 
 span.instock,
