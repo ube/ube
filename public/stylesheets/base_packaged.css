@@ -59,10 +59,11 @@ form.search #q:focus, form.search #email:focus {border: 1px solid #666; backgrou
 form.search p {margin: 1px 0 0; color: #777; font-size: 95%; font-style: normal}
 form.search p.filters {margin-top: .5em}
 form.search p.filters label {color: #000; font-size: 95%; font-weight: normal}
- #status {position: absolute; top: 1.5em; left: 30em; width: 20em; color: #999}
+ #status {position: absolute; top: 1.5em; left: 30em; width: 25em; color: #999}
 #status p {margin-bottom: 5px}
 #status p.complete {padding-left: 20px; background: url(/images/icons/check.png) no-repeat center left; color: #090}
-#status p.failure strong {padding: 2px; background-color: #f00; color: #fff}
+#status p.failure strong {background-color: #f00; color: #fff}
+#status .warning {color: #f00; font-weight: bold}
  span.instock, span.sold, span.reclaimed, span.lost {font-size: 85%}
 span.instock {color: #090}
 span.sold, span.reclaimed {color: #900}
