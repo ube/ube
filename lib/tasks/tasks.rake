@@ -38,7 +38,7 @@ namespace :send do
       smtp.enable_starttls_auto
       smtp.start(smtp_settings[:domain], smtp_settings[:user_name],
                  smtp_settings[:password], smtp_settings[:authentication]) do |sender|
-        logger.info "Sending to #{sellers.size} sellers..."
+        RAILS_DEFAULT_LOGGER.info "Sending to #{sellers.size} sellers..."
         sellers.each do |seller|
           tmail = Notifier.send "create_#{ENV['template']}", seller
           sender.sendmail tmail.encoded, tmail.from, seller.email_address
@@ -47,11 +47,11 @@ namespace :send do
         end
       end
     rescue Exception => e
-      logger.info "#{e.inspect}. Sleeping 30..."
+      RAILS_DEFAULT_LOGGER.info "#{e.inspect}. Sleeping 30..."
       sleep 30
       retry
     end
 
-    logger.info "Sent to #{send_count} of #{sellers.size} sellers."
+    RAILS_DEFAULT_LOGGER.info "Sent to #{send_count} of #{sellers.size} sellers."
   end
 end
