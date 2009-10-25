@@ -19,13 +19,13 @@ namespace :send do
   desc 'Send welcome back e-mail to sellers'
   task :welcome_back => :environment do
     ENV['template'] = 'welcome_back'
-    Rake::Task['send:welcome_back'].invoke
+    Rake::Task['send:template'].invoke
   end
 
   desc 'Send reclaim reminder e-mail to sellers'
   task :reclaim_reminder => :environment do
     ENV['template'] = 'reclaim_reminder'
-    Rake::Task['send:reclaim_reminder'].invoke
+    Rake::Task['send:template'].invoke
   end
 
   task :template => :environment do
