@@ -23,7 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'andand'
   config.gem 'aws-s3', :lib => 'aws/s3'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
-  config.gem 'RedCloth', :lib => 'redcloth', :source => 'http://code.whytheluckystiff.net/'
+  config.gem 'RedCloth', :lib => 'redcloth'
   config.gem 'thoughtbot-paperclip', :lib => 'paperclip', :source => 'http://gems.github.com'
   config.gem 'yfactorial-utility_scopes', :lib => 'utility_scopes', :source => 'http://gems.github.com'
 

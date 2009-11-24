@@ -1,6 +1,3 @@
-require 'net/smtp'
-require 'enumerator'
-
 def deliver(template)
   send_count = 0
 
@@ -8,7 +5,6 @@ def deliver(template)
     sellers = Seller.send "recipients_for_#{template}"
     smtp_settings = ActionMailer::Base.smtp_settings
     smtp = Net::SMTP.new(smtp_settings[:address], smtp_settings[:port])
-    smtp.enable_starttls_auto
     smtp.start(smtp_settings[:domain], smtp_settings[:user_name],
                smtp_settings[:password], smtp_settings[:authentication]) do |sender|
       RAILS_DEFAULT_LOGGER.info "Sending to #{sellers.size} sellers..."
