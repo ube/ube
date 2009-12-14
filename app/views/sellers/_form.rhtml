@@ -2,7 +2,7 @@
 <%= f.text_field :name, :label => 'First Name and Last Name' %>
 <%= f.text_field :telephone, :label => 'Phone Number with Area Code' %>
 <%= f.text_field :email_address, :label => 'Email Address', :size => 40 %>
-<% if @seller.new_record? -%>
+<% unless @seller.new_record? -%>
 <%= f.text_field :notes, :label => 'Notes (Internal Use)', :size => 40 %>
 <% end -%>
 <% end %>
