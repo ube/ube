@@ -34,12 +34,12 @@
 
 <% if @books.empty? -%>
 <h3>
-  No books, yet. <%= link_to 'Add a book &#187;', new_seller_book_path(:seller_id => @seller), :title => 'Press Alt+A to add a book', :accesskey => 'a' %>
+  No books, yet. <%= link_to 'Add a book &#187;', new_seller_book_path(:seller_id => @seller), :title => 'Press Alt+B to add a book', :accesskey => 'b' %>
 </h3>
 <% else -%>
 <h3>
   <span class="add">
-  <%= link_to 'Add a book', new_seller_book_path(:seller_id => @seller), :title => 'Press Alt+A to add a book', :accesskey => 'a' %>
+  <%= link_to 'Add a book', new_seller_book_path(:seller_id => @seller), :title => 'Press Alt+B to add a book', :accesskey => 'b' %>
   </span>
   or <%= link_to 'Reclaim all', seller_reclamation_path(:seller_id => @seller, :all => true), :title => 'Press Alt+R to reclaim all books', :accesskey => 'r', :method => :put %> or
   <span class="print">

@@ -12,7 +12,7 @@
 <p class="buttonblock">
   <%= hidden_field_tag 'add_a_book' %>
   <%= hidden_field_tag 'print_a_contract' %>
-  <%= button_tag 'Create and Add another', :title => 'Press Alt+A to Create and Add another book', :accesskey => 'a', :class => 'editor_primary', :name => '#add_a_book', :alt => 'yes' %>
+  <%= button_tag 'Create and Add another', :title => 'Press Alt+B to Create and Add another book', :accesskey => 'b', :class => 'editor_primary', :name => '#add_a_book', :alt => 'yes' %>
   or <%= button_tag 'Create and Print a contract', :title => 'Press Alt+P to Create and Print a contract', :accesskey => 'p', :class => 'editor_secondary', :name => '#print_a_contract', :alt => 'yes' %>
   or <%= button_tag 'Create and Finish', :title => 'Press Alt+F to Create and Finish', :accesskey => 'f', :class => 'editor_secondary' %>
   or <%= link_to 'Cancel', seller_path(@seller), { :class => 'editor_cancel' } %>
