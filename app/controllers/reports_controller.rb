@@ -1,4 +1,9 @@
 class ReportsController < ApplicationController
+  deny_unless_user_can 'contact_seller', :only => [ :emails ]
+
+  def emails
+    @emails = Seller.all.collect(&:email_address).reject(&:blank?)
+  end
 
   def outstanding
     @claims_count  = Book.first(:select => 'COUNT(DISTINCT seller_id) AS count_all', :conditions => 'reclaimed_at IS NULL AND sold_at IS NOT NULL')[:count_all].to_i

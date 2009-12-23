@@ -21,6 +21,9 @@
     <ul>
       <li><%= link_to 'Summary of Operations', :controller => 'reports', :action => 'summary' %>
       <li><%= link_to 'Outstanding Claims', :controller => 'reports', :action => 'outstanding' %>
+<% if Person.current.can? 'contact_seller' -%>
+      <li><%= link_to 'Seller Emails', :controller => 'reports', :action => 'emails' %>
+<% end -%>
     </ul>
   </div>
 
