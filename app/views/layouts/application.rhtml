@@ -37,8 +37,10 @@
 <% if Person.current.can? 'undo' -%>
       <%= tab 'Sold', sold_books_path, :controllers => [ 'sold_books' ], :class => 'search', :html => { :rel => '#sold_books_search' } %>
 <% end -%>
+<% if Person.current.can? 'checkout' -%>
       <%= tab 'Checkout', orders_path, :controllers => [ 'orders' ], :html => { :title => 'Press Alt+C to go to Checkout', :accesskey => 'c' } %>
       <%= tab 'Receipts', completed_orders_path, :controllers => [ 'completed_orders' ] %>
+<% end -%>
 <% if Person.current.can? 'edit_accounts' -%>
       <%= tab 'Accounts', people_path, :controllers => [ 'people' ], :except => [ 'change_password' ] %>
       <%= tab 'add', new_person_path, :controllers => [ 'people' ], :actions => [ 'new', 'create' ], :class => 'new', :html => { :title => 'Add an account' } %>

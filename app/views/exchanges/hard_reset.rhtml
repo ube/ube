@@ -1,0 +1,20 @@
+<% @page_title = 'Hard Reset ' + h(Exchange.current.name) -%>
+
+<h2>
+  <span class="important">Warning:</span> You are about to destroy data!
+</h2>
+
+<p>By clicking the following link, you will delete <strong class="important">all books</strong> and <strong class="important">all orders</strong>. You will set all sellers as:</p>
+
+<ul class="bulleted">
+  <li>not having paid the service fee;</li>
+  <li>not having received the welcome email;</li>
+  <li>not having received the welcome back email; and,</li>
+  <li>not having received the reclaim reminder.</li>
+</ul>
+
+<p>You will delete all sellers who have not used the exchange for a year, according to the Data Destruction clause of the <%= link_to 'Privacy Policy', :controller => 'about', :action => 'privacy' %>.</p>
+
+<p>You should only reset the exchange if the last exchange has ended, and the next exchange has not started.</p>
+
+<%= button_to 'Reset exchange', reset_exchange_path, :confirm => 'Are you sure you want to reset the exchange?', :method => :delete %>
