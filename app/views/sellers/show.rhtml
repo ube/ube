@@ -41,15 +41,20 @@
   <span class="add">
   <%= link_to 'Add a book', new_seller_book_path(:seller_id => @seller), :title => 'Press Alt+B to add a book', :accesskey => 'b' %>
   </span>
-  or <%= link_to 'Reclaim all', seller_reclamation_path(:seller_id => @seller, :all => true), :title => 'Press Alt+R to reclaim all books', :accesskey => 'r', :method => :put %> or
+<% if not Exchange.current.early_reclaim? or Person.current.can? 'early_reclaim' -%>
+  or
+  <%= link_to 'Reclaim all', seller_reclamation_path(:seller_id => @seller, :all => true), :title => 'Press Alt+R to reclaim all books', :accesskey => 'r', :method => :put %>
+<% end -%>
+  or
   <span class="print">
   <%= link_to 'Print a contract', contract_seller_path(@seller), :title => 'Press Alt+P to print a contract', :accesskey => 'p' %>
   </span>
+  or
 <% unless @seller.paid_service_fee_at? -%>
-  or <%= link_to 'Pay service fee', pay_service_fee_seller_path(@seller), :method => :put %>
+  <%= link_to 'Pay service fee', pay_service_fee_seller_path(@seller), :method => :put %>
 <% end %>
 <% if @seller.paid_service_fee_at? and Person.current.can? 'undo' -%>
-  or <%= link_to 'Un-pay service fee', unpay_service_fee_seller_path(@seller), :method => :put %>
+  <%= link_to 'Un-pay service fee', unpay_service_fee_seller_path(@seller), :method => :put %>
 <% end -%>
 </h3>
 

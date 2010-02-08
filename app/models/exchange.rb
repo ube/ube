@@ -38,6 +38,14 @@ class Exchange < ActiveRecord::Base
     @@current = nil
   end
 
+  def early_reclaim?
+    Date.current < reclaim_starts_on
+  end
+
+  def late_reclaim?
+    Date.current > reclaim_ends_on
+  end
+
   protected
 
   def update_sale_prices_on_books

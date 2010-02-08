@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  deny_unless_user_can 'checkout', :except => [ :create ]
 
   def index
     @orders = Order.all :conditions => { :completed_at => nil }, :include => [ :creator, { :books => :barcode } ], :order => 'orders.created_at ASC'
