@@ -42,6 +42,10 @@ body.wide #bd {
   background-color: #00e;
   color: #fff;
 }
+#hd a.image:hover {
+  background-color: transparent;
+  color: #00e;
+}
 
 /*--- header ---------------------------------------------------------------*/
 
