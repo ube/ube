@@ -71,6 +71,28 @@ class Book < ActiveRecord::Base
     transitions :from => :reclaimed, :to => :unreclaimed
   end
 
+  acts_as_ferret :fields => {
+    :label => {},
+    :title => {},
+    :author => {},
+    :edition => {},
+
+    :state => { :index => :untokenized },
+    :cdrom => { :index => :untokenized },
+    :study_guide => { :index => :untokenized },
+    :package => { :index => :untokenized },
+
+    :sort_label => { :index => :untokenized },
+    :sort_state => { :index => :untokenized },
+    :sort_price => { :index => :untokenized },
+    :sort_sale_price => { :index => :untokenized },
+
+    :sort_title => { :index => :untokenized },
+    :sort_author => { :index => :untokenized },
+    :sort_edition => { :index => :untokenized },
+    :sort_retail_price => { :index => :untokenized },
+  }
+
   # acts_as_ferret
   def title
     barcode.title
