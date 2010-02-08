@@ -32,6 +32,19 @@ class Barcode < ActiveRecord::Base
 
   before_save :sanitize
 
+  acts_as_ferret :fields => {
+    :tag => {},
+    :title => {},
+    :author => {},
+    :edition => {},
+
+    :sort_tag => { :index => :untokenized },
+    :sort_title => { :index => :untokenized },
+    :sort_author => { :index => :untokenized },
+    :sort_edition => { :index => :untokenized },
+    :sort_retail_price => { :index => :untokenized },
+  }
+
   # acts_as_ferret
   def sort_tag
     self.tag
