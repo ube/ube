@@ -19,6 +19,7 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   config.gem 'aaronchi-jrails', :lib => 'jrails', :source => 'http://gems.github.com'
+  config.gem 'acts_as_ferret'
   config.gem 'andand'
   config.gem 'aws-s3', :lib => 'aws/s3'
   config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
