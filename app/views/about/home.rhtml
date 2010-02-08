@@ -24,11 +24,3 @@
 <p class="center"><strong class="important">Important!</strong> <span class="highlight">Add <strong>dawson@ube.ca</strong> to your address book</span> so that the messages we send are not marked as spam.</p>
 
 <h3 class="reminder" style="text-align: center;">Remember to <%= link_to 'pick up', { :controller => 'about', :action => 'help', :anchor => 'reclaims' } %> your money and/or books between <%=h Exchange.current.reclaim_starts_on.strftime('%b %e') %> and <%=h Exchange.current.reclaim_ends_on.strftime('%b %e') %>.</h3>
-
-<p class="center">
-  <%= link_to image_tag('donation.jpg', :size => '768x121', :alt => 'Thanks to your used books, the Book Exchange was able to give $2,600 to the Haiti Relief Fund'), 'http://redcross.ca/', :class => 'image' %>
-</p>
-
-<p class="center">
-  <%= link_to image_tag('facebook.png', :size => '240x26', :alt => 'Find us on Facebook'), 'http://facebook.com/pages/Montreal-QC/Dawson-Used-Book-Exchange/112431204830', :class => 'image' %>
-</p>

@@ -16,7 +16,7 @@
 <% if logged_in? and private? -%>
       <%= link_to_unless_current(Exchange.current.name, home_path, :rel => 'home', :title => 'Press Alt+H to go to the homepage', :accesskey => 'h') %>
 <% else -%>
-      <%= link_to_unless_current(image_tag('logo.jpg', :size => '468x121', :alt => Exchange.current.name), { :controller => 'about', :action => 'home' }, :rel => 'home', :title => 'Press Alt+H to go to the homepage', :accesskey => 'h', :class => 'image') %>
+      <%= link_to_unless_current(Exchange.current.name, { :controller => 'about', :action => 'home' }, :rel => 'home', :title => 'Press Alt+H to go to the homepage', :accesskey => 'h') %>
 <% end -%>    
     </h1>
 

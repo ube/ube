@@ -41,7 +41,7 @@
   <span class="add">
   <%= link_to 'Add a book', new_seller_book_path(:seller_id => @seller), :title => 'Press Alt+B to add a book', :accesskey => 'b' %>
   </span>
-<% if not Exchange.current.early_reclaim? or Person.current.can? 'early_reclaim' -%>
+<% if Exchange.current.early_reclaim? and Person.current.can? 'early_reclaim' -%>
   or
   <%= link_to 'Reclaim all', seller_reclamation_path(:seller_id => @seller, :all => true), :title => 'Press Alt+R to reclaim all books', :accesskey => 'r', :method => :put %>
 <% end -%>
