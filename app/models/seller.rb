@@ -12,17 +12,6 @@ class Seller < ActiveRecord::Base
 
   before_save :sanitize
 
-  acts_as_ferret :fields => {
-    :name => {},
-    :telephone => {},
-    :email_address => {},
-    :notes => {},
-
-    :sort_name => { :index => :untokenized },
-    :sort_telephone => { :index => :untokenized },
-    :sort_email_address => { :index => :untokenized },
-  }
-
   # acts_as_ferret
   def sort_name
     self.name
