@@ -1,6 +1,8 @@
 aaronchi-jrails --source gems.github.com
 acts_as_ferret --version 0.4.4
 andand
+aws-s3
 mislav-will_paginate --source gems.github.com
+RedCloth
 thoughtbot-paperclip --source gems.github.com
 yfactorial-utility_scopes --source gems.github.com
