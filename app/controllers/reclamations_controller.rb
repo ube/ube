@@ -12,9 +12,9 @@ class ReclamationsController < ApplicationController
     unless books.empty?
       flash[:notice] = ''
       flash[:alert] = ''
-      if Exchange.current.early_reclaim?
+      if Date.current < Exchange.current.reclaim_starts_on
         flash[:alert] = "Charged early reclaim penalty.\n"
-      elsif Exchange.current.late_reclaim?
+      elsif Date.current > Exchange.current.reclaim_ends_on
         flash[:alert] = "Marked as late reclaimer.\n"
       end
 

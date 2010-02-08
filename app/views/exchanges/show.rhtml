@@ -7,10 +7,7 @@
   <small><%= link_to 'edit', edit_exchange_path, :title => 'Press Alt+E to edit', :accesskey => 'e' %></small>
 <% end -%>
 <% if Person.current.can? 'reset_exchange' -%>
-  <small><%= link_to 'hard reset', hard_reset_exchange_path %></small>
-<% end -%>
-<% if Person.current.can? 'reset_exchange' -%>
-  <small><%= link_to 'soft reset', soft_reset_exchange_path %></small>
+  <small><%= link_to 'reset', reset_exchange_path %></small>
 <% end -%>
 </h2>
 

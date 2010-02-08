@@ -1,5 +1,4 @@
 class CompletedOrdersController < ApplicationController
-  deny_unless_user_can 'checkout'
 
   def index
     @orders = Order.paginate :conditions => [ 'completed_at IS NOT NULL' ], :include => [ :updater, { :books => :barcode } ], :order => 'completed_at DESC', :page => params[:page], :per_page => 20
@@ -16,7 +15,8 @@ class CompletedOrdersController < ApplicationController
   end
 
   def receipt
-    @order = Order.with({ :books => :barcode }).find(params[:id])
+    @order    = Order.with({ :books => :barcode }).find(params[:id])
     render :layout => false
   end
+
 end

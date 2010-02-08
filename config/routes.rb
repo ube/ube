@@ -34,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :completed_orders, :member => { :receipt => :get }
   map.resources :barcodes
   map.resources :people, :member => { :change_password => :any }
-  map.resource  :exchange, :member => { :hard_reset => :any, :soft_reset => :any }
+  map.resource  :exchange, :member => { :reset => :any }
 
   # default routes
   map.connect '', :controller => 'about', :action => 'home'

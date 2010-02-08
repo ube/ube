@@ -66,9 +66,9 @@ class Seller < ActiveRecord::Base
     credit = books.inject(0)  { |memo, book| (book.sold? || book.lost?) ? memo + book.price : memo }
     books.each { |book| book.reclaim! }
 
-    if Exchange.current.early_reclaim?
+    if Date.current < Exchange.current.reclaim_starts_on
       credit -= books.size * Exchange.current.early_reclaim_penalty
-    elsif Exchange.current.late_reclaim?
+    elsif Date.current > Exchange.current.reclaim_ends_on
       late_reclaimer!
     end
 

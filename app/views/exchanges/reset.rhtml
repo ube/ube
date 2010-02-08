@@ -1,10 +1,10 @@
-<% @page_title = 'Soft Reset ' + h(Exchange.current.name) -%>
+<% @page_title = 'Reset ' + h(Exchange.current.name) -%>
 
 <h2>
   <span class="important">Warning:</span> You are about to destroy data!
 </h2>
 
-<p>By clicking the following link, you will <% if @seller %>move in-stock books to <%= link_to h(@seller.name), seller_path(@seller) %>,<% end %> delete <strong class="important">all books</strong> and <strong class="important">all orders</strong>. You will set all sellers as:</p>
+<p>By clicking the following link, you will delete <strong class="important">all books</strong> and <strong class="important">all orders</strong>. You will set all sellers as:</p>
 
 <ul class="bulleted">
   <li>not having paid the service fee;</li>
