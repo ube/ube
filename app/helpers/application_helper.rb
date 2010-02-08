@@ -39,9 +39,9 @@ module ApplicationHelper
 
   def pluralize(count, noun)
     case count
-    when 0: "no #{noun.pluralize}"
-    when 1: "one #{noun}"
-    else    "#{count} #{noun.pluralize}"
+    when 0 then "no #{noun.pluralize}"
+    when 1 then "one #{noun}"
+    else        "#{count} #{noun.pluralize}"
     end
   end
 
