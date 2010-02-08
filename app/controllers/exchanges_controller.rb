@@ -34,7 +34,7 @@ class ExchangesController < ApplicationController
     if request.delete?
       Order.delete_all
       if @seller
-        Book.delete_all [ 'state <> "instock"' ]
+        Book.delete_all [ "state <> 'instock'" ]
         Book.update_all [ 'seller_id = ?', @seller.id ]
       else
         Book.delete_all
