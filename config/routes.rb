@@ -37,6 +37,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource  :exchange, :member => { :hard_reset => :any, :soft_reset => :any }
 
   # default routes
+  map.connect 'apply', :controller => 'about', :action => 'apply'
   map.connect '', :controller => 'about', :action => 'home'
   map.connect ':controller/:action/:id'
 end
