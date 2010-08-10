@@ -1,4 +1,4 @@
-<% @page_title = 'Dashboard' %>
+<% @page_title = 'Dashboard' -%>
 <h3 class="tight seller"><%= link_to 'Add a seller', new_seller_path %> or find a seller</h3>
 <%= render :layout => 'partials/search', :locals => { :url => sellers_path, :examples => [ 'John Doe', '3981234', 'bob@example.com' ], :accesskey => 's' } %>
 

@@ -1,4 +1,4 @@
-<% @page_title = (@from_date == @to_date) ? "Summary for #{@from_date.strftime('%B %e')}" : "Summary for #{@from_date.strftime('%B %e')} to #{@to_date.strftime('%B %e')}" %>
+<% @page_title = (@from_date == @to_date) ? "Summary for #{@from_date.strftime('%B %e')}" : "Summary for #{@from_date.strftime('%B %e')} to #{@to_date.strftime('%B %e')}" -%>
 <% form_tag({ :action => 'summary' }, :method => 'get') do %>
 From 
 <%= text_field_tag :from_date, params[:from_date] || (Date.current - 1.year), :size => 12 %>
