@@ -103,7 +103,7 @@
   <tr>
     <td><%= check_box_tag 'id[]', book.id, false, :class => 'checkbox' %></td>
 <% if Person.current.can? 'undo' -%>
-    <td class="delete"><%= link_to 'Delete', seller_book_path(:seller_id => @seller, :id => book), :confirm => 'Are you sure you want to delete this book?', :method => :delete %></td>
+    <td class="delete"><%= link_to 'Delete', seller_book_path(:seller_id => @seller, :id => book, :page => params[:page], :sort_key => params[:sort_key], :sort_order => params[:sort_order]), :confirm => 'Are you sure you want to delete this book?', :method => :delete %></td>
 <% end -%>
     <td><%=h book.label %></td>
     <td><%= action(book) %></td>

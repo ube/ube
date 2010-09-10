@@ -68,7 +68,7 @@ class BooksController < ApplicationController
     seller = Seller.find(params[:seller_id])
     book = seller.books.find(params[:id]).destroy
     flash[:notice] = "Book ##{book.label} Deleted."
-    redirect_to seller_path(seller)
+    redirect_to seller_path(seller, :page => params[:page], :sort_key => params[:sort_key], :sort_order => params[:sort_order])
   end
 
   protected
