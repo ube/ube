@@ -73,12 +73,12 @@ class Barcode < ActiveRecord::Base
   end
 
   # remove ` (missed tab key), expand abbreviations
-  def self.pre_sanitize(attr)
-    attr.downcase.delete('`').gsub(/\bw\/\s/, 'With ').strip.titleize.gsub("'S", "'s").gsub("'T", "'t") unless self[attr].nil?
+  def self.pre_sanitize(value)
+    value.downcase.delete('`').gsub(/\bw\/\s/, 'With ').strip.titleize.gsub("'S", "'s").gsub("'T", "'t") unless value.nil?
   end
 
-  def self.post_sanitize(attr)
-    attr.strip.squeeze(' ').gsub(' ,', ',') unless self[attr].nil?
+  def self.post_sanitize(value)
+    value.strip.squeeze(' ').gsub(' ,', ',') unless value.nil?
   end
 
   def sanitize_author
