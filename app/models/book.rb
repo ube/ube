@@ -15,7 +15,7 @@ class Book < ActiveRecord::Base
 
   validates_presence_of     :price
   validates_numericality_of :price, :only_integer => true, :allow_nil => true
-  validates_inclusion_of    :price, :in => 1..300, :allow_blank => true
+  validates_inclusion_of    :price, :in => 1..300, :allow_blank => true, :message => 'must be between 1 and 300'
   validates_presence_of     :barcode_id, :seller_id
 
   before_create :set_label
