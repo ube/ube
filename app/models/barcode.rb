@@ -74,23 +74,23 @@ class Barcode < ActiveRecord::Base
 
   # remove ` (missed tab key), expand abbreviations
   def self.pre_sanitize(attr)
-    attr.andand.downcase.delete('`').gsub(/\bw\/\s/, 'With ').strip.titleize.gsub("'S", "'s").gsub("'T", "'t")
+    attr.downcase.delete('`').gsub(/\bw\/\s/, 'With ').strip.titleize.gsub("'S", "'s").gsub("'T", "'t") if attr?
   end
 
   def self.post_sanitize(attr)
-    attr.andand.strip.squeeze(' ').gsub(' ,', ',')
+    attr.strip.squeeze(' ').gsub(' ,', ',') if attr?
   end
 
   def sanitize_author
     if self.author =~ /^(?:unknown|no author|anon|n[\/ ]?a)$/i
       'NA'
-    else
-      self.author.andand.gsub(/[&\/]+/, ', ').gsub(/\bEt All?\.?$/, 'et al').gsub(/,\s*/, ', ')
+    elsif self.author?
+      self.author.gsub(/[&\/]+/, ', ').gsub(/\bEt All?\.?$/, 'et al').gsub(/,\s*/, ', ')
     end
   end
 
   def sanitize_title
-    self.title.andand.gsub('Volume', 'Vol').gsub(/Study Guide(?: Only)?$/, 'STUDY GUIDE')
+    self.title.gsub('Volume', 'Vol').gsub(/Study Guide(?: Only)?$/, 'STUDY GUIDE') if self.title?
   end
 
   def sanitize_edition
