@@ -16,16 +16,20 @@
 <% end -%>
 
 <div class="blocks">
+<% if Person.current.can? 'edit_accounts' or Person.current.can? 'contact_seller' -%>
   <div class="block">
     <h3>Reports</h3>
     <ul>
+<% if Person.current.can? 'edit_accounts' -%>
       <li><%= link_to 'Summary of Operations', :controller => 'reports', :action => 'summary' %>
       <li><%= link_to 'Outstanding Claims', :controller => 'reports', :action => 'outstanding' %>
+<% end -%>
 <% if Person.current.can? 'contact_seller' -%>
       <li><%= link_to 'Mailing List Recipients', :controller => 'reports', :action => 'emails' %>
 <% end -%>
     </ul>
   </div>
+<% end -%>
 
 <% if Exchange.current.schedule? -%>
   <div class="block">
