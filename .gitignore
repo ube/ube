@@ -1,5 +1,4 @@
 .DS_Store
 db/data.yml
-config/database.yml
 log
 tmp
