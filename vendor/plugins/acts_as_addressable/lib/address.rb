@@ -2,11 +2,11 @@ class Address < ActiveRecord::Base
   attr_protected :addressable_id, :addressable_type
 
   belongs_to :addressable, :polymorphic => true
-  
+
   def empty?
     [ address, city, region, country, postal_code ].all? { |attr| attr.blank? }
   end
-  
+
   def to_s(format = nil)
     case format
     when :comma

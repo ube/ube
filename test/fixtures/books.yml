@@ -11,7 +11,7 @@ sold:
   sale_price: 3
   barcode: hamlet
   seller: jack
-  sold_at: <%= 1.day.ago.to_s :db %>
+  sold_at: <%= 1.day.ago.utc.to_s :db %>
   order: completed2
   state: sold
 book_reclaimed:
@@ -20,7 +20,7 @@ book_reclaimed:
   sale_price: 4
   barcode: hamlet
   seller: jack
-  reclaimed_at: <%= 1.day.ago.to_s :db %>
+  reclaimed_at: <%= 1.day.ago.utc.to_s :db %>
   state: reclaimed
 money_reclaimed:
   label: 4
@@ -29,7 +29,7 @@ money_reclaimed:
   barcode: hamlet
   seller: jack
   sold_at: <%= 2.days.ago.to_s :db %>
-  reclaimed_at: <%= 1.day.ago.to_s :db %>
+  reclaimed_at: <%= 1.day.ago.utc.to_s :db %>
   order: completed1
   state: reclaimed
 lost:
@@ -38,7 +38,7 @@ lost:
   sale_price: 6
   barcode: hamlet
   seller: jack
-  lost_at: <%= 1.day.ago.to_s :db %>
+  lost_at: <%= 1.day.ago.utc.to_s :db %>
   state: lost
 bob_instock:
   label: 6
@@ -93,7 +93,7 @@ held:
   sale_price: 14
   barcode: hamlet
   seller: jack
-  held_at: <%= 1.day.ago.to_s :db %>
+  held_at: <%= 1.day.ago.utc.to_s :db %>
   state: held
 held_reclaimed:
   label: 13
@@ -102,5 +102,5 @@ held_reclaimed:
   barcode: hamlet
   seller: jack
   held_at: <%= 2.days.ago.to_s :db %>
-  reclaimed_at: <%= 1.day.ago.to_s :db %>
+  reclaimed_at: <%= 1.day.ago.utc.to_s :db %>
   state: reclaimed

@@ -187,9 +187,9 @@ class PersonTest < ActiveSupport::TestCase
     Person.current = people(:joe)
     assert_equal Person.current.available_roles, []
     Person.current = people(:jack)
-    assert_equal Person.current.available_roles, Role.all
+    assert_equal_with_permutation Person.current.available_roles, Role.all
     Person.current = people(:james)
-    assert_equal Person.current.available_roles, Role.all
+    assert_equal_with_permutation Person.current.available_roles, Role.all
   end
 
   def test_has_role

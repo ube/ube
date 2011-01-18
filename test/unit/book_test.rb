@@ -61,6 +61,7 @@ class BookTest < ActiveSupport::TestCase
   end
 
   def test_should_return_lost_books_on_lost_on
+    assert_equal 1, books(:lost).lost_at
     assert_equal [ books(:lost) ], Book.lost_on(1.day.ago.utc.to_date)
   end
 
