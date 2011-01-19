@@ -193,14 +193,14 @@ class PersonTest < ActiveSupport::TestCase
   end
 
   def test_has_role
-    assert people(:jack).can?('edit_exchange')
-    assert !people(:dick).can?('edit_exchange')
+    assert people(:jack).can?('reset_exchange')
+    assert !people(:dick).can?('reset_exchange')
   end
 
   def test_grant_role
-    assert !people(:dick).can?('edit_exchange')
-    people(:dick).can('edit_exchange')
-    assert people(:dick).reload.can?('edit_exchange')
+    assert !people(:dick).can?('reset_exchange')
+    people(:dick).can('reset_exchange')
+    assert people(:dick).reload.can?('reset_exchange')
   end
 
   def test_revoke_role
