@@ -10,3 +10,15 @@ edit_accounts:
 edit_exchange:
   name: edit_exchange
   description: Edit exchange
+reset_exchange:
+  name: reset_exchange
+  description: Reset exchange
+contact_seller:
+  name: contact_seller
+  description: View mailing list
+checkout:
+  name: checkout
+  description: Checkout
+early_reclaim: # TODO test this role
+  name: early_reclaim
+  description: Early reclaim

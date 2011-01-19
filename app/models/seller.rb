@@ -80,7 +80,7 @@ class Seller < ActiveRecord::Base
     credit
   end
 
-  # TODO: test this method
+  # TODO test this method
   def self.recipients_for_welcome_back
     sellers = Seller.all
     sellers.reject! { |seller| seller.email_address.blank? || seller.welcome_back_sent_on? }
@@ -92,7 +92,7 @@ class Seller < ActiveRecord::Base
     end
   end
 
-  # TODO: test this method
+  # TODO test this method
   def self.recipients_for_reclaim_reminder
     sellers = Seller.all(:conditions => { :books => { :reclaimed_at => nil } }, :joins => :books)
     sellers.reject! { |seller| seller.email_address.blank? || seller.reclaim_reminder_sent_on? }

@@ -30,12 +30,12 @@ class ReportsController < ApplicationController
       flash.now[:error] = "'From' date must be before 'to' date." and return
     end
 
-    sales           = Book.all :group => 'date',   :order => 'date', :select => "CAST(sold_at AS CHAR(10))             AS date, COUNT(*) AS count, SUM(price) AS sales, SUM(sale_price) AS total_sales", :conditions => { :sold_at => @from_date..@to_date}
-    books           = Book.all :group => 'date',   :order => 'date', :select => "CAST(created_at AS CHAR(10))          AS date, COUNT(*) AS count", :conditions => { :created_at => @from_date..@to_date }
-    sales_reclaimed = Book.all :group => 'date',   :order => 'date', :select => "CAST(reclaimed_at AS CHAR(10))        AS date, COUNT(*) AS count, SUM(price) AS claims", :conditions => [ 'sold_at IS NOT NULL AND reclaimed_at BETWEEN ? AND ?', @from_date, @to_date ]
-    books_reclaimed = Book.all :group => 'date',   :order => 'date', :select => "CAST(reclaimed_at AS CHAR(10))        AS date, COUNT(*) AS count", :conditions => { :sold_at => nil, :reclaimed_at => @from_date..@to_date }
-    early_reclaims  = Book.all :group => 'date',   :order => 'date', :select => "CAST(reclaimed_at AS CHAR(10))        AS date, COUNT(*) AS count", :conditions => [ 'reclaimed_at BETWEEN ? AND ? AND reclaimed_at < ?', @from_date, @to_date, Exchange.current.reclaim_starts_on ]
-    service_fees    = Seller.all :group => 'date', :order => 'date', :select => "CAST(paid_service_fee_at AS CHAR(10)) AS date, COUNT(*) AS count", :conditions => { :paid_service_fee_at => @from_date..@to_date }
+    sales           = Book.all :group => 'date',   :order => 'date', :select => "SUBSTR(CAST(sold_at AS CHAR(10)), 0, 11)             AS date, COUNT(*) AS count, SUM(price) AS sales, SUM(sale_price) AS total_sales", :conditions => { :sold_at => @from_date..@to_date}
+    books           = Book.all :group => 'date',   :order => 'date', :select => "SUBSTR(CAST(created_at AS CHAR(10)), 0, 11)          AS date, COUNT(*) AS count", :conditions => { :created_at => @from_date..@to_date }
+    sales_reclaimed = Book.all :group => 'date',   :order => 'date', :select => "SUBSTR(CAST(reclaimed_at AS CHAR(10)), 0, 11)        AS date, COUNT(*) AS count, SUM(price) AS claims", :conditions => [ 'sold_at IS NOT NULL AND reclaimed_at BETWEEN ? AND ?', @from_date, @to_date ]
+    books_reclaimed = Book.all :group => 'date',   :order => 'date', :select => "SUBSTR(CAST(reclaimed_at AS CHAR(10)), 0, 11)        AS date, COUNT(*) AS count", :conditions => { :sold_at => nil, :reclaimed_at => @from_date..@to_date }
+    early_reclaims  = Book.all :group => 'date',   :order => 'date', :select => "SUBSTR(CAST(reclaimed_at AS CHAR(10)), 0, 11)        AS date, COUNT(*) AS count", :conditions => [ 'reclaimed_at BETWEEN ? AND ? AND reclaimed_at < ?', @from_date, @to_date, Exchange.current.reclaim_starts_on ]
+    service_fees    = Seller.all :group => 'date', :order => 'date', :select => "SUBSTR(CAST(paid_service_fee_at AS CHAR(10)), 0, 11) AS date, COUNT(*) AS count", :conditions => { :paid_service_fee_at => @from_date..@to_date }
 
     current_year = current_month = nil
 

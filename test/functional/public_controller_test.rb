@@ -92,7 +92,7 @@ class PublicControllerTest < ActionController::TestCase
 
     assert_equal 'jack@example.com', assigns(:email)
     assert_equal sellers(:jack), assigns(:seller)
-    assert_equal_with_permutation [ books(:instock), books(:sold), books(:lost), books(:held) ], assigns(:books)
+    assert_equal_with_permutation [ books(:instock), books(:sold), books(:lost), books(:held), books(:ordered) ], assigns(:books)
   end
 
 end

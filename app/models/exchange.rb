@@ -50,7 +50,7 @@ class Exchange < ActiveRecord::Base
 
   def update_sale_prices_on_books
     if handling_fee_changed?
-      Book.update_all 'sale_price = price + ceil(price * %s / 100)' % self.handling_fee, 'price > 1'
+      Book.update_all 'sale_price = price + CEIL(price * %s / 100)' % self.handling_fee, 'price > 1'
       Book.rebuild_index
     end
   end

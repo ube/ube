@@ -11,7 +11,13 @@ class CompletedOrdersTest < ActionController::IntegrationTest
     end
   end
 
-  def test_should_allow_all_if_authenticated
+  def test_should_deny_all_if_not_authorized
+    new_session_as(:joe) do |joe|
+      joe.fails_authorization completed_orders_path, receipt_completed_order_path(orders(:completed1))
+    end
+  end
+
+  def test_should_allow_all_if_authorized
     new_session_as(:jack) do |jack|
       jack.goes_to completed_orders_path, 'completed_orders/index'
       jack.goes_to receipt_completed_order_path(orders(:completed1)), 'completed_orders/receipt'

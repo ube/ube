@@ -56,7 +56,7 @@ class PeopleTest < ActionController::IntegrationTest
     new_session_as(:jack) do |jack|
       jack.goes_to people_path, 'people/index'
       jack.assert_assigns :people
-      jack.assert_equal_with_permutation [ people(:dick), people(:jack), people(:james), people(:joe) ], jack.assigns(:people)
+      jack.assert_equal_with_permutation [ people(:dick), people(:jack), people(:james), people(:joe), people(:jane) ], jack.assigns(:people)
     end
   end
 
@@ -64,7 +64,7 @@ class PeopleTest < ActionController::IntegrationTest
     new_session_as(:jack) do |jack|
       jack.goes_to new_person_path, 'people/new'
       jack.assert_assigns :person, :roles
-      jack.assert_equal 4, jack.assigns(:roles).size
+      jack.assert_equal 8, jack.assigns(:roles).size
     end
   end
 
@@ -83,7 +83,7 @@ class PeopleTest < ActionController::IntegrationTest
       jack.goes_to edit_person_path(people(:joe)), 'people/edit'
       jack.assert_assigns :person, :roles
       jack.assert_equal people(:joe), jack.assigns(:person)
-      jack.assert_equal 4, jack.assigns(:roles).size
+      jack.assert_equal 8, jack.assigns(:roles).size
     end
   end
 

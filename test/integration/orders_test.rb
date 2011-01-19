@@ -11,7 +11,13 @@ class OrdersTest < ActionController::IntegrationTest
     end
   end
 
-  def test_should_allow_all_if_authenticated
+  def test_should_deny_some_if_not_authorized
+    new_session_as(:joe) do |joe|
+      joe.fails_authorization orders_path
+    end
+  end
+
+  def test_should_allow_all_if_authorized
     new_session_as(:jack) do |jack|
       jack.goes_to orders_path, 'orders/index'
     end

@@ -133,7 +133,7 @@ class SellersTest < ActionController::IntegrationTest
           jack.goes_to contract_seller_path(sellers(:jack)), 'sellers/contract'
           jack.assert_assigns :seller, :books
           jack.assert_equal sellers(:jack), jack.assigns(:seller)
-          jack.assert_equal_with_permutation [ books(:instock), books(:sold), books(:lost), books(:held) ], jack.assigns(:books)
+          jack.assert_equal_with_permutation [ books(:instock), books(:sold), books(:lost), books(:held), books(:ordered) ], jack.assigns(:books)
         end
       end
     end
@@ -159,7 +159,7 @@ class SellersTest < ActionController::IntegrationTest
           jack.goes_to contract_seller_path(sellers(:bob)), 'sellers/contract'
           jack.assert_assigns :seller, :books
           jack.assert_equal sellers(:bob), jack.assigns(:seller)
-          jack.assert_equal_with_permutation [ books(:bob_instock), books(:bob_sold), books(:bob_lost) ], jack.assigns(:books)
+          jack.assert_equal_with_permutation [ books(:bob_instock), books(:bob_sold), books(:bob_lost), books(:bob_ordered) ], jack.assigns(:books)
         end
       end
     end

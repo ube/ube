@@ -53,7 +53,11 @@ class BookTest < ActiveSupport::TestCase
   end
 
   def test_should_return_unreclaimed_books_on_unreclaimed
-    assert_equal_with_permutation [ books(:sold), books(:lost), books(:instock), books(:held) ], sellers(:jack).books.reclaimable
+    assert_equal_with_permutation [ books(:instock), books(:sold), books(:lost), books(:held), books(:ordered) ], sellers(:jack).books.unreclaimed
+  end
+
+  def test_should_return_reclaimable_books_on_reclaimable
+    assert_equal_with_permutation [ books(:instock), books(:sold), books(:lost), books(:held) ], sellers(:jack).books.reclaimable
   end
 
   def test_should_return_reclaimed_books_on_reclaimed
@@ -61,7 +65,6 @@ class BookTest < ActiveSupport::TestCase
   end
 
   def test_should_return_lost_books_on_lost_on
-    assert_equal 1, books(:lost).lost_at
     assert_equal [ books(:lost) ], Book.lost_on(1.day.ago.utc.to_date)
   end
 

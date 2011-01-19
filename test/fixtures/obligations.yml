@@ -10,3 +10,27 @@ jack_edit_exchange:
 jack_discover_seller:
   role: discover_seller
   person: jack
+jack_reset_exchange:
+  role: reset_exchange
+  person: jack
+jack_contact_seller:
+  role: contact_seller
+  person: jack
+jack_checkout:
+  role: checkout
+  person: jack
+jack_early_reclaim:
+  role: early_reclaim
+  person: jack
+dick_contact_seller:
+  role: contact_seller
+  person: dick
+dick_edit_exchange:
+  role: edit_exchange
+  person: dick
+jane_edit_accounts:
+  role: edit_accounts
+  person: jane
+jane_reset_exchange:
+  role: reset_exchange
+  person: jane

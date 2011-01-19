@@ -1,5 +1,5 @@
 class ExchangesController < ApplicationController
-  deny_unless_user_can 'edit_exchange'
+  deny_unless_user_can 'edit_exchange', :only => [ :show, :edit, :update ]
   deny_unless_user_can 'reset_exchange', :only => [ :soft_reset, :hard_reset ]
 
   def show
@@ -28,7 +28,7 @@ class ExchangesController < ApplicationController
     edit
   end
 
-  # TODO: test this method
+  # TODO test this method
   def soft_reset
     @seller = Seller.find_by_name 'Book Exchange'
     if request.delete?
@@ -48,7 +48,7 @@ class ExchangesController < ApplicationController
     end
   end
 
-  # TODO: test this method
+  # TODO test this method
   def hard_reset
     if request.delete?
       Order.delete_all

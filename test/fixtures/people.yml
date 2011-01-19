@@ -5,14 +5,19 @@ jack: # all tokens, all roles
   password_hash: f3ff33593bc1ed57a6c11f4a75a1d539d7ef5238f534df147388ef37764affa5 # = testpass
   last_login_at: <%= 5.days.ago.to_s :db %>
   password_token: 65058883ed5479c4374d0cf2eb3f6991
-joe: # no tokens, no managers
+joe: # no tokens, no roles
   name: joesmith
   email_address: joe@example.com
   salt: +P6ics2X
   password_hash: f3ff33593bc1ed57a6c11f4a75a1d539d7ef5238f534df147388ef37764affa5 # = testpass
-dick:
+dick: # can contact_seller, edit_exchange
   name: dick5
   email_address: dick@example.com
+  salt: +P6ics2X
+  password_hash: f3ff33593bc1ed57a6c11f4a75a1d539d7ef5238f534df147388ef37764affa5 # = testpass
+jane: # can edit_accounts, reset_exchange
+  name: jane5
+  email_address: jane@example.com
   salt: +P6ics2X
   password_hash: f3ff33593bc1ed57a6c11f4a75a1d539d7ef5238f534df147388ef37764affa5 # = testpass
 james:

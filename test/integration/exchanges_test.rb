@@ -17,10 +17,25 @@ class ExchangesTest < ActionController::IntegrationTest
     end
   end
 
+  def test_should_allow_some_if_authorized
+    new_session_as(:jane) do |jane|
+      jane.goes_to soft_reset_exchange_path, 'exchanges/soft_reset'
+      jane.goes_to hard_reset_exchange_path, 'exchanges/hard_reset'
+      jane.fails_authorization exchange_path, edit_exchange_path
+    end
+    new_session_as(:dick) do |dick|
+      dick.goes_to exchange_path, 'exchanges/show'
+      dick.goes_to edit_exchange_path, 'exchanges/edit'
+      dick.fails_authorization soft_reset_exchange_path, hard_reset_exchange_path
+    end
+  end
+
   def test_should_allow_all_if_authorized
     new_session_as(:jack) do |jack|
       jack.goes_to exchange_path, 'exchanges/show'
       jack.goes_to edit_exchange_path, 'exchanges/edit'
+      jack.goes_to soft_reset_exchange_path, 'exchanges/soft_reset'
+      jack.goes_to hard_reset_exchange_path, 'exchanges/hard_reset'
     end
   end
 
@@ -43,7 +58,7 @@ class ExchangesTest < ActionController::IntegrationTest
     end
   end
 
-  def test_update
+  def test_update # SQLite doesn't support the CEIL function
     new_session_as(:jack) do |jack|
       assert_change exchanges(:dawson), :name, :email_address, :handling_fee, :sale_starts_on, :sale_ends_on, :reclaim_starts_on, :reclaim_ends_on, :ends_at, :hours do
         jack.put exchange_path, :exchange => valid_record

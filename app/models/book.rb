@@ -29,8 +29,8 @@ class Book < ActiveRecord::Base
   named_scope :reclaimable, :conditions => "state <> 'ordered' AND reclaimed_at IS NULL"
   
   # for inventory controller
-  named_scope :lost_on, lambda { |date| { :conditions => [ 'CAST(lost_at AS CHAR(10)) = ?', date.to_date ], :include => :barcode } }
-  named_scope :sold_on, lambda { |date| { :conditions => [ 'CAST(sold_at AS CHAR(10)) = ?', date.to_date ], :include => :barcode } }
+  named_scope :lost_on, lambda { |date| { :conditions => [ 'SUBSTR(CAST(lost_at AS CHAR(10)), 0, 11) = ?', date.to_date ], :include => :barcode } }
+  named_scope :sold_on, lambda { |date| { :conditions => [ 'SUBSTR(CAST(sold_at AS CHAR(10)), 0, 11) = ?', date.to_date ], :include => :barcode } }
 
   state :instock,     :enter => :mark_instock
   state :lost,        :enter => :mark_lost
