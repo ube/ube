@@ -81,6 +81,7 @@ class Book < ActiveRecord::Base
     :cdrom => { :index => :untokenized },
     :study_guide => { :index => :untokenized },
     :package => { :index => :untokenized },
+    :access_code => { :index => :untokenized },
 
     :sort_label => { :index => :untokenized },
     :sort_state => { :index => :untokenized },

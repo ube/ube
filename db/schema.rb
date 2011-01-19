@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090926193749) do
+ActiveRecord::Schema.define(:version => 20110119161636) do
 
   create_table "addresses", :force => true do |t|
     t.string  "address"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20090926193749) do
     t.integer  "created_by"
     t.integer  "updated_by"
     t.datetime "held_at"
+    t.boolean  "access_code"
   end
 
   add_index "books", ["barcode_id"], :name => "index_books_on_barcode_id"

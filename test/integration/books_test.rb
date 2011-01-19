@@ -165,7 +165,7 @@ class BooksTest < ActionController::IntegrationTest
 
   def test_update_with_old_barcode
     new_session_as(:jack) do |jack|
-      assert_change books(:instock), :price, :cdrom, :study_guide, :package, :barcode do
+      assert_change books(:instock), :price, :cdrom, :study_guide, :package, :access_code, :barcode do
         assert_no_difference 'Barcode.count' do
           assert_no_change barcodes(:songs), :title, :author, :edition, :retail_price do
             jack.put seller_book_path(:seller_id => sellers(:jack), :id => books(:instock)), :book => valid_book, :barcode => valid_barcode(:tag => barcodes(:songs).tag)
@@ -179,7 +179,7 @@ class BooksTest < ActionController::IntegrationTest
 
   def test_update_with_new_barcode
     new_session_as(:jack) do |jack|
-      assert_change books(:instock), :price, :cdrom, :study_guide, :package, :barcode do
+      assert_change books(:instock), :price, :cdrom, :study_guide, :package, :access_code, :barcode do
         assert_difference 'Barcode.count' do
           jack.put seller_book_path(:seller_id => sellers(:jack), :id => books(:instock)), :book => valid_book, :barcode => valid_barcode
           jack.assert_flash :notice
@@ -205,6 +205,7 @@ class BooksTest < ActionController::IntegrationTest
         :cdrom => '1', 
         :study_guide => '1', 
         :package => '1', 
+        :access_code => '1' 
       }.merge(options)
     end  
 

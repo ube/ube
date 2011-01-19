@@ -57,6 +57,7 @@ module BooksHelper
     extras += image_tag('extras/cdrom.png', :size => '25x25', :alt => 'CD-ROM', :title => 'CD-ROM') if book.cdrom?
     extras += image_tag('extras/study_guide.png', :size => '26x25', :alt => 'Study guide', :title => 'Study guide') if book.study_guide?
     extras += image_tag('extras/package.png', :size => '25x25', :alt => 'Package', :title => 'Package') if book.package?
+    extras += image_tag('extras/lock-icon.png', :size => '25x25', :alt => 'Access Code', :title => 'Access Code') if book.access_code?
     extras
   end
 
