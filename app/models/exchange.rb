@@ -5,6 +5,8 @@ class Exchange < ActiveRecord::Base
 
   acts_as_addressable
   validates_multiparameter_assignments
+
+  require 'paperclip'
   has_attached_file :schedule,
     :storage => :s3,
     :s3_credentials => {
