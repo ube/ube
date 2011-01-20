@@ -5,6 +5,7 @@ gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
 
 # Core
 gem 'andand'
+gem 'delayed_job', '2.0.5'
 
 # Models
 gem 'rdig'

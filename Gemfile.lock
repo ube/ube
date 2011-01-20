@@ -20,6 +20,9 @@ GEM
       mime-types
       xml-simple
     builder (3.0.0)
+    daemons (1.1.0)
+    delayed_job (2.0.5)
+      daemons
     ferret (0.11.6)
       rake (> 0.0.0)
     hpricot (0.8.3)
@@ -56,6 +59,7 @@ DEPENDENCIES
   acts_as_ferret (= 0.4.8.2)
   andand
   aws-s3
+  delayed_job (= 2.0.5)
   jrails
   paperclip
   rails (= 2.3.4)
