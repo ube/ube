@@ -23,3 +23,11 @@ def deliver(template)
 
   RAILS_DEFAULT_LOGGER.info "Sent to #{send_count} of #{sellers.size} sellers."
 end
+
+task :welcome_back => :environment do
+  deliver 'welcome_back'
+end
+
+task :reclaim_reminder => :environment do
+  deliver 'reclaim_reminder'
+end
