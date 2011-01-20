@@ -5,8 +5,8 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key => ENV['SESSION_KEY'],
-  :secret => ENV['SESSION_SECRET'],
+  :key => ENV['SESSION_KEY'] || '123456789012345678901234567890',
+  :secret => ENV['SESSION_SECRET'] || '1',
 }
 
 # Use the database for sessions instead of the cookie-based default,
