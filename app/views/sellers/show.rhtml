@@ -45,8 +45,8 @@
   or
   <%= link_to 'Reclaim all', seller_reclamation_path(:seller_id => @seller, :all => true), :title => 'Press Alt+R to reclaim all books', :accesskey => 'r', :method => :put %>
 <% end -%>
-	or
-	<%= link_to "Delete all", seller_reclamation_path(:seller_id => @seller, :all => true), :title => "Press Alt+D to delete all books", :accesskey => 'd', :method => :get %>
+  or
+  <%= link_to 'Delete all', seller_reclamation_path(:seller_id => @seller, :all => true), :title => 'Press Alt+D to delete all books', :accesskey => 'd', :method => :post %>
   or
   <span class="print">
   <%= link_to 'Print a contract', contract_seller_path(@seller), :title => 'Press Alt+P to print a contract', :accesskey => 'p' %>
@@ -63,7 +63,6 @@
 <hr />
 
 <p class="nav">
-
 <% form_tag seller_reclamation_path(:seller_id => @seller) do -%>
 <%= hidden_field_tag '_method' %>
   <%= check_box_tag 'checkall' %> <%= label_tag :checkall, 'Select all' %>
@@ -71,7 +70,9 @@
 <% if Person.current.can? 'undo' -%>
   or <%= button_tag 'Unreclaim Selected', :name => '#_method', :alt => 'delete' %>
 <% end -%>
-	<%= button_tag 'Delete Selected', :name => '#_method', :alt => 'get' %>
+<% if Person.current.can? 'reset_exchange' -%>
+  or <%= button_tag 'Delete Selected', :name => '#_method', :alt => 'post' %>
+<% end -%>
 </p>
 
 <table class="list">
@@ -146,5 +147,7 @@
       <dd>Reclaim all books</dd>
     <dt>Alt+E:</dt>
       <dd>Edit seller's contact information</dd>
+    <dt>Alt+D:</dt>
+      <dd>Delete all books</dd>
   </dl>
 </div>

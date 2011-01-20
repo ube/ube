@@ -1,13 +1,14 @@
 class ReclamationsController < ApplicationController
+  deny_unless_user_can 'reset_exchange', :only => [ :create ]
   deny_unless_user_can 'undo', :only => [ :destroy ]
 
-  # BULK DELETE BOOKS
-  def show
+  # TODO doesn't belong in this controller
+  def create # TODO test this method
     seller = Seller.find(params[:seller_id])
     if params[:all]
       books = seller.books.all
     else
-        books = seller.books.all :conditions => { :id => [params[:id]].flatten }
+      books = seller.books.all :conditions => { :id => [params[:id]].flatten }
     end
 
     unless books.empty?
@@ -16,7 +17,7 @@ class ReclamationsController < ApplicationController
       labels = books.inject([]) { |memo, book| memo << "##{book.label}" }
       flash[:notice] = "Deleted #{labels.to_sentence}."
     else
-      flash[:error] = 'You did not select any reclaimed books to delete.'
+      flash[:error] = 'You did not select any books to delete.'
     end
 
     redirect_to seller_path(seller)
