@@ -14,6 +14,7 @@ class Notifier < ActionMailer::Base
       :url => url_for(:host => 'ube.ca', :controller => 'people', :action => 'reset', :token => person.password_token)
     }
   end
+  #handle_asynchronously :password_reset
 
   def welcome_email(seller)
     recipients  seller.email_address
@@ -22,6 +23,7 @@ class Notifier < ActionMailer::Base
 
     @body = { :seller => seller }
   end
+  #handle_asynchronously :welcome_email
 
   def welcome_back(seller)
     recipients  seller.email_address
@@ -30,6 +32,7 @@ class Notifier < ActionMailer::Base
 
     @body = { :seller => seller }
   end
+  #handle_asynchronously :welcome_back
 
   def reclaim_reminder(seller)
     recipients  seller.email_address
@@ -38,16 +41,19 @@ class Notifier < ActionMailer::Base
 
     @body = { :seller => seller }
   end
+  #handle_asynchronously :reclaim_reminder
 
   def book_sold(id)
     prepare_message(id)
     subject     'You sold a book at ube.ca!'
   end
+  #handle_asynchronously :book_sold
 
   def book_unsold(id)
     prepare_message(id)
     subject     'Your book was incorrectly marked sold at ube.ca'
   end
+  #handle_asynchronously :book_unsold
 
 protected
 
