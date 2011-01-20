@@ -27,10 +27,12 @@ config.action_mailer.raise_delivery_errors = true
 # Enable threaded mode
 # config.threadsafe!
 
+# http://sendgrid.com/documentation/settingsSMTPRubyEmail
 config.action_mailer.smtp_settings = {
   :address        => ENV['SMTP_ADDRESS'],
   :user_name      => ENV['SMTP_USERNAME'],
   :password       => ENV['SMTP_PASSWORD'],
   :domain         => 'ube.ca',
   :authentication => :plain,
+  :port           => 25
 }
