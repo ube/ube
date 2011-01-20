@@ -1,7 +1,7 @@
 <% form_tag person_path('dummy'), :method => :delete do -%>
 <p class="nav">
   <%= check_box_tag 'checkall' %> <%= label_tag :checkall, 'Select all' %>
-  and <%= submit_tag 'Delete Selected', :disable_with => 'Please wait...' %> 
+  and <%= submit_tag 'Delete Selected', :disable_with => 'Please wait...' %>
   <%= link_to 'Add an account', new_person_path, :class => 'new' %>
 </p>
 

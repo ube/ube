@@ -140,7 +140,7 @@ class Book < ActiveRecord::Base
     end
   end
 
-  protected
+protected
 
   def mark_instock
     if lost?

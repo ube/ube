@@ -11,7 +11,7 @@ class SessionsControllerTest < ActionController::TestCase
     @controller = SessionsController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
-    @emails     = ActionMailer::Base.deliveries 
+    @emails     = ActionMailer::Base.deliveries
     @emails.clear
 
     @request.cookies['ube'] = '2f4dd9980c644a91fb8c4ecc93c3cc701181a20274378a521407573a57d2db666cf54d475e8d091b9de00bc76c24eb6b67a3b4dea2b50ad481468bc5fc58f931'
@@ -90,9 +90,10 @@ class SessionsControllerTest < ActionController::TestCase
     assert_redirected_to new_session_path
   end
 
-  protected
-    # same password for all fixtures
-    def create_session(person, options = {})
-      post :create, :person => { :name => people(person).name, :password => 'testpass' }.merge(options)
-    end
+protected
+
+  # same password for all fixtures
+  def create_session(person, options = {})
+    post :create, :person => { :name => people(person).name, :password => 'testpass' }.merge(options)
+  end
 end

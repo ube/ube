@@ -4,7 +4,7 @@ class SellerTest < ActiveSupport::TestCase
   fixtures :books, :exchanges, :sellers
 
   def setup
-    @emails = ActionMailer::Base.deliveries 
+    @emails = ActionMailer::Base.deliveries
     @emails.clear
   end
 
@@ -228,9 +228,9 @@ class SellerTest < ActiveSupport::TestCase
     assert_filter :email_address, 'EXAMPLE@EXAMPLE.COM', 'example@example.com'
   end
 
-  protected
-    def create_record(options = {})
-      Seller.create({ :name => 'James McKinney' }.merge(options))
-    end
+protected
 
+  def create_record(options = {})
+    Seller.create({ :name => 'James McKinney' }.merge(options))
+  end
 end

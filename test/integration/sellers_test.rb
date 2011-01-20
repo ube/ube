@@ -226,13 +226,12 @@ class SellersTest < ActionController::IntegrationTest
     end
   end
 
-  protected
-    def valid_record(options = {})
-      { :name => 'James', 
-        :telephone => '5557779999', 
-        :email_address => 'james@example.com', 
-      }.merge(options)
-    end  
+protected
 
-
+  def valid_record(options = {})
+    { :name => 'James',
+      :telephone => '5557779999',
+      :email_address => 'james@example.com',
+    }.merge(options)
+  end
 end

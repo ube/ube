@@ -89,9 +89,9 @@ class ReportsController < ApplicationController
     redirect_to :back
   end
 
-  protected
+protected
 
   def today?(array, date)
     !array.empty? && array.first[:date] == date.to_s
-  end  
+  end
 end

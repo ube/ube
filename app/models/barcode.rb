@@ -62,7 +62,7 @@ class Barcode < ActiveRecord::Base
     self.retail_price
   end
 
-  protected
+protected
 
   def sanitize
     [ :title, :author, :edition ].each do |attr|

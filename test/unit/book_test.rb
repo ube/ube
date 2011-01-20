@@ -4,7 +4,7 @@ class BookTest < ActiveSupport::TestCase
   fixtures :books, :barcodes, :sellers, :orders, :exchanges, :addresses
 
   def setup
-    @emails = ActionMailer::Base.deliveries 
+    @emails = ActionMailer::Base.deliveries
     @emails.clear
   end
 
@@ -269,12 +269,13 @@ class BookTest < ActiveSupport::TestCase
     assert_equal 0, @emails.size
   end
   
-  protected
-    def create_record(options = {})
-      Book.create({ :price => 20, 
-                    :barcode_id => barcodes(:hamlet).id,
-                    :seller_id => sellers(:jack).id,
-                  }.merge(options))
-    end
+protected
 
+  def create_record(options = {})
+    Book.create({
+      :price => 20,
+      :barcode_id => barcodes(:hamlet).id,
+      :seller_id => sellers(:jack).id,
+    }.merge(options))
+  end
 end

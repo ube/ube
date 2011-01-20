@@ -46,7 +46,7 @@ class Exchange < ActiveRecord::Base
     Date.current > reclaim_ends_on
   end
 
-  protected
+protected
 
   def update_sale_prices_on_books
     if handling_fee_changed?

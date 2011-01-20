@@ -73,8 +73,8 @@ table.list .secondary {
 table.list tfoot.pages td {
   padding-top: 1em;
   border-top: 1px solid #ccc;
-  font-size: 90%; 
-  font-weight: normal; 
+  font-size: 90%;
+  font-weight: normal;
 }
 table.list tfoot.pages a,
 table.list tfoot.pages a:visited,

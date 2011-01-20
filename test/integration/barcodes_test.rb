@@ -102,13 +102,13 @@ class BarcodesTest < ActionController::IntegrationTest
     end
   end
 
-  protected
-    def valid_record(options = {})
-      { :title => 'Faust', 
-        :author => 'Marlowe', 
-        :edition => '1', 
-        :retail_price => 10, 
-      }.merge(options)
-    end  
+protected
 
+  def valid_record(options = {})
+    { :title => 'Faust',
+      :author => 'Marlowe',
+      :edition => '1',
+      :retail_price => 10,
+    }.merge(options)
+  end
 end

@@ -49,7 +49,7 @@ class Notifier < ActionMailer::Base
     subject     'Your book was incorrectly marked sold at ube.ca'
   end
 
-  protected
+protected
 
   def prepare_message(id)
     book = Book.with([ :barcode, :seller ]).find(id)

@@ -70,12 +70,9 @@ class BooksController < ApplicationController
     flash[:notice] = "Book ##{book.label} Deleted."
     redirect_to seller_path(seller, :page => params[:page], :sort_key => params[:sort_key], :sort_order => params[:sort_order])
   end
-  
-  def bulk_delete
-    render :text => "hooha"
-  end
-  
-  protected
+
+protected
+
   def conditions
     [ :cdrom, :study_guide, :package, :access_code, :state ].inject({}) do |memo, param|
       memo[param] = params[param] unless params[param].blank?

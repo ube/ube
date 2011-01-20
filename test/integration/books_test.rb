@@ -199,23 +199,23 @@ class BooksTest < ActionController::IntegrationTest
     end
   end
 
-  protected
-    def valid_book(options = {})
-      { :price => '9', 
-        :cdrom => '1', 
-        :study_guide => '1', 
-        :package => '1', 
-        :access_code => '1' 
-      }.merge(options)
-    end  
+protected
 
-    def valid_barcode(options = {})
-      { :tag => '9',
-        :title => 'Faust', 
-        :author => 'Marlowe', 
-        :edition => '1', 
-        :retail_price => 10, 
-      }.merge(options)
-    end  
+  def valid_book(options = {})
+    { :price => '9',
+      :cdrom => '1',
+      :study_guide => '1',
+      :package => '1',
+      :access_code => '1',
+    }.merge(options)
+  end
 
+  def valid_barcode(options = {})
+    { :tag => '9',
+      :title => 'Faust',
+      :author => 'Marlowe',
+      :edition => '1',
+      :retail_price => 10,,
+    }.merge(options)
+  end
 end

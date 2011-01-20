@@ -46,7 +46,7 @@ h1 {
   text-indent: -1000em;
   /*  IE 5 Hack \* /
   overflow: hidden;
-  /* end hack */ 
+  /* end hack */
   text-decoration: none;
 }
 h2, h3 {

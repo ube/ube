@@ -27,7 +27,7 @@ class Order < ActiveRecord::Base
     self.books.inject(0) { |memo, book| memo + book.sale_price }
   end
 
-  protected
+protected
 
   def clear
     self.books.each { |book| book.stock! }

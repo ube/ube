@@ -98,7 +98,7 @@ class Person < ActiveRecord::Base
     end
   end
 
-  protected
+protected
 
   def password_required?
     password_hash.blank? || @password_required

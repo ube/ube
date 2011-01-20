@@ -68,19 +68,20 @@ class ExchangesTest < ActionController::IntegrationTest
     end
   end
 
-  protected
-    def valid_record(options = {})
-      { :name => 'McGill Book Exchange', 
-        :email_address => 'mcgill@example.com',
-        :handling_fee => 20,
-        :sale_starts_on => 2.week.ago,
-        :sale_ends_on => Time.current,
-        :reclaim_starts_on => Time.current,
-        :reclaim_ends_on => 2.weeks.from_now,
-        :ends_at => 2.weeks.from_now,
-        :service_fee => 1,
-        :early_reclaim_penalty => 5,
-        :hours => '8am to 4pm',
-      }.merge(options)
-    end
+protected
+
+  def valid_record(options = {})
+    { :name => 'McGill Book Exchange',
+      :email_address => 'mcgill@example.com',
+      :handling_fee => 20,
+      :sale_starts_on => 2.week.ago,
+      :sale_ends_on => Time.current,
+      :reclaim_starts_on => Time.current,
+      :reclaim_ends_on => 2.weeks.from_now,
+      :ends_at => 2.weeks.from_now,
+      :service_fee => 1,
+      :early_reclaim_penalty => 5,
+      :hours => '8am to 4pm',
+    }.merge(options)
+  end
 end

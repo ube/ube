@@ -109,12 +109,13 @@ class BarcodeTest < ActiveSupport::TestCase
     assert_nil o.edition
   end
 
-  protected
-    def create_record(options = {})
-      Barcode.create({ :tag => '9999999999', 
-                       :title => 'Ulysses',
-                       :author => 'James Joyce',
-                      }.merge(options))
-    end
+protected
 
+  def create_record(options = {})
+    Barcode.create({
+      :tag => '9999999999',
+      :title => 'Ulysses',
+      :author => 'James Joyce',
+    }.merge(options))
+  end
 end

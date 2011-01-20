@@ -11,7 +11,7 @@ class PeopleControllerTest < ActionController::TestCase
     @controller = PeopleController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
-    @emails     = ActionMailer::Base.deliveries 
+    @emails     = ActionMailer::Base.deliveries
     @emails.clear
   end
 
@@ -87,13 +87,14 @@ class PeopleControllerTest < ActionController::TestCase
     assert_report :reset, 'reset', { :token => people(:jack).password_token }, :person, nil, :password
   end
 
-  protected
+protected
 
   def create_person(options = {})
-    post :create, :person => { :name => 'james', 
-                               :email_address => 'james@example.com', 
-                               :password => 'testpass', 
-                               :password_confirmation => 'testpass' 
-                             }.merge(options)
+    post :create, :person => {
+      :name => 'james',
+      :email_address => 'james@example.com',
+      :password => 'testpass',
+      :password_confirmation => 'testpass',
+    }.merge(options)
   end
 end

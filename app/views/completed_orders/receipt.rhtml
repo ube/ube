@@ -3,8 +3,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <title>Receipt for Transaction Number <%= @order.id %></title>
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/reset/reset-min.css"> 
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/fonts/fonts-min.css"> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/reset/reset-min.css">
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.3.1/build/fonts/fonts-min.css">
 <%= stylesheet_link_tag 'receipt', :media => 'all' %>
 <%= stylesheet_link_tag 'print', :media => 'print' %>
 </head>
@@ -49,7 +49,7 @@
   </table>
 </div>
 
-<div id="ft">      
+<div id="ft">
   <p><strong>No refund or exchange.<br />All sales are final.</strong></p>
   <p>Sales until <%=h Exchange.current.sale_ends_on.strftime('%B %e, %Y') %></p>
   <p><strong>Search for books at <span class="url">www.ube.ca</span></strong></p>

@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   helper :sort, :books
 
-  protected
+protected
 
   def find_cart
     @cart = (session[:cart] ||= Cart.new)

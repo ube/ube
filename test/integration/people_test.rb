@@ -197,12 +197,13 @@ class PeopleTest < ActionController::IntegrationTest
     end
   end
 
-  protected
-    def valid_record(options = {})
-      { :name => 'nadia', 
-        :email_address => 'nadia@example.com', 
-        :password => 'password', 
-        :password_confirmation => 'password',
-      }.merge(options)
-    end
+protected
+
+  def valid_record(options = {})
+    { :name => 'nadia',
+      :email_address => 'nadia@example.com',
+      :password => 'password',
+      :password_confirmation => 'password',
+    }.merge(options)
+  end
 end

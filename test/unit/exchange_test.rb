@@ -67,20 +67,21 @@ class ExchangeTest < ActiveSupport::TestCase
     assert_filter :email_address, 'EXAMPLE@EXAMPLE.COM', 'example@example.com'
   end
 
-  protected
-    def create_record(options = {})
-      Exchange.create({ :name => 'McGill Book Exchange', 
-                        :email_address => 'exchange@example.com',
-                        :handling_fee => 10,
-                        :sale_starts_on => 1.week.ago,
-                        :sale_ends_on => 1.week.from_now,
-                        :reclaim_starts_on => 1.weeks.from_now,
-                        :reclaim_ends_on => 3.weeks.from_now,
-                        :ends_at => 3.weeks.from_now,
-                        :service_fee => 1,
-                        :early_reclaim_penalty => 5,
-                        :hours => '10am to 6pm',
-                      }.merge(options))
-    end
+protected
 
+  def create_record(options = {})
+    Exchange.create({
+      :name => 'McGill Book Exchange',
+      :email_address => 'exchange@example.com',
+      :handling_fee => 10,
+      :sale_starts_on => 1.week.ago,
+      :sale_ends_on => 1.week.from_now,
+      :reclaim_starts_on => 1.weeks.from_now,
+      :reclaim_ends_on => 3.weeks.from_now,
+      :ends_at => 3.weeks.from_now,
+      :service_fee => 1,
+      :early_reclaim_penalty => 5,
+      :hours => '10am to 6pm',
+    }.merge(options))
+  end
 end

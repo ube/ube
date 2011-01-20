@@ -4,7 +4,7 @@ class PersonTest < ActiveSupport::TestCase
   fixtures :people, :obligations, :roles
 
   def setup
-    @emails = ActionMailer::Base.deliveries 
+    @emails = ActionMailer::Base.deliveries
     @emails.clear
   end
 
@@ -122,7 +122,7 @@ class PersonTest < ActiveSupport::TestCase
 
   # Password reset
 
-  def test_should_not_send_password_reset_with_wrong_email_address  
+  def test_should_not_send_password_reset_with_wrong_email_address
     assert_raise(ActiveRecord::RecordNotFound) { Person.send_password_reset('wrong') }
   end
 
@@ -209,23 +209,26 @@ class PersonTest < ActiveSupport::TestCase
     assert !people(:jack).reload.can?('edit_exchange')
   end
 
-  protected
-    def create_record(options = {})
-      Person.create({ :name => 'dave5', 
-                      :email_address => 'dave@example.com',
-                      :password => 'dave_password',
-                      :password_confirmation => 'dave_password' }.merge(options))
-    end
+protected
 
-    def assert_create_token(name, fixture, expiry = false)
-      assert_nil fixture.send("#{name}_token")
-      fixture.send("create_#{name}_token!")
-      assert_not_nil fixture.send("#{name}_token")
-    end
+  def create_record(options = {})
+    Person.create({
+      :name => 'dave5',
+      :email_address => 'dave@example.com',
+      :password => 'dave_password',
+      :password_confirmation => 'dave_password'
+    }.merge(options))
+  end
 
-    def assert_destroy_token(name, fixture, expiry = false)
-      assert_not_nil fixture.send("#{name}_token")
-      fixture.send("destroy_#{name}_token!")
-      assert_nil fixture.send("#{name}_token")
-    end
+  def assert_create_token(name, fixture, expiry = false)
+    assert_nil fixture.send("#{name}_token")
+    fixture.send("create_#{name}_token!")
+    assert_not_nil fixture.send("#{name}_token")
+  end
+
+  def assert_destroy_token(name, fixture, expiry = false)
+    assert_not_nil fixture.send("#{name}_token")
+    fixture.send("destroy_#{name}_token!")
+    assert_nil fixture.send("#{name}_token")
+  end
 end

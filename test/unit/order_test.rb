@@ -72,9 +72,9 @@ class OrderTest < ActiveSupport::TestCase
     assert_equal 19, orders(:pending1).total
   end
 
-  protected
-    def create_record(options = {})
-      Order.create(options)
-    end
+protected
 
+  def create_record(options = {})
+    Order.create(options)
+  end
 end

@@ -19,7 +19,7 @@ module ApplicationHelper
   # If the current action matches an action in options[:actions], set the tab to active
   # If the current action matches an action in options[:if], add a link to the tab
   def tab(name, path, options)
-    if (options[:controllers].blank? or options[:controllers].include?(params[:controller])) and 
+    if (options[:controllers].blank? or options[:controllers].include?(params[:controller])) and
        (options[:actions].blank? or options[:actions].include?(params[:action]) and
        not (options[:except]||[]).include?(params[:action]))
       if (options[:actions]||['index']).include?(params[:action])

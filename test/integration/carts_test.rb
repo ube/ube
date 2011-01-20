@@ -99,7 +99,7 @@ class CartsTest < ActionController::IntegrationTest
     end
   end
 
-  def test_destroy_cart  
+  def test_destroy_cart
     new_session_as(:jack) do |jack|
       jack.adds_to_cart(:instock)
 
@@ -112,5 +112,4 @@ class CartsTest < ActionController::IntegrationTest
       jack.assert jack.assigns(:cart).total_price.zero?
     end
   end
-
 end

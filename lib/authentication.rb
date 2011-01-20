@@ -31,7 +31,7 @@ module Authentication
       true
     end
 
-    protected
+  protected
 
     # Authentication
 

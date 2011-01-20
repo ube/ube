@@ -65,18 +65,19 @@ class NotifierTest < ActionMailer::TestCase
     check_email_to_seller(response, book)
   end
 
-  private
-    def check_email_to_seller(response, book)
-      assert_equal "dawson@ube.ca", response.from[0]
-      assert_equal book.seller.email_address, response.to[0]
+protected
 
-      assert_match /#{book.seller.name} -/, response.body
-      assert_match /Title: #{book.barcode.title}/, response.body
-      assert_match /Author: #{book.barcode.author}/, response.body
-      assert_match /#{Exchange.current.address.address}/, response.body
-      assert_match /#{Exchange.current.address.city}, #{Exchange.current.address.region}/, response.body
-      assert_match %r{http://ube.ca/status\?email=jack%40example.com}, response.body
-      assert_match %r{http://ube.ca/about/help}, response.body
-      assert_match %r{http://ube.ca/}, response.body
-    end
+  def check_email_to_seller(response, book)
+    assert_equal "dawson@ube.ca", response.from[0]
+    assert_equal book.seller.email_address, response.to[0]
+
+    assert_match /#{book.seller.name} -/, response.body
+    assert_match /Title: #{book.barcode.title}/, response.body
+    assert_match /Author: #{book.barcode.author}/, response.body
+    assert_match /#{Exchange.current.address.address}/, response.body
+    assert_match /#{Exchange.current.address.city}, #{Exchange.current.address.region}/, response.body
+    assert_match %r{http://ube.ca/status\?email=jack%40example.com}, response.body
+    assert_match %r{http://ube.ca/about/help}, response.body
+    assert_match %r{http://ube.ca/}, response.body
+  end
 end

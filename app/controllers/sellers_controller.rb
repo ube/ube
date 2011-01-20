@@ -80,5 +80,4 @@ class SellersController < ApplicationController
     end
     redirect_to sellers_path
   end
-  
 end

@@ -104,7 +104,7 @@ class Seller < ActiveRecord::Base
     end
   end
 
-  protected
+protected
 
   def before_destroy
     books.empty?
