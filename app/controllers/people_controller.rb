@@ -8,7 +8,7 @@ class PeopleController < ApplicationController
   deny_unless_user_can 'edit_accounts', :except => [ :change_password, :forgot, :reset ]
 
   def index
-    @people = Person.with(:roles).ordered('name')
+    @people = Person.ordered('name').find(:all,:include=>:roles)
   end
 
   def new
@@ -20,7 +20,7 @@ class PeopleController < ApplicationController
   end
 
   def edit
-    @person = params[:id] ? Person.with(:roles).find(params[:id], :readonly => false) : Person.new
+    @person = params[:id] ? Person.find(params[:id], :readonly => false,:include=>:roles) : Person.new
     @roles = Person.current.available_roles
 
     if request.post? or request.put?

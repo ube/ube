@@ -87,7 +87,7 @@ module Authentication
     # gets the current person on each request so that the session never goes stale
     def create_current_person
       if logged_in?
-        Person.current = Person.with(:roles).find(session[:person])
+        Person.current = Person.find(session[:person],:include=>:roles)
       else
         Person.current = nil
       end

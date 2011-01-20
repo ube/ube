@@ -1,4 +1,5 @@
 class Seller < ActiveRecord::Base
+  require 'utility_scopes'
   cattr_accessor :current
 
   attr_protected :contract_printed_at, :welcome_email_sent_at, :paid_service_fee_at, :late_reclaimer_on, :welcome_back_sent_on, :reclaim_reminder_sent_on, :created_at, :updated_at, :delta

@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  require 'utility_scopes'
   attr_protected :completed_at, :created_at, :updated_at, :created_by, :updated_by
 
   has_many :books

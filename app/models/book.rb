@@ -1,4 +1,5 @@
 class Book < ActiveRecord::Base
+  require 'utility_scopes'
   class InOrder < RuntimeError; end
   class NotInStock < RuntimeError; end
 

@@ -58,7 +58,7 @@ class BarcodesController < ApplicationController
   end
 
   def destroy
-    barcode = Barcode.with(:books).find(params[:id])
+    barcode = Barcode.find(params[:id],:include=>:books)
     if barcode.books.empty?
       barcode.destroy
       flash[:notice] = 'Barcode Deleted.'

@@ -1,4 +1,5 @@
 require_dependency 'cart'
+require 'will_paginate'
 
 class ApplicationController < ActionController::Base
   QUERY_SUBST = {

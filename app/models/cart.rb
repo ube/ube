@@ -1,4 +1,5 @@
 class Cart
+  require 'utility_scopes'
   class AlreadyInCart < RuntimeError; end
   class NotInCart < RuntimeError; end
 

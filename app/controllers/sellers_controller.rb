@@ -51,7 +51,7 @@ class SellersController < ApplicationController
 
   def contract
     @seller   = Seller.find(params[:id])
-    @books    = @seller.books.unreclaimed.with(:barcode)
+    @books    = @seller.books.with(:barcode).unreclaimed
     @seller.print_contract!
     @seller.send_welcome_email!
     render :layout => false

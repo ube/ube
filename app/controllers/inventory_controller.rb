@@ -4,7 +4,7 @@ class InventoryController < ApplicationController
   end
 
   def all
-    @books = Book.instock.with(:barcode).ordered('label')
+    @books = Book.instock.ordered('label').find(:all,:include=>:barcode)
     @page_title = 'Inventory'
     render :layout => false
   end

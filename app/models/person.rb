@@ -1,5 +1,6 @@
 require 'digest/sha2'
 class Person < ActiveRecord::Base
+  require 'utility_scopes'
   class NotAuthenticated < RuntimeError; end
 
   # Stores the ID of the person who is currently logged in

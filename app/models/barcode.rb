@@ -1,4 +1,6 @@
 class Barcode < ActiveRecord::Base
+  require 'utility_scopes'
+  
   EDITION_SUBST = {
    ','          => ' ',
    'Edition'    => '',

@@ -11,6 +11,8 @@ gem 'mislav-will_paginate'
 gem 'RedCloth'
 gem 'thoughtbot-paperclip'
 gem 'yfactorial-utility_scopes'
+gem 'rdig'
+gem 'rr'
 
 group :production do
   gem "pg", '0.9.0'

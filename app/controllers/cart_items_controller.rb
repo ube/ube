@@ -2,7 +2,7 @@ class CartItemsController < ApplicationController
 
   def index
     # @cart.books is an array of book IDs
-    @books = Book.with(:barcode).find(@cart.books)
+    @books = Book.find(@cart.books,:include=>:barcode)
   end
 
   def update

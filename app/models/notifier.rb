@@ -1,4 +1,5 @@
 class Notifier < ActionMailer::Base
+  require 'utility_scopes'
   cattr_accessor :from_email_address
 
   default_url_options[:host] = 'ube.ca'
