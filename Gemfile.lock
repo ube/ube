@@ -20,6 +20,9 @@ GEM
       mime-types
       xml-simple
     builder (3.0.0)
+    ferret (0.11.6)
+      rake (> 0.0.0)
+    hpricot (0.8.3)
     jk-ferret (0.11.8.2)
       rake
     jrails (0.6.0)
@@ -36,6 +39,9 @@ GEM
       activesupport (= 2.3.4)
       rake (>= 0.8.3)
     rake (0.8.7)
+    rdig (0.3.5)
+      ferret (>= 0.10.0)
+      hpricot (>= 0.6)
     rr (1.0.2)
     sqlite3-ruby (1.2.5)
     utility_scopes (0.3.1)
@@ -53,6 +59,7 @@ DEPENDENCIES
   jrails
   paperclip
   rails (= 2.3.4)
+  rdig
   rr
   sqlite3-ruby (= 1.2.5)
   utility_scopes

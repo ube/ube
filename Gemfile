@@ -7,6 +7,7 @@ gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3'
 gem 'andand'
 
 # Models
+gem 'rdig'
 gem 'acts_as_ferret', '0.4.8.2'
 gem 'aws-s3'
 gem 'paperclip'

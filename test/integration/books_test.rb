@@ -215,7 +215,7 @@ protected
       :title => 'Faust',
       :author => 'Marlowe',
       :edition => '1',
-      :retail_price => 10,,
+      :retail_price => 10,
     }.merge(options)
   end
 end
