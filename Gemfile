@@ -18,3 +18,5 @@ gem 'will_paginate'
 # Views
 gem 'jrails'
 gem 'RedCloth'
+
+gem 'rr', :group => :test
