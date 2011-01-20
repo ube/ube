@@ -1,4 +1,8 @@
-<% @page_title = Exchange.current.name||nil -%>
+<% if Exchange.current.present? -%>
+	<% @page_title = Exchange.current.name -%>
+<% else -%>
+	<% @page_title = "" -%>
+<% end -%>
 <% @body_class = 'wide thin' -%>
 <% dialog 'buyers' do %>
 <h2>Buyers</h2>
