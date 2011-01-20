@@ -33,7 +33,8 @@ class Exchange < ActiveRecord::Base
   after_update :update_sale_prices_on_books
 
   def self.current
-    @@current ||= Exchange.with(:address).first
+#    @@current ||= Exchange.with(:address).first # with METHOD IN THIS LINE WAS CRASHING THE APP -- SEEMS TO RELATE TO A PLUGIN JAMES WROTE BUT I CAN'T FIND THIS with METHOD DEFINED ANYWHERE SO NOT SURE WHAT IT WAS MEAN TO DO... GUESSING
+    @@current ||= Exchange.find(:first,:include=>:address)
   end
 
   def self.destroy_current
