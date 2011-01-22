@@ -6,7 +6,7 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
-heroku_env = File.join(RAILS_ROOT, 'config', 'heroku_env.rb')
+heroku_env = File.join(Rails.root, 'config', 'heroku_env.rb')
 load(heroku_env) if File.exists?(heroku_env)
 
 Rails::Initializer.run do |config|
