@@ -4,3 +4,4 @@ db/*.sqlite3
 log/*.log
 log/*.out
 tmp/**
+config/heroku_env.rb

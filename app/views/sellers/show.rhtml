@@ -46,8 +46,6 @@
   <%= link_to 'Reclaim all', seller_reclamation_path(:seller_id => @seller, :all => true), :title => 'Press Alt+R to reclaim all books', :accesskey => 'r', :method => :put %>
 <% end -%>
   or
-  <%= link_to 'Delete all', seller_reclamation_path(:seller_id => @seller, :all => true), :title => 'Press Alt+D to delete all books', :accesskey => 'd', :method => :post %>
-  or
   <span class="print">
   <%= link_to 'Print a contract', contract_seller_path(@seller), :title => 'Press Alt+P to print a contract', :accesskey => 'p' %>
   </span>
@@ -147,7 +145,5 @@
       <dd>Reclaim all books</dd>
     <dt>Alt+E:</dt>
       <dd>Edit seller's contact information</dd>
-    <dt>Alt+D:</dt>
-      <dd>Delete all books</dd>
   </dl>
 </div>

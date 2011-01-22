@@ -5,11 +5,7 @@ class ReclamationsController < ApplicationController
   # TODO doesn't belong in this controller
   def create # TODO test this method
     seller = Seller.find(params[:seller_id])
-    if params[:all]
-      books = seller.books.all
-    else
-      books = seller.books.all :conditions => { :id => [params[:id]].flatten }
-    end
+    books = seller.books.all :conditions => { :id => [params[:id]].flatten }
 
     unless books.empty?
       books.each { |book| book.destroy }
