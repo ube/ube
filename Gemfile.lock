@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    RedCloth (4.2.3)
+    RedCloth (4.2.9)
     actionmailer (2.3.4)
       actionpack (= 2.3.4)
     actionpack (2.3.4)
@@ -20,19 +20,22 @@ GEM
       mime-types
       xml-simple
     builder (3.0.0)
-    daemons (1.1.0)
+    cocaine (0.2.1)
+    daemons (1.1.4)
     delayed_job (2.0.5)
       daemons
-    ferret (0.11.6)
-      rake (> 0.0.0)
-    hpricot (0.8.3)
-    jk-ferret (0.11.8.2)
+    ferret (0.11.8.1)
+      rake
+    hpricot (0.8.5)
+    jk-ferret (0.11.8.3)
       rake
     jrails (0.6.0)
-    mime-types (1.16)
-    paperclip (2.3.8)
-      activerecord
-      activesupport
+    mime-types (1.17.2)
+    paperclip (2.4.5)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     rack (1.0.1)
     rails (2.3.4)
       actionmailer (= 2.3.4)
@@ -41,15 +44,15 @@ GEM
       activeresource (= 2.3.4)
       activesupport (= 2.3.4)
       rake (>= 0.8.3)
-    rake (0.8.7)
+    rake (0.9.2.2)
     rdig (0.3.5)
       ferret (>= 0.10.0)
       hpricot (>= 0.6)
-    rr (1.0.2)
+    rr (1.0.4)
     sqlite3-ruby (1.2.5)
     utility_scopes (0.3.1)
-    will_paginate (2.3.15)
-    xml-simple (1.0.12)
+    will_paginate (3.0.2)
+    xml-simple (1.1.1)
 
 PLATFORMS
   ruby
@@ -60,6 +63,7 @@ DEPENDENCIES
   andand
   aws-s3
   delayed_job (= 2.0.5)
+  ferret (= 0.11.8.1)
   jrails
   paperclip
   rails (= 2.3.4)
