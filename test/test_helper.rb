@@ -40,10 +40,6 @@ class ActiveSupport::TestCase
   include TestSuite::ModelAssertions
   include TestSuite::BasicAssertions
 
-  ### Stubs ###############################################################
-
-  include RR::Adapters::TestUnit
-
   ### Integration ###############################################################
 
   module MyIntegrationDSL
@@ -90,7 +86,6 @@ class ActiveSupport::TestCase
 
   def new_session
     open_session do |sess|
-      sess.extend(RR::Adapters::TestUnit)
       sess.extend(TestSuite::IntegrationDSL)
       sess.extend(MyIntegrationDSL)
       yield sess if block_given?
