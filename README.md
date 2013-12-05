@@ -4,6 +4,10 @@ Requires Ruby 1.8.7.
 
 ## Commands
 
+### Run tests
+
+    rake
+
 ### Start server
 
     ./script/server
