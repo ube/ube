@@ -38,6 +38,10 @@ Restore a backup locally (omit `--clean` unless the local database already exist
 
     pg_restore --verbose --clean --no-acl --no-owner -h localhost -d ube_development latest.dump
 
+Restore a backup remotely (replace `HEROKU_POSTGRESQL_BROWN` and `a001`):
+
+    heroku pgbackups:restore HEROKU_POSTGRESQL_BROWN a001
+
 ## Heroku Stack
 
     heroku stack
