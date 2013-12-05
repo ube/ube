@@ -58,7 +58,7 @@ class ExchangesTest < ActionController::IntegrationTest
     end
   end
 
-  def test_update # SQLite doesn't support the CEIL function
+  def test_update
     new_session_as(:jack) do |jack|
       assert_change exchanges(:dawson), :name, :email_address, :handling_fee, :sale_starts_on, :sale_ends_on, :reclaim_starts_on, :reclaim_ends_on, :ends_at, :hours do
         jack.put exchange_path, :exchange => valid_record
