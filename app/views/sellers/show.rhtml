@@ -60,26 +60,26 @@
 
 <hr />
 
-<p class="nav">
 <% form_tag seller_reclamation_path(:seller_id => @seller) do -%>
+<p class="nav">
 <%= hidden_field_tag '_method' %>
   <%= check_box_tag 'checkall' %> <%= label_tag :checkall, 'Select all' %>
   and <%= button_tag 'Reclaim Selected', :name => '#_method', :alt => 'put' %>
-<% if Person.current.can? 'undo' -%>
+<%   if Person.current.can? 'undo' -%>
   or <%= button_tag 'Unreclaim Selected', :name => '#_method', :alt => 'delete' %>
-<% end -%>
-<% if Person.current.can? 'reset_exchange' -%>
+<%   end -%>
+<%   if Person.current.can? 'reset_exchange' -%>
   or <%= button_tag 'Delete Selected', :name => '#_method', :alt => 'post' %>
-<% end -%>
+<%   end -%>
 </p>
 
 <table class="list">
   <thead>
   <tr>
     <th style="width: 20px"></th>
-<% if Person.current.can? 'undo' -%>
+<%   if Person.current.can? 'undo' -%>
     <th style="width: 4em"></th>
-<% end -%>
+<%   end -%>
     <%= sort_header_tag 'label' %>
     <th style="width: 20px"></th>
     <%= sort_header_tag 'state', :caption => 'Status', :style => 'width: 7.5em' %>
@@ -102,22 +102,22 @@
   </tfoot>
 
   <tbody>
-<% for book in @books -%>
+<%   for book in @books -%>
   <tr>
     <td><%= check_box_tag 'id[]', book.id, false, :class => 'checkbox' %></td>
-<% if Person.current.can? 'undo' -%>
+<%     if Person.current.can? 'undo' -%>
     <td class="delete"><%= link_to 'Delete', seller_book_path(:seller_id => @seller, :id => book, :page => params[:page], :sort_key => params[:sort_key], :sort_order => params[:sort_order]), :confirm => 'Are you sure you want to delete this book?', :method => :delete %></td>
-<% end -%>
+<%     end -%>
     <td><%=h book.label %></td>
     <td><%= action(book) %></td>
     <td>
       <%= status(book) %>
       <span class="secondary" id="<%= dom_id(book) %>">
-<% if book.instock? -%>
+<%     if book.instock? -%>
         <%= link_to_remote 'Hold', { :url => held_book_path(book), :method => :put }, :class => 'spinner' %>
-<% elsif book.held? -%>
+<%     elsif book.held? -%>
         <%= link_to_remote 'Re-stock', { :url => held_book_path(book), :method => :delete }, :class => 'spinner' %>
-<% end -%>
+<%     end -%>
       </span>
     </td>
     <td><%= link_to h(book.barcode.title), edit_seller_book_path(:seller_id => @seller, :id => book) %></td>
@@ -128,7 +128,7 @@
     <td><%= extras(book) %></td>
     <td><%= link_to image_tag('barcode.png', :alt => 'Edit barcode', :title => 'Edit barcode'), edit_barcode_path(book.barcode), :class => 'image' %></td>
   </tr>
-<% end -%>
+<%   end -%>
   </tbody>
 </table>
 <% end -%>
