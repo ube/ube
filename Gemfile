@@ -9,15 +9,14 @@ gem 'delayed_job', '~> 2.0.5'
 
 # Models
 gem 'ferret', '~> 0.11.8.4'
-gem 'rdig'
-gem 'acts_as_ferret', '~> 0.4.8'
+gem 'acts_as_ferret', '~> 0.4.8' # 0.5 rails >= 3.0
 gem 'aws-s3'
-gem 'paperclip', '~> 2.3.16' # 2.4 requires aws-sdk
+gem 'paperclip', '~> 2.3.16' # 2.4 aws-sdk
 gem 'utility_scopes'
-gem 'mime-types', '~> 1.25' # for aws-s3 and paperclip, mime-types 2.0 requires Ruby 1.9.2
+gem 'mime-types', '~> 1.25' # 2.0 ruby >= 1.9.2 (for aws-s3 and paperclip)
 
 # Controllers
-gem 'will_paginate', '~> 2.3.16' # 3.0 requires Rails 3 or greater
+gem 'will_paginate', '~> 2.3.16' # 3.0 rails >= 3.0
 
 # Views
 gem 'jrails'
