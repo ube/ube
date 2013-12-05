@@ -9,7 +9,7 @@ gem 'delayed_job', '~> 2.0.5'
 
 # Models
 gem 'ferret', '~> 0.11.8.4'
-gem 'acts_as_ferret', '~> 0.4.8' # 0.5 rails >= 3.0
+gem 'acts_as_ferret', '~> 0.4.8' # 0.5 rails >= 3.0 and 0.4 is incompatible with Ruby 1.9.2, see preinitializer.rb
 gem 'aws-s3'
 gem 'paperclip', '~> 2.3.16' # 2.4 aws-sdk
 gem 'utility_scopes'
