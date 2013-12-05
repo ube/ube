@@ -8,5 +8,4 @@ class OrderItemsController < ApplicationController
     flash[:notice] = 'Book Removed.'
     redirect_to orders_path
   end
-
 end

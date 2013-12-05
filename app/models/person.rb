@@ -136,5 +136,4 @@ protected
     end while not block.call(token) if block_given?
     token
   end
-
 end

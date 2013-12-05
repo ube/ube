@@ -94,5 +94,4 @@ class PublicControllerTest < ActionController::TestCase
     assert_equal sellers(:jack), assigns(:seller)
     assert_equal_with_permutation [ books(:instock), books(:sold), books(:lost), books(:held), books(:ordered) ], assigns(:books)
   end
-
 end

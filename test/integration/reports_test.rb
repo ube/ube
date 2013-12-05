@@ -54,5 +54,4 @@ class ReportsTest < ActionController::IntegrationTest
       jack.assert_equal 9, jack.assigns(:total_claims)
     end
   end
-
 end

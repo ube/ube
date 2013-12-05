@@ -143,5 +143,4 @@ ActiveRecord::Schema.define(:version => 20110120171805) do
     t.boolean  "delta"
     t.text     "notes"
   end
-
 end

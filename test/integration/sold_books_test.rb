@@ -67,5 +67,4 @@ class SoldBooksTest < ActionController::IntegrationTest
       jack.assert books(:sold).reload.instock?
     end
   end
-
 end

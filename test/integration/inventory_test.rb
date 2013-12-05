@@ -46,5 +46,4 @@ class InventoryTest < ActionController::IntegrationTest
       jack.assert_equal [ books(:lost) ], jack.assigns(:books)
     end
   end
-
 end

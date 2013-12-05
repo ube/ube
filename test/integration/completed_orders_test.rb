@@ -69,5 +69,4 @@ class CompletedOrdersTest < ActionController::IntegrationTest
       jack.assert_equal orders(:completed1), jack.assigns(:order)
     end
   end
-
 end

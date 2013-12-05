@@ -10,5 +10,4 @@ class CartsController < ApplicationController
       page.visual_effect :highlight, 'cart_empty'
     end
   end
-
 end

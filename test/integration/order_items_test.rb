@@ -14,5 +14,4 @@ class OrderItemsTest < ActionController::IntegrationTest
       jack.is_redirected_to 'orders/index'
     end
   end
-
 end
