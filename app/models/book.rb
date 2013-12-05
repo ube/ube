@@ -7,7 +7,7 @@ class Book < ActiveRecord::Base
   belongs_to :seller
   belongs_to :barcode
   belongs_to :order
-  
+
   belongs_to :creator, :class_name => 'Person', :foreign_key => 'created_by'
   belongs_to :updater, :class_name => 'Person', :foreign_key => 'updated_by'
 
@@ -27,7 +27,7 @@ class Book < ActiveRecord::Base
   named_scope :reclaimed, :conditions => { :state => 'reclaimed' }
   named_scope :unreclaimed, :conditions => { :reclaimed_at => nil }
   named_scope :reclaimable, :conditions => "state <> 'ordered' AND reclaimed_at IS NULL"
-  
+
   # for inventory controller
   named_scope :lost_on, lambda { |date| { :conditions => [ 'SUBSTR(CAST(lost_at AS CHAR(10)), 0, 11) = ?', date.to_date ], :include => :barcode } }
   named_scope :sold_on, lambda { |date| { :conditions => [ 'SUBSTR(CAST(sold_at AS CHAR(10)), 0, 11) = ?', date.to_date ], :include => :barcode } }
@@ -46,11 +46,11 @@ class Book < ActiveRecord::Base
   event :lose do
     transitions :from => :instock, :to => :lost
   end
-  
+
   event :hold do
     transitions :from => [ :instock, :unreclaimed ], :to => :held
   end
-  
+
   event :order do
     transitions :from => :instock, :to => :ordered
   end
@@ -149,7 +149,7 @@ protected
       update_attribute :held_at, nil
     elsif sold?
       update_attribute :sold_at, nil
-      
+
       if order.nil?
         logger.warn "[ERROR] Sold book #{self.id} had no order."
       else
@@ -165,7 +165,7 @@ protected
   def mark_lost
     update_attribute :lost_at, Time.current
   end
-  
+
   def mark_held
     if instock? # don't run on unreclaim!
       update_attribute :held_at, Time.current

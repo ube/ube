@@ -1,6 +1,6 @@
 module ApplicationHelper
   include AccessibleForm
-  
+
   def private?
     !%w(about public).include?(params[:controller]) && !%w(forgot reset).include?(params[:action]) || params[:action] == 'dashboard' || params[:controller] == 'exchanges'
   end

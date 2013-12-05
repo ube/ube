@@ -18,7 +18,7 @@ class ReclamationsController < ApplicationController
 
     redirect_to seller_path(seller)
   end
-  
+
   def update
     seller = Seller.find(params[:seller_id])
     if params[:all]

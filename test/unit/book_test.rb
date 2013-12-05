@@ -107,7 +107,7 @@ class BookTest < ActiveSupport::TestCase
     assert_not_nil books(:instock).lost_at
     assert books(:instock).lost?
   end
-  
+
   def test_should_find_book
     assert books(:lost).lost?
     books(:lost).stock!
@@ -116,7 +116,7 @@ class BookTest < ActiveSupport::TestCase
   end
 
   # Held
-  
+
   def test_should_hold_book
     assert books(:instock).instock?
     books(:instock).hold!
@@ -240,7 +240,7 @@ class BookTest < ActiveSupport::TestCase
   end
 
   # Reclaim held
-  
+
   def test_should_reclaim_held
     books(:held).reclaim!
     assert_in_delta Time.current.to_i, books(:held).reclaimed_at.to_i, 1.minute
@@ -268,7 +268,7 @@ class BookTest < ActiveSupport::TestCase
     # don't send emails for lost books
     assert_equal 0, @emails.size
   end
-  
+
 protected
 
   def create_record(options = {})
