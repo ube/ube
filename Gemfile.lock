@@ -29,6 +29,7 @@ GEM
     jk-ferret (0.11.8.3)
       rake
     jrails (0.6.0)
+    json (1.7.7)
     mime-types (1.25.1)
     paperclip (2.3.16)
       activerecord (>= 2.3.0)
@@ -46,7 +47,6 @@ GEM
       rake (>= 0.8.3)
     rake (10.1.0)
     rr (1.1.2)
-    sqlite3-ruby (1.2.5)
     utility_scopes (0.3.1)
     will_paginate (2.3.16)
     xml-simple (1.1.2)
@@ -62,11 +62,11 @@ DEPENDENCIES
   delayed_job (~> 2.0.5)
   ferret (~> 0.11.8.4)
   jrails
+  json
   mime-types (~> 1.25)
   paperclip (~> 2.3.16)
   pg
   rails (= 2.3.18)
   rr
-  sqlite3-ruby (= 1.2.5)
   utility_scopes
   will_paginate (~> 2.3.16)

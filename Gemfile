@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '2.3.18'
 gem 'pg'
-gem 'sqlite3-ruby', '1.2.5', :require => 'sqlite3', :group => :test
 
 # Core
 gem 'andand'
@@ -23,4 +22,5 @@ gem 'will_paginate', '~> 2.3.16' # 3.0 rails >= 3.0
 gem 'jrails'
 gem 'RedCloth'
 
+gem 'json'
 gem 'rr', :group => :test
