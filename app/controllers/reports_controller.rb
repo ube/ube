@@ -3,7 +3,7 @@ class ReportsController < ApplicationController
   deny_unless_user_can 'edit_accounts', :only => [ :outstanding, :summary ]
 
   def emails
-    @emails = Seller.all.collect(&:email_address).reject(&:blank?)
+    @emails = Seller.all(:conditions => ["email_address != '' AND contract_printed_at > ?", 6.months.ago]).collect(&:email_address)
   end
 
   def outstanding
