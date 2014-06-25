@@ -24,6 +24,12 @@ gem 'jrails'
 gem 'RedCloth'
 
 gem 'json'
-gem 'rr', :group => :test
 
-gem 'newrelic_rpm', :group => :production
+group :test do
+  gem 'rr'
+end
+
+group :production do
+  gem 'unicorn'
+  gem 'newrelic_rpm'
+end

@@ -30,6 +30,7 @@ GEM
       rake
     jrails (0.6.0)
     json (1.7.7)
+    kgio (2.9.2)
     mime-types (1.25.1)
     newrelic_rpm (3.6.0.78)
     paperclip (2.3.16)
@@ -46,8 +47,13 @@ GEM
       activeresource (= 2.3.18)
       activesupport (= 2.3.18)
       rake (>= 0.8.3)
+    raindrops (0.13.0)
     rake (10.1.0)
     rr (1.1.2)
+    unicorn (4.8.3)
+      kgio (~> 2.6)
+      rack
+      raindrops (~> 0.7)
     utility_scopes (0.3.1)
     will_paginate (2.3.16)
     xml-simple (1.1.2)
@@ -70,5 +76,6 @@ DEPENDENCIES
   pg
   rails (= 2.3.18)
   rr
+  unicorn
   utility_scopes
   will_paginate (~> 2.3.16)
