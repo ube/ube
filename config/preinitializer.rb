@@ -10,7 +10,8 @@ if Gem::Version.new(Bundler::VERSION) <= Gem::Version.new("0.9.24")
    "Run `gem install bundler` to upgrade."
 end
 
-# @note This monkey-patch is needed to run under 1.9.2.
+# This monkey-patch is needed to run under 1.9.2.
+# @see http://j-k.lighthouseapp.com/projects/45560/tickets/177-ruby-192-undefined-method-reveal-for-actsasferretsearchresultsclass
 #
 # module ActsAsFerret
 #   if defined?(BasicObject)

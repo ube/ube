@@ -31,6 +31,7 @@ GEM
     jrails (0.6.0)
     json (1.7.7)
     mime-types (1.25.1)
+    newrelic_rpm (3.6.0.78)
     paperclip (2.3.16)
       activerecord (>= 2.3.0)
       activesupport (>= 2.3.2)
@@ -64,6 +65,7 @@ DEPENDENCIES
   jrails
   json
   mime-types (~> 1.25)
+  newrelic_rpm
   paperclip (~> 2.3.16)
   pg
   rails (= 2.3.18)

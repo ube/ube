@@ -1,6 +1,6 @@
 # Used Book Exchange
 
-Requires Ruby 1.8.7.
+Requires Ruby 1.8.7. The `ferret` gem causes errors in Ruby 1.9.2.
 
 ## Commands
 
@@ -16,7 +16,7 @@ Requires Ruby 1.8.7.
 
     ./script/console
 
-### Remove console
+### Remote console
 
     heroku run ./script/console
 
@@ -46,8 +46,6 @@ Restore a backup remotely (replace `HEROKU_POSTGRESQL_BROWN` and `a001`):
 
     heroku stack
 
-Continue to use REE 1.8.7 on the Bamboo stack. The Cedar stack only supports the slower MRI 1.8.7, and migrating to Ruby 1.9.2 may break Ferret.
-
 ## Soft Reset
 
-There must be a single seller with the name `Book Exchange`
+There must be a single seller with the name `Book Exchange`.
